@@ -1,0 +1,111 @@
+/*General*/
+body {
+    background-color: #feffff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h1 {
+    color: #344E41;
+}
+h3 {
+    font-family: "Helvetica Neue","Segoe UI", Sans-serif;
+    font-weight: normal;
+    font-size: 1.9em;
+}
+a {
+    color: #036666;
+}
+/*nav*/
+nav {
+    width: 100%;
+    text-align: center;
+    height: 20px;
+}
+
+nav a {
+    margin-top: 10px;
+    padding: 0 2%;
+    text-align: center;
+    text-decoration: none;
+    font-size: larger;
+    color: #2F3E46;     
+    line-height: 30px;
+    border-bottom: 3px solid transparent;
+}
+
+nav a:hover {
+    color: #036666;
+    border-bottom: 3px solid #22577a;
+    transition: 0.5s;
+}
+
+nav a.active     {
+    color: #036666;
+    border-bottom: 3px solid #22577a;
+    transition: 0.5s;
+}
+/*Section - General*/
+#title h1 {
+    text-align: center;
+    font-family: "Montserrat", Sans-serif;
+    font-weight: 600;
+    text-transform: none;
+    font-style: normal;
+    font-size: 65px;
+    color: #1A759F;
+    margin: 0;
+}
+#title h3 {
+    padding-top: 0;
+    text-align: center;
+    margin: 0;
+}
+#title h4 {
+    font-size: 1.2em;
+    font-weight: 400;
+    font-style: normal;
+    text-decoration: none;
+    line-height: 1.2em;
+    letter-spacing: 0px;
+    text-align: center;
+    padding: 0 15%;
+}
+#title {
+    padding: 5% 20%;
+}
+/*Cards*/
+#cards-table {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 15%;
+}
+#cards-table th, td, tr{
+    width: 75%;
+    text-align: center;
+    width: 5%;
+    vertical-align: top;
+    line-height:  1.7em;
+} 
+/*Section 2*/
+#section2 {
+    background-color: #d8f3dc;
+}
+#section2 img {
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 5px; /*For text below picture*/
+    width: 200px;
+}
+/*Footer*/
+footer {
+    width: 100%;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    background-color: #168AAD;
+}
+footer p {
+    color: azure;
+    text-align: right;
+    margin: 10px;
+}
