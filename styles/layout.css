@@ -2,6 +2,11 @@
 body {
     background-color: #feffff;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    min-height: 100%;
+    position: relative;
 }
 
 h1 {
@@ -14,7 +19,21 @@ h3 {
 }
 a {
     color: #036666;
+    font-weight: bold;
 }
+table {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 15%;
+  padding-bottom: 1%;
+}
+#cards-table th, td, tr{
+    width: 75%;
+    text-align: center;
+    width: 5%;
+    vertical-align: top;
+    line-height:  1.7em;
+} 
 /*nav*/
 nav {
     width: 100%;
@@ -31,6 +50,7 @@ nav a {
     color: #2F3E46;     
     line-height: 30px;
     border-bottom: 3px solid transparent;
+    font-weight: normal;
 }
 
 nav a:hover {
@@ -73,36 +93,44 @@ nav a.active     {
 #title {
     padding: 5% 20%;
 }
-/*Cards*/
-#cards-table {
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0 15%;
+.section {
+    min-height: 100%;
+    width: 100vw;
+    height: 100%;
 }
-#cards-table th, td, tr{
-    width: 75%;
-    text-align: center;
-    width: 5%;
-    vertical-align: top;
-    line-height:  1.7em;
-} 
 /*Section 2*/
-#section2 {
-    background-color: #d8f3dc;
+#about {
+    padding: 5%;
+    background-color: #22577a;
+    color: azure;
 }
-#section2 img {
+#about img {
     float: left;
     margin-right: 10px;
     margin-bottom: 5px; /*For text below picture*/
-    width: 200px;
+    width: 250px;
+}
+#about-table td {
+    text-align: left;
+    width: 1%;
+    vertical-align: middle;
+    line-height:  1.7em;
+}
+#about a {
+    color: #feffff;
+    font-weight: bold;
+}
+/*Portfolio*/
+#portfolio {
+    background-color: #feffff;
 }
 /*Footer*/
 footer {
-    width: 100%;
-    position: fixed;
+    position: absolute;
     left: 0;
     bottom: 0;
-    background-color: #168AAD;
+    width: 100%;
+    background-color: #22577a;
 }
 footer p {
     color: azure;
