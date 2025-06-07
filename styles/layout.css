@@ -1,25 +1,25 @@
 /*General*/
 body {
-    background-color: #feffff;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    min-height: 100%;
-    position: relative;
+  background-color: #feffff;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  min-height: 100%;
+  position: relative;
 }
 
 h1 {
-    color: #344E41;
+  color: #344e41;
 }
 h3 {
-    font-family: "Helvetica Neue","Segoe UI", Sans-serif;
-    font-weight: normal;
-    font-size: 1.9em;
+  font-family: "Helvetica Neue", "Segoe UI", Sans-serif;
+  font-weight: normal;
+  font-size: 1.9em;
 }
 a {
-    color: #036666;
-    font-weight: bold;
+  color: #036666;
+  font-weight: bold;
 }
 table {
   margin-left: auto;
@@ -27,113 +27,130 @@ table {
   padding: 0 15%;
   padding-bottom: 1%;
 }
-#cards-table th, td, tr{
-    width: 75%;
-    text-align: center;
-    width: 5%;
-    vertical-align: top;
-    line-height:  1.7em;
-} 
+#cards-table th,
+td,
+tr {
+  width: 75%;
+  text-align: center;
+  width: 5%;
+  vertical-align: top;
+  line-height: 1.7em;
+}
 /*nav*/
 nav {
-    width: 100%;
-    text-align: center;
-    height: 20px;
+  width: 100%;
+  text-align: center;
+  height: 20px;
 }
 
 nav a {
-    margin-top: 10px;
-    padding: 0 2%;
-    text-align: center;
-    text-decoration: none;
-    font-size: larger;
-    color: #2F3E46;     
-    line-height: 30px;
-    border-bottom: 3px solid transparent;
-    font-weight: normal;
+  margin-top: 10px;
+  padding: 0 2%;
+  text-align: center;
+  text-decoration: none;
+  font-size: larger;
+  color: #2f3e46;
+  line-height: 30px;
+  border-bottom: 3px solid transparent;
+  font-weight: normal;
 }
 
 nav a:hover {
-    color: #036666;
-    border-bottom: 3px solid #22577a;
-    transition: 0.5s;
+  color: #036666;
+  border-bottom: 3px solid #22577a;
+  transition: 0.5s;
 }
 
-nav a.active     {
-    color: #036666;
-    border-bottom: 3px solid #22577a;
-    transition: 0.5s;
+nav a.active {
+  color: #036666;
+  border-bottom: 3px solid #22577a;
+  transition: 0.5s;
 }
 /*Section - General*/
 #title h1 {
-    text-align: center;
-    font-family: "Montserrat", Sans-serif;
-    font-weight: 600;
-    text-transform: none;
-    font-style: normal;
-    font-size: 65px;
-    color: #1A759F;
-    margin: 0;
+  text-align: center;
+  font-family: "Montserrat", Sans-serif;
+  font-weight: 600;
+  text-transform: none;
+  font-style: normal;
+  font-size: 65px;
+  color: #1a759f;
+  margin: 0;
 }
 #title h3 {
-    padding-top: 0;
-    text-align: center;
-    margin: 0;
+  padding-top: 0;
+  text-align: center;
+  margin: 0;
 }
 #title h4 {
-    font-size: 1.2em;
-    font-weight: 400;
-    font-style: normal;
-    text-decoration: none;
-    line-height: 1.2em;
-    letter-spacing: 0px;
-    text-align: center;
-    padding: 0 15%;
+  font-size: 1.2em;
+  font-weight: 400;
+  font-style: normal;
+  text-decoration: none;
+  line-height: 1.2em;
+  letter-spacing: 0px;
+  text-align: center;
+  padding: 0 15%;
 }
 #title {
-    padding: 5% 20%;
+  padding: 5% 20%;
 }
 .section {
-    min-height: 100%;
-    width: 100vw;
-    height: 100%;
+  min-height: 100%;
+  width: 100vw;
+  height: 100%;
 }
 /*Section 2*/
 #about {
-    padding: 5%;
-    background-color: #22577a;
-    color: azure;
+  padding: 5%;
+  background-color: #22577a;
+  color: azure;
 }
 #about img {
-    float: left;
-    margin-right: 10px;
-    margin-bottom: 5px; /*For text below picture*/
-    width: 250px;
+  float: left;
+  margin-right: 10px;
+  margin-bottom: 5px; /*For text below picture*/
+  width: 250px;
 }
 #about-table td {
-    text-align: left;
-    width: 1%;
-    vertical-align: middle;
-    line-height:  1.7em;
+  text-align: left;
+  width: 1%;
+  vertical-align: middle;
+  line-height: 1.7em;
 }
 #about a {
-    color: #feffff;
-    font-weight: bold;
+  color: #feffff;
+  font-weight: bold;
 }
 /*Portfolio*/
 #portfolio {
-    background-color: #feffff;
+  background-color: #feffff;
+}
+ul.portfolio-list li {
+  display: inline-block;
+  text-align: center;
+}
+.list-images {
+  border: 1px solid #ddd;
+  padding: 5px;
+  width: 350px;
+  height: 300px;
+  object-fit: cover;
+  margin-right: 15px;
+}
+.list-images:hover {
+  box-shadow: 0 0 2px 1px #22577a;
 }
 /*Footer*/
 footer {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: #22577a;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #22577a;
 }
 footer p {
-    color: azure;
-    text-align: right;
-    margin: 10px;
+  color: azure;
+  text-align: right;
+  margin: 10px;
 }
