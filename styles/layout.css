@@ -123,23 +123,69 @@ nav a.active {
   font-weight: bold;
 }
 /*Portfolio*/
+/* Portfolio */
 #portfolio {
   background-color: #feffff;
 }
-ul.portfolio-list li {
-  display: inline-block;
-  text-align: center;
+
+/* Target the UL specifically for flexbox */
+.portfolio-list {
+  display: flex; /* Make the ul a flex container */
+  flex-wrap: wrap; /* Allow items to wrap to the next line */
+  justify-content: center; /* Center the items horizontally */
+  align-items: flex-start; /* Align items to the top if they have different heights */
+  list-style: none; /* Remove default bullet points */
+  padding: 0; /* Remove default padding from ul */
+  margin: 0; /* Remove default margin from ul */
 }
-.list-images {
-  border: 1px solid #ddd;
-  padding: 5px;
-  width: 350px;
+
+/* Style the LI elements as flex items */
+.portfolio-list li {
+  /* No need for display: inline/block here, as flex items manage their own layout */
+  margin: 15px; /* Add some spacing between your cards */
+  /* Ensure the container within the li doesn't expand too much */
+  flex-basis: 500px; /* Gives a base width, but allows shrinking/growing */
+  max-width: 28%; /* Adjust based on how many you want per row, considering margin */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  padding: 0 10%;
+}
+
+.container {
+  position: relative;
+  width: 100%; /* The container fills its parent li */
+  overflow: hidden; /* Ensures content doesn't spill out if images are larger */
+}
+.portfolio-image {
+  opacity: 1;
+  display: block; /* Important for images inside flex items */
+  width: auto;
   height: 300px;
-  object-fit: cover;
-  margin-right: 15px;
+  transition: 0.5s ease;
+  backface-visibility: hidden;
 }
-.list-images:hover {
-  box-shadow: 0 0 2px 1px #22577a;
+.desc {
+  transition: 0.5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center; /* Center the text inside the description */
+}
+.container:hover .portfolio-image {
+  opacity: 0.3;
+}
+
+.container:hover .desc {
+  opacity: 1;
+}
+
+.text {
+  background-color: #22577a;
+  color: white;
+  font-size: 11px;
+  padding: 5px 5px;
 }
 /*Footer*/
 footer {
