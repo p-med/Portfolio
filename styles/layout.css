@@ -4,9 +4,7 @@ body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
   padding: 0;
-  height: 100%;
-  min-height: 100%;
-  position: relative;
+    overflow-x: hidden;
 }
 
 h1 {
@@ -16,6 +14,7 @@ h3 {
   font-family: "Helvetica Neue", "Segoe UI", Sans-serif;
   font-weight: normal;
   font-size: 1.9em;
+  text-align: center;
 }
 a {
   color: #036666;
@@ -97,14 +96,15 @@ nav a.active {
 }
 .section {
   min-height: 100%;
-  width: 100vw;
-  height: 100%;
+  width: 100%;
+  height: auto;
 }
 /*Section 2*/
 #about {
   padding: 5%;
   background-color: #22577a;
   color: azure;
+  height: 100%;
 }
 #about img {
   float: left;
@@ -126,30 +126,15 @@ nav a.active {
 /* Portfolio */
 #portfolio {
   background-color: #feffff;
+  height: 100%;
+  text-align: center;
 }
-
-/* Target the UL specifically for flexbox */
-.portfolio-list {
-  display: flex; /* Make the ul a flex container */
-  flex-wrap: wrap; /* Allow items to wrap to the next line */
-  justify-content: center; /* Center the items horizontally */
-  align-items: flex-start; /* Align items to the top if they have different heights */
-  list-style: none; /* Remove default bullet points */
-  padding: 0; /* Remove default padding from ul */
-  margin: 0; /* Remove default margin from ul */
+ul.portfolio-list li {
+  display: inline-block;
+  text-align: center;
+  margin-right: 70px;
+  margin-bottom: 20px;
 }
-
-/* Style the LI elements as flex items */
-.portfolio-list li {
-  /* No need for display: inline/block here, as flex items manage their own layout */
-  margin: 15px; /* Add some spacing between your cards */
-  /* Ensure the container within the li doesn't expand too much */
-  flex-basis: 500px; /* Gives a base width, but allows shrinking/growing */
-  max-width: 28%; /* Adjust based on how many you want per row, considering margin */
-  box-sizing: border-box; /* Include padding and border in the element's total width and height */
-  padding: 0 10%;
-}
-
 .container {
   position: relative;
   width: 100%; /* The container fills its parent li */
@@ -159,7 +144,7 @@ nav a.active {
   opacity: 1;
   display: block; /* Important for images inside flex items */
   width: auto;
-  height: 300px;
+  height: 350px;
   transition: 0.5s ease;
   backface-visibility: hidden;
 }
@@ -187,16 +172,13 @@ nav a.active {
   font-size: 11px;
   padding: 5px 5px;
 }
-/*Footer*/
-footer {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
+/*Contact*/
+#contact {
   background-color: #22577a;
 }
-footer p {
-  color: azure;
-  text-align: right;
-  margin: 10px;
+.row {
+  display: flex;
+}
+.column {
+  flex: 50%;
 }

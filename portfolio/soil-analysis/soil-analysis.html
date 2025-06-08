@@ -1,0 +1,4609 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width"
+    />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link rel="stylesheet" href="css/leaflet.css" />
+    <link rel="stylesheet" href="css/qgis2web.css" />
+    <link rel="stylesheet" href="css/fontawesome-all.min.css" />
+    <link rel="stylesheet" href="css/leaflet-measure.css" />
+    <link rel="stylesheet" href="css/mapstyles.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/qgis2web_expressions.js"></script>
+    <script src="js/leaflet.js"></script>
+    <script src="js/leaflet.rotatedMarker.js"></script>
+    <script src="js/leaflet.pattern.js"></script>
+    <script src="js/leaflet-hash.js"></script>
+    <script src="js/Autolinker.min.js"></script>
+    <script src="js/rbush.min.js"></script>
+    <script src="js/labelgun.min.js"></script>
+    <script src="js/labels.js"></script>
+    <script src="js/leaflet-measure.js"></script>
+    <script src="data/Limitedelapropiedad_1.js"></script>
+    <script src="data/Profundidadde60a90cm_2.js"></script>
+    <script src="data/Profundidadde30a60cm_3.js"></script>
+    <script src="data/Profundidadde0a30cm_4.js"></script>
+    <script src="data/CUT_FINAL_1.js"></script>
+    <script src="data/cut_connutrientes_0.js"></script>
+    <script src="data/boro0_30_0.js"></script>
+    <script src="data/calcio60_90_1.js"></script>
+    <script src="data/calcio30_60_2.js"></script>
+    <script src="data/calcio_0_30_3.js"></script>
+    <script src="data/cobre0_30_4.js"></script>
+    <script src="data/fosforo0_30_5.js"></script>
+    <script src="data/fosforo30_60_6.js"></script>
+    <script src="data/fosforo60_90_7.js"></script>
+    <script src="data/hierro0_30_8.js"></script>
+    <script src="data/magnesio0_30_9.js"></script>
+    <script src="data/magnesio30_60_10.js"></script>
+    <script src="data/magnesio60_90_11.js"></script>
+    <script src="data/Manganeso0_30_12.js"></script>
+    <script src="data/potasio0_30_13.js"></script>
+    <script src="data/potasio30_60_14.js"></script>
+    <script src="data/potasio60_90_15.js"></script>
+    <script src="data/sodio0_30_16.js"></script>
+    <script src="data/sodio30_60_17.js"></script>
+    <script src="data/sodio60_90_18.js"></script>
+    <script src="data/zinc0_30_19.js"></script>
+    <style>
+      html,
+      body,
+      #map {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        z-index: 0;
+      }
+    </style>
+    <title>Mapa - Cerrito</title>
+  </head>
+
+  <body>
+    <!--ChartJS-->
+
+    <!--Grafico CUT-->
+
+    <div class="grafico" id="graficoCUT">
+      <div id="chartwrapper">
+        <canvas id="myChart"></canvas>
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+      <script>
+        const ctx = document.getElementById("myChart");
+        let labels0 = [
+          "IIISs/IISper,Wd",
+          "VSPer,Wd/IVSs,Sprof",
+          "VSper,Wd/IVSs /IIISprof",
+          "IVSs,per,Wd/IIISprof",
+          "VISs/IVSper,Wd/IIISprof",
+          "IIISs",
+          "VSs/IVSprof,Sper,Wd",
+          "VISs/IVSprof,Sper,Wd",
+          "VSs,Sprof,Sper,Wd",
+          "VISs/VSprof,Sper,Wd",
+          "Bosque",
+        ];
+        let data = [
+          1.75, 12.58, 12.77, 1.29, 4.33, 0.72, 29.84, 14.19, 11.1, 4.73, 6.7,
+        ];
+        let colors = [
+          "#b279fd",
+          "#b5b566",
+          "#53adb9",
+          "#e95bc8",
+          "#6066b9",
+          "#e5ba90",
+          "#4fd5a2",
+          "#cf80ec",
+          "#70bffb",
+          "#c07597",
+          "#6ef37d",
+        ];
+
+        new Chart(ctx, {
+          type: "doughnut",
+          data: {
+            labels: labels0,
+            datasets: [
+              {
+                backgroundColor: colors,
+                label: "%",
+                data: data,
+              },
+            ],
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true,
+                grid: {
+                  display: false,
+                },
+                ticks: {
+                  display: false,
+                },
+                lines: {
+                  display: false,
+                },
+                display: false,
+              },
+            },
+            layout: {
+              padding: 10,
+            },
+            plugins: {
+              legend: {
+                display: true,
+                position: "right",
+                labels: {
+                  font: {
+                    size: 10,
+                  },
+                },
+              },
+              title: {
+                display: true,
+                text: "% Superficie ocupada según CUT",
+                position: "top",
+              },
+            },
+            responsive: true,
+          },
+        });
+      </script>
+    </div>
+
+    <!--Grafico %SODIO-->
+
+    <div class="grafico" id="graficoNA">
+      <div id="chartwrapper1">
+        <canvas id="myChart1"></canvas>
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+      <script>
+        const ctx1 = document.getElementById("myChart1");
+        let labels1 = [
+          "Extremadamente Alto",
+          "Muy Alto",
+          "Alto",
+          "Medio",
+          "Bosque",
+        ];
+        let data1 = [23.25, 40.94, 26.64, 2.47, 6.7];
+        let colors1 = ["#d7191c", "#fdae61", "#ffffbf", "#91cba8", "#1d8641"];
+
+        new Chart(ctx1, {
+          type: "doughnut",
+          data: {
+            labels: labels1,
+            datasets: [
+              {
+                backgroundColor: colors1,
+                label: "%",
+                data: data1,
+              },
+            ],
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true,
+                grid: {
+                  display: false,
+                },
+                ticks: {
+                  display: false,
+                },
+                lines: {
+                  display: false,
+                },
+                display: false,
+              },
+            },
+            layout: {
+              padding: 10,
+            },
+            plugins: {
+              legend: {
+                display: true,
+                position: "right",
+                labels: {
+                  font: {
+                    size: 10,
+                  },
+                },
+              },
+              title: {
+                display: true,
+                text: "Superficie según % de Sodio",
+                position: "top",
+              },
+            },
+            responsive: true,
+          },
+        });
+      </script>
+    </div>
+
+    <!--Grafico SODIO 60 a 90-->
+
+    <div class="grafico" id="graficoS60-90">
+      <div id="chartwrapper2">
+        <canvas id="myChart2"></canvas>
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+      <script>
+        const ctx2 = document.getElementById("myChart2");
+        let labels2 = ["ALTO", "MEDIO", "BOSQUE"];
+        let data2 = [76.77, 16.53, 6.7];
+        let colors2 = ["#d7191c", "#fdae61", "#1d8641"];
+
+        new Chart(ctx2, {
+          type: "doughnut",
+          data: {
+            labels: labels2,
+            datasets: [
+              {
+                backgroundColor: colors2,
+                label: "%",
+                data: data2,
+              },
+            ],
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true,
+                grid: {
+                  display: false,
+                },
+                ticks: {
+                  display: false,
+                },
+                lines: {
+                  display: false,
+                },
+                display: false,
+              },
+            },
+            layout: {
+              padding: 10,
+            },
+            plugins: {
+              legend: {
+                display: true,
+                position: "right",
+                labels: {
+                  font: {
+                    size: 10,
+                  },
+                },
+              },
+              title: {
+                display: true,
+                text: "Superficie según presencia de Sodio de 60 a 90",
+                position: "top",
+              },
+            },
+            responsive: true,
+          },
+        });
+      </script>
+    </div>
+
+    <!--Grafico SODIO 30 a 60-->
+
+    <div class="grafico" id="graficoS30-60">
+      <div id="chartwrapper3">
+        <canvas id="myChart3"></canvas>
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+      <script>
+        const ctx3 = document.getElementById("myChart3");
+        let labels3 = ["ALTO", "MEDIO", "BOSQUE"];
+        let data3 = [77.68, 15.62, 6.7];
+        let colors3 = ["#d7191c", "#fdae61", "#1d8641"];
+
+        new Chart(ctx3, {
+          type: "doughnut",
+          data: {
+            labels: labels3,
+            datasets: [
+              {
+                backgroundColor: colors3,
+                label: "%",
+                data: data3,
+              },
+            ],
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true,
+                grid: {
+                  display: false,
+                },
+                ticks: {
+                  display: false,
+                },
+                lines: {
+                  display: false,
+                },
+                display: false,
+              },
+            },
+            layout: {
+              padding: 10,
+            },
+            plugins: {
+              legend: {
+                display: true,
+                position: "right",
+                labels: {
+                  font: {
+                    size: 10,
+                  },
+                },
+              },
+              title: {
+                display: true,
+                text: "Superficie según presencia de Sodio de 30 a 60",
+                position: "top",
+              },
+            },
+            responsive: true,
+          },
+        });
+      </script>
+    </div>
+
+    <!--Grafico SODIO 0 a 30-->
+
+    <div class="grafico" id="graficoS0-30">
+      <div id="chartwrapper4">
+        <canvas id="myChart4"></canvas>
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+      <script>
+        const ctx4 = document.getElementById("myChart4");
+        let labels4 = ["ALTO", "MEDIO", "BOSQUE"];
+        let data4 = [30.02, 63.28, 6.7];
+        let colors4 = ["#d7191c", "#fdae61", "#1d8641"];
+
+        new Chart(ctx4, {
+          type: "doughnut",
+          data: {
+            labels: labels4,
+            datasets: [
+              {
+                backgroundColor: colors4,
+                label: "%",
+                data: data4,
+              },
+            ],
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true,
+                grid: {
+                  display: false,
+                },
+                ticks: {
+                  display: false,
+                },
+                lines: {
+                  display: false,
+                },
+                display: false,
+              },
+            },
+            layout: {
+              padding: 10,
+            },
+            plugins: {
+              legend: {
+                display: true,
+                position: "right",
+                labels: {
+                  font: {
+                    size: 10,
+                  },
+                },
+              },
+              title: {
+                display: true,
+                text: "Superficie según presencia de Sodio de 30 a 60",
+                position: "top",
+              },
+            },
+            responsive: true,
+          },
+        });
+      </script>
+    </div>
+
+    <!--Grafico K 60 a 90-->
+
+    <div class="grafico" id="graficoK60_90">
+      <div id="chartwrapper5">
+        <canvas id="myChart5"></canvas>
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+      <script>
+        const ctx5 = document.getElementById("myChart5");
+        let labels5 = ["BAJO", "BOSQUE"];
+        let data5 = [93.3, 6.7];
+        let colors5 = ["#ffffbf", "#1d8641"];
+
+        new Chart(ctx5, {
+          type: "doughnut",
+          data: {
+            labels: labels5,
+            datasets: [
+              {
+                backgroundColor: colors5,
+                label: "%",
+                data: data5,
+              },
+            ],
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true,
+                grid: {
+                  display: false,
+                },
+                ticks: {
+                  display: false,
+                },
+                lines: {
+                  display: false,
+                },
+                display: false,
+              },
+            },
+            layout: {
+              padding: 10,
+            },
+            plugins: {
+              legend: {
+                display: true,
+                position: "right",
+                labels: {
+                  font: {
+                    size: 10,
+                  },
+                },
+              },
+              title: {
+                display: true,
+                text: "Superficie según presencia de Potasio de 60 a 90",
+                position: "top",
+              },
+            },
+            responsive: true,
+          },
+        });
+      </script>
+    </div>
+
+    <!--Grafico Mg 60 a 90-->
+
+    <div class="grafico" id="graficoMg60_90">
+      <div id="chartwrapper6">
+        <canvas id="myChart6"></canvas>
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+      <script>
+        const ctx6 = document.getElementById("myChart6");
+        let labels6 = ["MEDIO", "BAJO", "BOSQUE"];
+        let data6 = [7.2, 86.1, 6.7];
+        let colors6 = ["#fdae61", "#ffffbf", "#1d8641"];
+
+        new Chart(ctx6, {
+          type: "doughnut",
+          data: {
+            labels: labels6,
+            datasets: [
+              {
+                backgroundColor: colors6,
+                label: "%",
+                data: data6,
+              },
+            ],
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true,
+                grid: {
+                  display: false,
+                },
+                ticks: {
+                  display: false,
+                },
+                lines: {
+                  display: false,
+                },
+                display: false,
+              },
+            },
+            layout: {
+              padding: 10,
+            },
+            plugins: {
+              legend: {
+                display: true,
+                position: "right",
+                labels: {
+                  font: {
+                    size: 10,
+                  },
+                },
+              },
+              title: {
+                display: true,
+                text: "Superficie según presencia de Magnesio de 60 a 90",
+                position: "top",
+              },
+            },
+            responsive: true,
+          },
+        });
+      </script>
+    </div>
+
+    <!--Grafico Mg 30 a 60-->
+
+    <div class="grafico" id="graficoMg30_60">
+      <div id="chartwrapper7">
+        <canvas id="myChart7"></canvas>
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+      <script>
+        const ctx7 = document.getElementById("myChart7");
+        let labels7 = ["MEDIO", "BAJO", "BOSQUE"];
+        let data7 = [5.45, 87.85, 6.7];
+        let colors7 = ["#fdae61", "#ffffbf", "#1d8641"];
+
+        new Chart(ctx7, {
+          type: "doughnut",
+          data: {
+            labels: labels7,
+            datasets: [
+              {
+                backgroundColor: colors7,
+                label: "%",
+                data: data7,
+              },
+            ],
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true,
+                grid: {
+                  display: false,
+                },
+                ticks: {
+                  display: false,
+                },
+                lines: {
+                  display: false,
+                },
+                display: false,
+              },
+            },
+            layout: {
+              padding: 10,
+            },
+            plugins: {
+              legend: {
+                display: true,
+                position: "right",
+                labels: {
+                  font: {
+                    size: 10,
+                  },
+                },
+              },
+              title: {
+                display: true,
+                text: "Superficie según presencia de Magnesio de 30 a 60",
+                position: "top",
+              },
+            },
+            responsive: true,
+          },
+        });
+      </script>
+    </div>
+
+    <!--Grafico Mg 0 a 30-->
+
+    <div class="grafico" id="graficoMg0_60">
+      <div id="chartwrapper8">
+        <canvas id="myChart8"></canvas>
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+      <script>
+        const ctx8 = document.getElementById("myChart8");
+        let labels8 = ["BAJO", "BOSQUE"];
+        let data8 = [93.3, 6.7];
+        let colors8 = ["#ffffbf", "#1d8641"];
+
+        new Chart(ctx8, {
+          type: "doughnut",
+          data: {
+            labels: labels8,
+            datasets: [
+              {
+                backgroundColor: colors8,
+                label: "%",
+                data: data8,
+              },
+            ],
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true,
+                grid: {
+                  display: false,
+                },
+                ticks: {
+                  display: false,
+                },
+                lines: {
+                  display: false,
+                },
+                display: false,
+              },
+            },
+            layout: {
+              padding: 10,
+            },
+            plugins: {
+              legend: {
+                display: true,
+                position: "right",
+                labels: {
+                  font: {
+                    size: 10,
+                  },
+                },
+              },
+              title: {
+                display: true,
+                text: "Superficie según presencia de Magnesio de 0 a 30",
+                position: "top",
+              },
+            },
+            responsive: true,
+          },
+        });
+      </script>
+    </div>
+
+    <!--Grafico P-->
+
+    <div class="grafico" id="graficoP">
+      <div id="chartwrapper9">
+        <canvas id="myChart9"></canvas>
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+      <script>
+        const ctx9 = document.getElementById("myChart9");
+        let labels9 = ["BAJO", "BOSQUE"];
+        let data9 = [93.3, 6.7];
+        let colors9 = ["#ffffbf", "#1d8641"];
+
+        new Chart(ctx9, {
+          type: "doughnut",
+          data: {
+            labels: labels9,
+            datasets: [
+              {
+                backgroundColor: colors9,
+                label: "%",
+                data: data9,
+              },
+            ],
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true,
+                grid: {
+                  display: false,
+                },
+                ticks: {
+                  display: false,
+                },
+                lines: {
+                  display: false,
+                },
+                display: false,
+              },
+            },
+            layout: {
+              padding: 10,
+            },
+            plugins: {
+              legend: {
+                display: true,
+                position: "right",
+                labels: {
+                  font: {
+                    size: 10,
+                  },
+                },
+              },
+              title: {
+                display: true,
+                text: "Superficie según presencia de Fósforo",
+                position: "top",
+              },
+            },
+            responsive: true,
+          },
+        });
+      </script>
+    </div>
+
+    <!--Grafico Ca 0 - 30-->
+
+    <div class="grafico" id="graficoCa0_30">
+      <div id="chartwrapper10">
+        <canvas id="myChart10"></canvas>
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+      <script>
+        const ctx10 = document.getElementById("myChart10");
+        let labels10 = ["BAJO", "BOSQUE"];
+        let data10 = [93.3, 6.7];
+        let colors10 = ["#ffffbf", "#1d8641"];
+
+        new Chart(ctx10, {
+          type: "doughnut",
+          data: {
+            labels: labels10,
+            datasets: [
+              {
+                backgroundColor: colors10,
+                label: "%",
+                data: data10,
+              },
+            ],
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true,
+                grid: {
+                  display: false,
+                },
+                ticks: {
+                  display: false,
+                },
+                lines: {
+                  display: false,
+                },
+                display: false,
+              },
+            },
+            layout: {
+              padding: 10,
+            },
+            plugins: {
+              legend: {
+                display: true,
+                position: "right",
+                labels: {
+                  font: {
+                    size: 10,
+                  },
+                },
+              },
+              title: {
+                display: true,
+                text: "Superficie según presencia de Sodio de 30 a 60",
+                position: "top",
+              },
+            },
+            responsive: true,
+          },
+        });
+      </script>
+    </div>
+
+    <!--Grafico Ca 30 a 60-->
+
+    <div class="grafico" id="graficoCa30_60">
+      <div id="chartwrapper11">
+        <canvas id="myChart11"></canvas>
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+      <script>
+        const ctx11 = document.getElementById("myChart11");
+        let labels11 = ["BAJO", "MEDIO", "BOSQUE"];
+        let data11 = [88.57, 4.73, 6.7];
+        let colors11 = ["#ffffbf", "#fdae61", "#1d8641"];
+
+        new Chart(ctx11, {
+          type: "doughnut",
+          data: {
+            labels: labels11,
+            datasets: [
+              {
+                backgroundColor: colors11,
+                label: "%",
+                data: data11,
+              },
+            ],
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true,
+                grid: {
+                  display: false,
+                },
+                ticks: {
+                  display: false,
+                },
+                lines: {
+                  display: false,
+                },
+                display: false,
+              },
+            },
+            layout: {
+              padding: 10,
+            },
+            plugins: {
+              legend: {
+                display: true,
+                position: "right",
+                labels: {
+                  font: {
+                    size: 10,
+                  },
+                },
+              },
+              title: {
+                display: true,
+                text: "Superficie según presencia de Calcio de 30 a 60",
+                position: "top",
+              },
+            },
+            responsive: true,
+          },
+        });
+      </script>
+    </div>
+
+    <!--Grafico Ca 60 a 90-->
+
+    <div class="grafico" id="graficoCa60_90">
+      <div id="chartwrapper12">
+        <canvas id="myChart12"></canvas>
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+      <script>
+        const ctx12 = document.getElementById("myChart12");
+        let labels12 = ["ALTO", "MEDIO", "BAJO", "BOSQUE"];
+        let data12 = [4.73, 12.58, 75.99, 6.7];
+        let colors12 = ["#d7191c", "#fdae61", "#ffffbf", "#1d8641"];
+
+        new Chart(ctx12, {
+          type: "doughnut",
+          data: {
+            labels: labels12,
+            datasets: [
+              {
+                backgroundColor: colors12,
+                label: "%",
+                data: data12,
+              },
+            ],
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true,
+                grid: {
+                  display: false,
+                },
+                ticks: {
+                  display: false,
+                },
+                lines: {
+                  display: false,
+                },
+                display: false,
+              },
+            },
+            layout: {
+              padding: 10,
+            },
+            plugins: {
+              legend: {
+                display: true,
+                position: "right",
+                labels: {
+                  font: {
+                    size: 10,
+                  },
+                },
+              },
+              title: {
+                display: true,
+                text: "Superficie según presencia de Calcio de 60 a 90",
+                position: "top",
+              },
+            },
+            responsive: true,
+          },
+        });
+      </script>
+    </div>
+
+    <!--Grafico Zinc-->
+
+    <div class="grafico" id="graficoZ">
+      <div id="chartwrapper13">
+        <canvas id="myChart13"></canvas>
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+      <script>
+        const ctx13 = document.getElementById("myChart13");
+        let labels13 = ["ALTO", "BAJO", "MEDIO", "BOSQUE"];
+        let data13 = [27.76, 4.73, 60.81, 6.7];
+        let colors13 = ["#d7191c", "#ffffbf", "#fdae61", "#1d8641"];
+
+        new Chart(ctx13, {
+          type: "doughnut",
+          data: {
+            labels: labels13,
+            datasets: [
+              {
+                backgroundColor: colors13,
+                label: "%",
+                data: data13,
+              },
+            ],
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true,
+                grid: {
+                  display: false,
+                },
+                ticks: {
+                  display: false,
+                },
+                lines: {
+                  display: false,
+                },
+                display: false,
+              },
+            },
+            layout: {
+              padding: 10,
+            },
+            plugins: {
+              legend: {
+                display: true,
+                position: "right",
+                labels: {
+                  font: {
+                    size: 10,
+                  },
+                },
+              },
+              title: {
+                display: true,
+                text: "Superficie según presencia de Zinc",
+                position: "top",
+              },
+            },
+            responsive: true,
+          },
+        });
+      </script>
+    </div>
+
+    <!--Grafico Manganeso-->
+
+    <div class="grafico" id="graficoMn">
+      <div id="chartwrapper14">
+        <canvas id="myChart14"></canvas>
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+      <script>
+        const ctx14 = document.getElementById("myChart14");
+        let labels14 = ["ALTO", "BAJO", "MEDIO", "BOSQUE"];
+        let data14 = [8.09, 66.29, 18.92, 6.7];
+        let colors14 = ["#d7191c", "#ffffbf", "#fdae61", "#1d8641"];
+
+        new Chart(ctx14, {
+          type: "doughnut",
+          data: {
+            labels: labels14,
+            datasets: [
+              {
+                backgroundColor: colors14,
+                label: "%",
+                data: data14,
+              },
+            ],
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true,
+                grid: {
+                  display: false,
+                },
+                ticks: {
+                  display: false,
+                },
+                lines: {
+                  display: false,
+                },
+                display: false,
+              },
+            },
+            layout: {
+              padding: 10,
+            },
+            plugins: {
+              legend: {
+                display: true,
+                position: "right",
+                labels: {
+                  font: {
+                    size: 10,
+                  },
+                },
+              },
+              title: {
+                display: true,
+                text: "Superficie según presencia de Manganeso",
+                position: "top",
+              },
+            },
+            responsive: true,
+          },
+        });
+      </script>
+    </div>
+
+    <!--Grafico Hierro-->
+
+    <div class="grafico" id="graficoF">
+      <div id="chartwrapper15">
+        <canvas id="myChart15"></canvas>
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+      <script>
+        const ctx15 = document.getElementById("myChart15");
+        let labels15 = ["ALTO", "BOSQUE"];
+        let data15 = [93.3, 6.7];
+        let colors15 = ["#d7191c", "#1d8641"];
+
+        new Chart(ctx15, {
+          type: "doughnut",
+          data: {
+            labels: labels15,
+            datasets: [
+              {
+                backgroundColor: colors15,
+                label: "%",
+                data: data15,
+              },
+            ],
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true,
+                grid: {
+                  display: false,
+                },
+                ticks: {
+                  display: false,
+                },
+                lines: {
+                  display: false,
+                },
+                display: false,
+              },
+            },
+            layout: {
+              padding: 10,
+            },
+            plugins: {
+              legend: {
+                display: true,
+                position: "right",
+                labels: {
+                  font: {
+                    size: 10,
+                  },
+                },
+              },
+              title: {
+                display: true,
+                text: "Superficie según presencia de Hierro",
+                position: "top",
+              },
+            },
+            responsive: true,
+          },
+        });
+      </script>
+    </div>
+
+    <!--Grafico Cobre-->
+
+    <div class="grafico" id="graficoCu">
+      <div id="chartwrapper16">
+        <canvas id="myChart16"></canvas>
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+      <script>
+        const ctx16 = document.getElementById("myChart16");
+        let labels16 = ["ALTO", "BAJO", "MEDIO", "BOSQUE"];
+        let data16 = [3.76, 71.02, 18.52, 6.7];
+        let colors16 = ["#d7191c", "#ffffbf", "#fdae61", "#1d8641"];
+
+        new Chart(ctx16, {
+          type: "doughnut",
+          data: {
+            labels: labels16,
+            datasets: [
+              {
+                backgroundColor: colors16,
+                label: "%",
+                data: data16,
+              },
+            ],
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true,
+                grid: {
+                  display: false,
+                },
+                ticks: {
+                  display: false,
+                },
+                lines: {
+                  display: false,
+                },
+                display: false,
+              },
+            },
+            layout: {
+              padding: 10,
+            },
+            plugins: {
+              legend: {
+                display: true,
+                position: "right",
+                labels: {
+                  font: {
+                    size: 10,
+                  },
+                },
+              },
+              title: {
+                display: true,
+                text: "Superficie según presencia de Cobre",
+                position: "top",
+              },
+            },
+            responsive: true,
+          },
+        });
+      </script>
+    </div>
+
+    <!--Grafico Boro-->
+
+    <div class="grafico" id="graficoBo">
+      <div id="chartwrapper17">
+        <canvas id="myChart17"></canvas>
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+      <script>
+        const ctx17 = document.getElementById("myChart17");
+        let labels17 = ["BAJO", "MEDIO", "BOSQUE"];
+        let data17 = [33.12, 60.18, 6.7];
+        let colors17 = ["#ffffbf", "#fdae61", "#1d8641"];
+
+        new Chart(ctx17, {
+          type: "doughnut",
+          data: {
+            labels: labels17,
+            datasets: [
+              {
+                backgroundColor: colors17,
+                label: "%",
+                data: data17,
+              },
+            ],
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true,
+                grid: {
+                  display: false,
+                },
+                ticks: {
+                  display: false,
+                },
+                lines: {
+                  display: false,
+                },
+                display: false,
+              },
+            },
+            layout: {
+              padding: 10,
+            },
+            plugins: {
+              legend: {
+                display: true,
+                position: "right",
+                labels: {
+                  font: {
+                    size: 10,
+                  },
+                },
+              },
+              title: {
+                display: true,
+                text: "Superficie según presencia de Boro",
+                position: "top",
+              },
+            },
+            responsive: true,
+          },
+        });
+      </script>
+    </div>
+
+    <!--Leaflet JS-->
+
+    <div id="map"></div>
+    <script>
+      var map = L.map("map", {
+        zoomControl: true,
+        maxZoom: 28,
+        minZoom: 1,
+      }).fitBounds([
+        [-27.020473863091677, -56.67195485962017],
+        [-26.839393432721106, -56.307808778491925],
+      ]);
+      var hash = new L.Hash(map);
+      map.attributionControl.setPrefix(
+        '<text>Desarrollado por  </text><a href="https://www.linkedin.com/in/paulo-medina/" target="_blank">Paulo Medina</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot'
+      );
+      var autolinker = new Autolinker({
+        truncate: { length: 30, location: "smart" },
+      });
+      var measureControl = new L.Control.Measure({
+        position: "topleft",
+        primaryLengthUnit: "meters",
+        secondaryLengthUnit: "kilometers",
+        primaryAreaUnit: "hectares",
+        secondaryAreaUnit: "sqmeters",
+      });
+      //measureControl.addTo(map);
+      //document.getElementsByClassName('leaflet-control-measure-toggle')[0]
+      //    .innerHTML = '';
+      //document.getElementsByClassName('leaflet-control-measure-toggle')[0]
+      //    .className += ' fas fa-ruler';
+      var bounds_group = new L.featureGroup([]);
+      function setBounds() {}
+
+      /* ESRI WMS Layer */
+
+      map.createPane("pane_ESRISatelliteArcGISWorld_Imagery_0");
+      map.getPane("pane_ESRISatelliteArcGISWorld_Imagery_0").style.zIndex = 400;
+      var layer_ESRISatelliteArcGISWorld_Imagery_0 = L.tileLayer(
+        "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+        {
+          pane: "pane_ESRISatelliteArcGISWorld_Imagery_0",
+          opacity: 1.0,
+          attribution: "",
+          minZoom: 1,
+          maxZoom: 28,
+          minNativeZoom: 0,
+          maxNativeZoom: 19,
+        }
+      );
+      layer_ESRISatelliteArcGISWorld_Imagery_0;
+      map.addLayer(layer_ESRISatelliteArcGISWorld_Imagery_0);
+
+      /* Capa % Sodio */
+
+      function pop_cut_connutrientes_0(feature, layer) {
+        var popupContent =
+          '<table>\
+                    <tr>\
+                        <th scope="row">% Sodio</th>\
+                        <td colspan="2" class="Cantidades">' +
+          (feature.properties["%Sodio"] !== null
+            ? autolinker.link(feature.properties["%Sodio"].toLocaleString())
+            : "") +
+          "</td>\
+                    </tr>\
+                </table>";
+        layer.bindPopup(popupContent, { maxHeight: 400 });
+      }
+
+      function style_cut_connutrientes_0_0(feature) {
+        switch (String(feature.properties["%Sodio"])) {
+          case "Extremadamente Alto":
+            return {
+              pane: "pane_cut_connutrientes_0",
+              opacity: 1,
+              color: "rgba(35,35,35,1.0)",
+              dashArray: "",
+              lineCap: "butt",
+              lineJoin: "miter",
+              weight: 1.0,
+              fill: true,
+              fillOpacity: 1,
+              fillColor: "rgba(215,25,28,1.0)",
+              interactive: true,
+            };
+            break;
+          case "Muy Alto":
+            return {
+              pane: "pane_cut_connutrientes_0",
+              opacity: 1,
+              color: "rgba(35,35,35,1.0)",
+              dashArray: "",
+              lineCap: "butt",
+              lineJoin: "miter",
+              weight: 1.0,
+              fill: true,
+              fillOpacity: 1,
+              fillColor: "rgba(253,174,97,1.0)",
+              interactive: true,
+            };
+            break;
+          case "Alto":
+            return {
+              pane: "pane_cut_connutrientes_0",
+              opacity: 1,
+              color: "rgba(35,35,35,1.0)",
+              dashArray: "",
+              lineCap: "butt",
+              lineJoin: "miter",
+              weight: 1.0,
+              fill: true,
+              fillOpacity: 1,
+              fillColor: "rgba(255,255,191,1.0)",
+              interactive: true,
+            };
+            break;
+          case "Medio":
+            return {
+              pane: "pane_cut_connutrientes_0",
+              opacity: 1,
+              color: "rgba(35,35,35,1.0)",
+              dashArray: "",
+              lineCap: "butt",
+              lineJoin: "miter",
+              weight: 1.0,
+              fill: true,
+              fillOpacity: 1,
+              fillColor: "rgba(171,221,164,1.0)",
+              interactive: true,
+            };
+            break;
+          case "BOSQUE":
+            return {
+              pane: "pane_cut_connutrientes_0",
+              opacity: 1,
+              color: "rgba(35,35,35,1.0)",
+              dashArray: "",
+              lineCap: "butt",
+              lineJoin: "miter",
+              weight: 1.0,
+              fill: true,
+              fillOpacity: 1,
+              fillColor: "rgba(29,134,65,1.0)",
+              interactive: true,
+            };
+            break;
+        }
+      }
+      map.createPane("pane_cut_connutrientes_0");
+      map.getPane("pane_cut_connutrientes_0").style.zIndex = 403;
+      map.getPane("pane_cut_connutrientes_0").style["mix-blend-mode"] =
+        "normal";
+      var layer_cut_connutrientes_0 = new L.geoJson(json_cut_connutrientes_0, {
+        attribution: "",
+        interactive: true,
+        dataVar: "json_cut_connutrientes_0",
+        layerName: "layer_cut_connutrientes_0",
+        name: "Sodio%",
+        pane: "pane_cut_connutrientes_0",
+        onEachFeature: pop_cut_connutrientes_0,
+        style: style_cut_connutrientes_0_0,
+      });
+      bounds_group.addLayer(layer_cut_connutrientes_0);
+
+      /*Capa CUT*/
+
+      function pop_CUT_FINAL_1(feature, layer) {
+        var popupContent =
+          '<table>\
+                    <tr>\
+                        <th scope="row">Superficie</th>\
+                        <td colspan="2" class="Cantidades">' +
+          (feature.properties["SUP HA"] !== null
+            ? autolinker.link(feature.properties["SUP HA"].toLocaleString())
+            : "") +
+          "<i> ha</i>" +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Tipo</th>\
+                        <td colspan="2" class="Cantidades">' +
+          (feature.properties["NOMENCLATU"] !== null
+            ? autolinker.link(feature.properties["NOMENCLATU"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' +
+          (feature.properties["DESCRIPCI�"] !== null
+            ? autolinker.link(feature.properties["DESCRIPCI�"].toLocaleString())
+            : "") +
+          "</td>\
+                    </tr>\
+                </table>";
+        layer.bindPopup(popupContent, { maxHeight: 400 });
+      }
+
+      function style_CUT_FINAL_1_0(feature) {
+        switch (String(feature.properties["id"])) {
+          case "1":
+            return {
+              pane: "pane_CUT_FINAL_1",
+              opacity: 1,
+              color: "rgba(35,35,35,1.0)",
+              dashArray: "",
+              lineCap: "butt",
+              lineJoin: "miter",
+              weight: 1.0,
+              fill: true,
+              fillOpacity: 1,
+              fillColor: "rgba(178,121,253,1.0)",
+              interactive: true,
+            };
+            break;
+          case "2":
+            return {
+              pane: "pane_CUT_FINAL_1",
+              opacity: 1,
+              color: "rgba(35,35,35,1.0)",
+              dashArray: "",
+              lineCap: "butt",
+              lineJoin: "miter",
+              weight: 1.0,
+              fill: true,
+              fillOpacity: 1,
+              fillColor: "rgba(181,181,102,1.0)",
+              interactive: true,
+            };
+            break;
+          case "3":
+            return {
+              pane: "pane_CUT_FINAL_1",
+              opacity: 1,
+              color: "rgba(35,35,35,1.0)",
+              dashArray: "",
+              lineCap: "butt",
+              lineJoin: "miter",
+              weight: 1.0,
+              fill: true,
+              fillOpacity: 1,
+              fillColor: "rgba(83,173,185,1.0)",
+              interactive: true,
+            };
+            break;
+          case "4":
+            return {
+              pane: "pane_CUT_FINAL_1",
+              opacity: 1,
+              color: "rgba(35,35,35,1.0)",
+              dashArray: "",
+              lineCap: "butt",
+              lineJoin: "miter",
+              weight: 1.0,
+              fill: true,
+              fillOpacity: 1,
+              fillColor: "rgba(233,91,200,1.0)",
+              interactive: true,
+            };
+            break;
+          case "5":
+            return {
+              pane: "pane_CUT_FINAL_1",
+              opacity: 1,
+              color: "rgba(35,35,35,1.0)",
+              dashArray: "",
+              lineCap: "butt",
+              lineJoin: "miter",
+              weight: 1.0,
+              fill: true,
+              fillOpacity: 1,
+              fillColor: "rgba(96,102,185,1.0)",
+              interactive: true,
+            };
+            break;
+          case "6":
+            return {
+              pane: "pane_CUT_FINAL_1",
+              opacity: 1,
+              color: "rgba(35,35,35,1.0)",
+              dashArray: "",
+              lineCap: "butt",
+              lineJoin: "miter",
+              weight: 1.0,
+              fill: true,
+              fillOpacity: 1,
+              fillColor: "rgba(229,186,144,1.0)",
+              interactive: true,
+            };
+            break;
+          case "7":
+            return {
+              pane: "pane_CUT_FINAL_1",
+              opacity: 1,
+              color: "rgba(35,35,35,1.0)",
+              dashArray: "",
+              lineCap: "butt",
+              lineJoin: "miter",
+              weight: 1.0,
+              fill: true,
+              fillOpacity: 1,
+              fillColor: "rgba(79,213,162,1.0)",
+              interactive: true,
+            };
+            break;
+          case "8":
+            return {
+              pane: "pane_CUT_FINAL_1",
+              opacity: 1,
+              color: "rgba(35,35,35,1.0)",
+              dashArray: "",
+              lineCap: "butt",
+              lineJoin: "miter",
+              weight: 1.0,
+              fill: true,
+              fillOpacity: 1,
+              fillColor: "rgba(207,128,236,1.0)",
+              interactive: true,
+            };
+            break;
+          case "9":
+            return {
+              pane: "pane_CUT_FINAL_1",
+              opacity: 1,
+              color: "rgba(35,35,35,1.0)",
+              dashArray: "",
+              lineCap: "butt",
+              lineJoin: "miter",
+              weight: 1.0,
+              fill: true,
+              fillOpacity: 1,
+              fillColor: "rgba(112,191,251,1.0)",
+              interactive: true,
+            };
+            break;
+          case "10":
+            return {
+              pane: "pane_CUT_FINAL_1",
+              opacity: 1,
+              color: "rgba(35,35,35,1.0)",
+              dashArray: "",
+              lineCap: "butt",
+              lineJoin: "miter",
+              weight: 1.0,
+              fill: true,
+              fillOpacity: 1,
+              fillColor: "rgba(192,117,151,1.0)",
+              interactive: true,
+            };
+            break;
+          case "11":
+            return {
+              pane: "pane_CUT_FINAL_1",
+              opacity: 1,
+              color: "rgba(35,35,35,1.0)",
+              dashArray: "",
+              lineCap: "butt",
+              lineJoin: "miter",
+              weight: 1.0,
+              fill: true,
+              fillOpacity: 1,
+              fillColor: "rgba(110,243,125,1.0)",
+              interactive: true,
+            };
+            break;
+          default:
+            return {
+              pane: "pane_CUT_FINAL_1",
+              opacity: 1,
+              color: "rgba(35,35,35,1.0)",
+              dashArray: "",
+              lineCap: "butt",
+              lineJoin: "miter",
+              weight: 1.0,
+              fill: true,
+              fillOpacity: 1,
+              fillColor: "rgba(71,234,220,1.0)",
+              interactive: true,
+            };
+            break;
+        }
+      }
+      map.createPane("pane_CUT_FINAL_1");
+      map.getPane("pane_CUT_FINAL_1").style.zIndex = 402;
+      map.getPane("pane_CUT_FINAL_1").style["mix-blend-mode"] = "normal";
+      var layer_CUT_FINAL_1 = new L.geoJson(json_CUT_FINAL_1, {
+        attribution: "",
+        interactive: true,
+        dataVar: "json_CUT_FINAL_1",
+        layerName: "layer_CUT_FINAL_1",
+        name: "CUT",
+        pane: "pane_CUT_FINAL_1",
+        onEachFeature: pop_CUT_FINAL_1,
+        style: style_CUT_FINAL_1_0,
+      });
+      bounds_group.addLayer(layer_CUT_FINAL_1);
+      map.addLayer(layer_CUT_FINAL_1);
+
+      /*Limite de la propiedad*/
+
+      function pop_Limitedelapropiedad_1(feature, layer) {
+        var popupContent =
+          '<table>\
+                    <tr>\
+                        <td colspan="2">' +
+          (feature.properties["Name"] !== null
+            ? autolinker.link(feature.properties["Name"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' +
+          (feature.properties["descriptio"] !== null
+            ? autolinker.link(feature.properties["descriptio"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' +
+          (feature.properties["timestamp"] !== null
+            ? autolinker.link(feature.properties["timestamp"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' +
+          (feature.properties["begin"] !== null
+            ? autolinker.link(feature.properties["begin"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' +
+          (feature.properties["end"] !== null
+            ? autolinker.link(feature.properties["end"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' +
+          (feature.properties["altitudeMo"] !== null
+            ? autolinker.link(feature.properties["altitudeMo"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' +
+          (feature.properties["tessellate"] !== null
+            ? autolinker.link(feature.properties["tessellate"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' +
+          (feature.properties["extrude"] !== null
+            ? autolinker.link(feature.properties["extrude"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' +
+          (feature.properties["visibility"] !== null
+            ? autolinker.link(feature.properties["visibility"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' +
+          (feature.properties["drawOrder"] !== null
+            ? autolinker.link(feature.properties["drawOrder"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' +
+          (feature.properties["icon"] !== null
+            ? autolinker.link(feature.properties["icon"].toLocaleString())
+            : "") +
+          "</td>\
+                    </tr>\
+                </table>";
+        layer.bindPopup(popupContent, { maxHeight: 400 });
+      }
+      function style_Limitedelapropiedad_1_0() {
+        return {
+          pane: "pane_Limitedelapropiedad_1",
+          opacity: 1,
+          color: "rgba(35,35,35,1.0)",
+          dashArray: "",
+          lineCap: "butt",
+          lineJoin: "miter",
+          weight: 1.0,
+          fill: true,
+          fillOpacity: 0.6,
+          fillColor: "rgba(153,0,0,1.0)",
+          interactive: false,
+        };
+      }
+      map.createPane("pane_Limitedelapropiedad_1");
+      map.getPane("pane_Limitedelapropiedad_1").style.zIndex = 401;
+      map.getPane("pane_Limitedelapropiedad_1").style["mix-blend-mode"] =
+        "normal";
+      var layer_Limitedelapropiedad_1 = new L.geoJson(
+        json_Limitedelapropiedad_1,
+        {
+          attribution: "",
+          interactive: false,
+          dataVar: "json_Limitedelapropiedad_1",
+          layerName: "layer_Limitedelapropiedad_1",
+          pane: "pane_Limitedelapropiedad_1",
+          onEachFeature: pop_Limitedelapropiedad_1,
+          style: style_Limitedelapropiedad_1_0,
+        }
+      );
+      bounds_group.addLayer(layer_Limitedelapropiedad_1);
+      map.addLayer(layer_Limitedelapropiedad_1);
+
+      /*Calicatas*/
+      /*Profundidad de 60 a 90 cm*/
+
+      function pop_Profundidadde60a90cm_2(feature, layer) {
+        var popupContent =
+          '<table>\
+                    <thead>\
+                        <tr>\
+                        <th class="popupTitle">Parámetro</th>\
+                        <th class="popupTitle">Cantidad</td>\
+                        </tr>\
+                    </thead>\
+                    <tr>\
+                    <th scope="row">Calcio</th>\
+                        <td colspan="2" class="Cantidades">' +
+          (feature.properties["Ca"] !== null
+            ? autolinker.link(feature.properties["Ca"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                    <th scope="row">Magnesio</th>\
+                        <td colspan="2" class="Cantidades">' +
+          (feature.properties["Mg"] !== null
+            ? autolinker.link(feature.properties["Mg"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                    <th scope="row">Potasio</th>\
+                        <td colspan="2" class="Cantidades">' +
+          (feature.properties["K"] !== null
+            ? autolinker.link(feature.properties["K"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                    <th scope="row">Sodio</th>\
+                        <td colspan="2" class="Cantidades">' +
+          (feature.properties["Na"] !== null
+            ? autolinker.link(feature.properties["Na"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                    <th scope="row">MOS</th>\
+                        <td colspan="2" class="Cantidades">' +
+          (feature.properties["MOS"] !== null
+            ? autolinker.link(feature.properties["MOS"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                    <th scope="row">Aluminio</th>\
+                        <td colspan="2" class="Cantidades">' +
+          (feature.properties["TEORAL"] !== null
+            ? autolinker.link(feature.properties["TEORAL"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                    <th scope="row">% Calcio</th>\
+                        <td colspan="2" class="Cantidades">' +
+          (feature.properties["SATURCA"] !== null
+            ? autolinker.link(feature.properties["SATURCA"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                    <th scope="row">% Potasio</th>\
+                        <td colspan="2" class="Cantidades">' +
+          (feature.properties["SATURK"] !== null
+            ? autolinker.link(feature.properties["SATURK"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                    <th scope="row">% Sodio</th>\
+                        <td colspan="2" class="Cantidades">' +
+          (feature.properties["SATURNA"] !== null
+            ? autolinker.link(feature.properties["SATURNA"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                    <th scope="row">% Aluminio</th>\
+                        <td colspan="2" class="Cantidades">' +
+          (feature.properties["SATURAL"] !== null
+            ? autolinker.link(feature.properties["SATURAL"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <p class="popupTitle">' +
+          (feature.properties["Nombre"] !== null
+            ? autolinker.link(feature.properties["Nombre"].toLocaleString())
+            : "") +
+          '</p>\
+                    </tr>\
+                    <tr>\
+                        <img src="' +
+          (feature.properties["URL"] !== null
+            ? autolinker.link(feature.properties["URL"].toLocaleString())
+            : "") +
+          '">\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' +
+          (feature.properties["RECOMENDAC"] !== null
+            ? autolinker.link(feature.properties["RECOMENDAC"].toLocaleString())
+            : "") +
+          "</td>\
+                    </tr>\
+                </table>";
+        layer.bindPopup(popupContent, { maxHeight: 400 });
+      }
+      function style_Profundidadde60a90cm_2_0() {
+        return {
+          pane: "pane_Profundidadde60a90cm_2",
+          radius: 8.0,
+          opacity: 1,
+          color: "rgba(247,225,55,1.0)",
+          dashArray: "",
+          lineCap: "butt",
+          lineJoin: "miter",
+          weight: 2.0,
+          fill: true,
+          fillOpacity: 1,
+          fillColor: "rgba(250,255,57,1.0)",
+          interactive: true,
+        };
+      }
+      map.createPane("pane_Profundidadde60a90cm_2");
+      map.getPane("pane_Profundidadde60a90cm_2").style.zIndex = 425;
+      map.getPane("pane_Profundidadde60a90cm_2").style["mix-blend-mode"] =
+        "normal";
+      var layer_Profundidadde60a90cm_2 = new L.geoJson(
+        json_Profundidadde60a90cm_2,
+        {
+          attribution: "",
+          interactive: true,
+          dataVar: "json_Profundidadde60a90cm_2",
+          layerName: "layer_Profundidadde60a90cm_2",
+          pane: "pane_Profundidadde60a90cm_2",
+          onEachFeature: pop_Profundidadde60a90cm_2,
+          pointToLayer: function (feature, latlng) {
+            var context = {
+              feature: feature,
+              variables: {},
+            };
+            return L.circleMarker(
+              latlng,
+              style_Profundidadde60a90cm_2_0(feature)
+            );
+          },
+        }
+      );
+      bounds_group.addLayer(layer_Profundidadde60a90cm_2);
+      map.addLayer(layer_Profundidadde60a90cm_2);
+      function pop_Profundidadde30a60cm_3(feature, layer) {
+        var popupContent =
+          '<table>\
+                    <thead>\
+                        <tr>\
+                        <th class="popupTitle">Parámetro</th>\
+                        <th class="popupTitle">Cantidad</td>\
+                        </tr>\
+                    </thead>\
+                    <tr>\
+                        <th scope="row">Calcio</th>\
+                        <td colspan="2" class="Cantidades">' +
+          (feature.properties["TEORCA"] !== null
+            ? autolinker.link(feature.properties["TEORCA"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Magnesio</th>\
+                        <td colspan="2" class="Cantidades">' +
+          (feature.properties["TEORMG"] !== null
+            ? autolinker.link(feature.properties["TEORMG"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Potasio</th>\
+                        <td colspan="2" class="Cantidades">' +
+          (feature.properties["TEORK"] !== null
+            ? autolinker.link(feature.properties["TEORK"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Sodio</th>\
+                        <td colspan="2" class="Cantidades">' +
+          (feature.properties["TEORNA"] !== null
+            ? autolinker.link(feature.properties["TEORNA"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">MOS</th>\
+                        <td colspan="2" class="Cantidades">' +
+          (feature.properties["TEORMOS"] !== null
+            ? autolinker.link(feature.properties["TEORMOS"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Fosforo</th>\
+                        <td colspan="2" class="Cantidades">' +
+          (feature.properties["Fósforo M"] !== null
+            ? autolinker.link(feature.properties["Fósforo M"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Aluminio</th>\
+                        <td colspan="2" class="Cantidades">' +
+          (feature.properties["TEORAL"] !== null
+            ? autolinker.link(feature.properties["TEORAL"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">% Calcio</th>\
+                        <td colspan="2" class="Cantidades">' +
+          (feature.properties["SATURCA"] !== null
+            ? autolinker.link(feature.properties["SATURCA"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">% Potasio</th>\
+                        <td colspan="2" class="Cantidades">' +
+          (feature.properties["SATURK"] !== null
+            ? autolinker.link(feature.properties["SATURK"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">% Sodio</th>\
+                        <td colspan="2" class="Cantidades">' +
+          (feature.properties["SATURNA"] !== null
+            ? autolinker.link(feature.properties["SATURNA"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">% Aluminio</th>\
+                        <td colspan="2" class="Cantidades">' +
+          (feature.properties["SATURAL"] !== null
+            ? autolinker.link(feature.properties["SATURAL"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <p class="popupTitle">' +
+          "Calicata " +
+          (feature.properties["Nombre"] !== null
+            ? autolinker.link(feature.properties["Nombre"].toLocaleString())
+            : "") +
+          '</p>\
+                    </tr>\
+                    <tr>\
+                        <img src="' +
+          (feature.properties["URL"] !== null
+            ? autolinker.link(feature.properties["URL"].toLocaleString())
+            : "") +
+          '">\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' +
+          (feature.properties["RECOMENDAC"] !== null
+            ? autolinker.link(feature.properties["RECOMENDAC"].toLocaleString())
+            : "") +
+          "</td>\
+                    </tr>\
+                </table>";
+        layer.bindPopup(popupContent, { maxHeight: 400 });
+      }
+      /*Profundidad de 30 a 60 cm*/
+      function style_Profundidadde30a60cm_3_0() {
+        return {
+          pane: "pane_Profundidadde30a60cm_3",
+          radius: 8.0,
+          opacity: 1,
+          color: "rgba(51,160,44,1.0)",
+          dashArray: "",
+          lineCap: "butt",
+          lineJoin: "miter",
+          weight: 2.0,
+          fill: true,
+          fillOpacity: 1,
+          fillColor: "rgba(178,223,138,1.0)",
+          interactive: true,
+        };
+      }
+      map.createPane("pane_Profundidadde30a60cm_3");
+      map.getPane("pane_Profundidadde30a60cm_3").style.zIndex = 426;
+      map.getPane("pane_Profundidadde30a60cm_3").style["mix-blend-mode"] =
+        "normal";
+      var layer_Profundidadde30a60cm_3 = new L.geoJson(
+        json_Profundidadde30a60cm_3,
+        {
+          attribution: "",
+          interactive: true,
+          dataVar: "json_Profundidadde30a60cm_3",
+          layerName: "layer_Profundidadde30a60cm_3",
+          pane: "pane_Profundidadde30a60cm_3",
+          onEachFeature: pop_Profundidadde30a60cm_3,
+          pointToLayer: function (feature, latlng) {
+            var context = {
+              feature: feature,
+              variables: {},
+            };
+            return L.circleMarker(
+              latlng,
+              style_Profundidadde30a60cm_3_0(feature)
+            );
+          },
+        }
+      );
+      bounds_group.addLayer(layer_Profundidadde30a60cm_3);
+      map.addLayer(layer_Profundidadde30a60cm_3);
+      function pop_Profundidadde0a30cm_4(feature, layer) {
+        var popupContent =
+          '<table>\
+                    <thead>\
+                        <tr>\
+                        <th class="popupTitle">Parámetro</th>\
+                        <th class="popupTitle">Cantidad</td>\
+                        </tr>\
+                    </thead>\
+                    <tr>\
+                        <th scope="row">Calcio</th>\
+                        <td class="Cantidades">' +
+          (feature.properties["Ca"] !== null
+            ? autolinker.link(feature.properties["Ca"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Magnesio</th>\
+                        <td class="Cantidades">' +
+          (feature.properties["Mg"] !== null
+            ? autolinker.link(feature.properties["Mg"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Potasio</th>\
+                        <td class="Cantidades">' +
+          (feature.properties["K"] !== null
+            ? autolinker.link(feature.properties["K"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Sodio</th>\
+                        <td class="Cantidades">' +
+          (feature.properties["Na"] !== null
+            ? autolinker.link(feature.properties["Na"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">MOS</th>\
+                        <td class="Cantidades">' +
+          (feature.properties["MOS"] !== null
+            ? autolinker.link(feature.properties["MOS"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Boro</th>\
+                        <td colspan="2" class="Cantidades">' +
+          (feature.properties["B"] !== null
+            ? autolinker.link(feature.properties["B"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Aluminio</th>\
+                        <td colspan="2" class="Cantidades">' +
+          (feature.properties["Al"] !== null
+            ? autolinker.link(feature.properties["Al"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">% Calcio</th>\
+                        <td class="Cantidades">' +
+          (feature.properties["SATURCA"] !== null
+            ? autolinker.link(feature.properties["SATURCA"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">% Potasio</th>\
+                        <td class="Cantidades">' +
+          (feature.properties["SATURK"] !== null
+            ? autolinker.link(feature.properties["SATURK"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">% Sodio</th>\
+                        <td class="Cantidades">' +
+          (feature.properties["SATURNA"] !== null
+            ? autolinker.link(feature.properties["SATURNA"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">% Aluminio</th>\
+                        <td colspan="2" class="Cantidades">' +
+          (feature.properties["SATURAL"] !== null
+            ? autolinker.link(feature.properties["SATURAL"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <p class="popupTitle">' +
+          "Calicata " +
+          (feature.properties["Nombre"] !== null
+            ? autolinker.link(feature.properties["Nombre"].toLocaleString())
+            : "") +
+          '<p>\
+                    </tr>\
+                    <tr>\
+                        <img src="' +
+          (feature.properties["URL"] !== null
+            ? autolinker.link(feature.properties["URL"].toLocaleString())
+            : "") +
+          '"">\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' +
+          (feature.properties["RECOMENDAC"] !== null
+            ? autolinker.link(feature.properties["RECOMENDAC"].toLocaleString())
+            : "") +
+          "</td>\
+                    </tr>\
+                </table>";
+        layer.bindPopup(popupContent, { maxHeight: 400 });
+      }
+
+      /*Profundidad de 0 a 30 cm*/
+
+      function style_Profundidadde0a30cm_4_0() {
+        return {
+          pane: "pane_Profundidadde0a30cm_4",
+          radius: 8.0,
+          opacity: 1,
+          color: "rgba(31,120,180,1.0)",
+          dashArray: "",
+          lineCap: "butt",
+          lineJoin: "miter",
+          weight: 2.0,
+          fill: true,
+          fillOpacity: 1,
+          fillColor: "rgba(166,206,227,1.0)",
+          interactive: true,
+        };
+      }
+      map.createPane("pane_Profundidadde0a30cm_4");
+      map.getPane("pane_Profundidadde0a30cm_4").style.zIndex = 427;
+      map.getPane("pane_Profundidadde0a30cm_4").style["mix-blend-mode"] =
+        "normal";
+      var layer_Profundidadde0a30cm_4 = new L.geoJson(
+        json_Profundidadde0a30cm_4,
+        {
+          attribution: "",
+          interactive: true,
+          dataVar: "json_Profundidadde0a30cm_4",
+          layerName: "layer_Profundidadde0a30cm_4",
+          pane: "pane_Profundidadde0a30cm_4",
+          onEachFeature: pop_Profundidadde0a30cm_4,
+          pointToLayer: function (feature, latlng) {
+            var context = {
+              feature: feature,
+              variables: {},
+            };
+            return L.circleMarker(
+              latlng,
+              style_Profundidadde0a30cm_4_0(feature)
+            );
+          },
+        }
+      );
+      bounds_group.addLayer(layer_Profundidadde0a30cm_4);
+      map.addLayer(layer_Profundidadde0a30cm_4);
+
+      /* Macronutrientes */
+
+      /* Calcio 0 a 30 cm */
+
+      function pop_calcio_0_30_3(feature, layer) {
+        var popupContent =
+          '<table>\
+                    <tr>\
+                        <th scope="row">Superficie</th>\
+                        <td colspan="2">' +
+          (feature.properties["SUP HA"] !== null
+            ? autolinker.link(feature.properties["SUP HA"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                        <th scope="row">Tipo</th>\
+                        <td colspan="2">' +
+          (feature.properties["NOMENCLATU"] !== null
+            ? autolinker.link(feature.properties["NOMENCLATU"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Nivel</th>\
+                        <td colspan="2">' +
+          (feature.properties["CALCIO 0 3"] !== null
+            ? autolinker.link(feature.properties["CALCIO 0 3"].toLocaleString())
+            : "") +
+          "</td>\
+                    </tr>\
+                </table>";
+        layer.bindPopup(popupContent, { maxHeight: 400 });
+      }
+
+      function style_calcio_0_30_3_0(feature) {
+        switch (String(feature.properties["CALCIO 0 3"])) {
+          case "BOSQUE":
+            return {
+              pane: "pane_calcio_0_30_3",
+              opacity: 1,
+              color: "rgba(35,35,35,1.0)",
+              dashArray: "",
+              lineCap: "butt",
+              lineJoin: "miter",
+              weight: 1.0,
+              fill: true,
+              fillOpacity: 1,
+              fillColor: "rgba(29,134,65,1.0)",
+              interactive: true,
+            };
+            break;
+          case "BAJO":
+            return {
+              pane: "pane_calcio_0_30_3",
+              opacity: 1,
+              color: "rgba(35,35,35,1.0)",
+              dashArray: "",
+              lineCap: "butt",
+              lineJoin: "miter",
+              weight: 1.0,
+              fill: true,
+              fillOpacity: 1,
+              fillColor: "rgba(255,255,191,1.0)",
+              interactive: true,
+            };
+            break;
+        }
+      }
+      map.createPane("pane_calcio_0_30_3");
+      map.getPane("pane_calcio_0_30_3").style.zIndex = 416;
+      map.getPane("pane_calcio_0_30_3").style["mix-blend-mode"] = "normal";
+      var layer_calcio_0_30_3 = new L.geoJson(json_calcio_0_30_3, {
+        attribution: "",
+        interactive: true,
+        dataVar: "json_calcio_0_30_3",
+        layerName: "layer_calcio_0_30_3",
+        pane: "pane_calcio_0_30_3",
+        onEachFeature: pop_calcio_0_30_3,
+        style: style_calcio_0_30_3_0,
+      });
+      bounds_group.addLayer(layer_calcio_0_30_3);
+
+      /* Calcio 30 a 60 */
+
+      function pop_calcio30_60_2(feature, layer) {
+        var popupContent =
+          '<table>\
+                    <tr>\
+                        <th scope="row">Superficie</th>\
+                        <td colspan="2">' +
+          (feature.properties["SUP HA"] !== null
+            ? autolinker.link(feature.properties["SUP HA"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Tipo</th>\
+                        <td colspan="2">' +
+          (feature.properties["NOMENCLATU"] !== null
+            ? autolinker.link(feature.properties["NOMENCLATU"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Nivel</th>\
+                        <td colspan="2">' +
+          (feature.properties["CALCIO 30"] !== null
+            ? autolinker.link(feature.properties["CALCIO 30"].toLocaleString())
+            : "") +
+          "</td>\
+                    </tr>\
+                </table>";
+        layer.bindPopup(popupContent, { maxHeight: 400 });
+      }
+
+      function style_calcio30_60_2_0(feature) {
+        switch (String(feature.properties["CALCIO 30"])) {
+          case "BOSQUE":
+            return {
+              pane: "pane_calcio30_60_2",
+              opacity: 1,
+              color: "rgba(35,35,35,1.0)",
+              dashArray: "",
+              lineCap: "butt",
+              lineJoin: "miter",
+              weight: 1.0,
+              fill: true,
+              fillOpacity: 1,
+              fillColor: "rgba(29,134,65,1.0)",
+              interactive: true,
+            };
+            break;
+          case "MEDIO":
+            return {
+              pane: "pane_calcio30_60_2",
+              opacity: 1,
+              color: "rgba(35,35,35,1.0)",
+              dashArray: "",
+              lineCap: "butt",
+              lineJoin: "miter",
+              weight: 1.0,
+              fill: true,
+              fillOpacity: 1,
+              fillColor: "rgba(254,201,128,1.0)",
+              interactive: true,
+            };
+            break;
+          case "BAJO":
+            return {
+              pane: "pane_calcio30_60_2",
+              opacity: 1,
+              color: "rgba(35,35,35,1.0)",
+              dashArray: "",
+              lineCap: "butt",
+              lineJoin: "miter",
+              weight: 1.0,
+              fill: true,
+              fillOpacity: 1,
+              fillColor: "rgba(255,255,191,1.0)",
+              interactive: true,
+            };
+            break;
+        }
+      }
+      map.createPane("pane_calcio30_60_2");
+      map.getPane("pane_calcio30_60_2").style.zIndex = 417;
+      map.getPane("pane_calcio30_60_2").style["mix-blend-mode"] = "normal";
+      var layer_calcio30_60_2 = new L.geoJson(json_calcio30_60_2, {
+        attribution: "",
+        interactive: true,
+        dataVar: "json_calcio30_60_2",
+        layerName: "layer_calcio30_60_2",
+        pane: "pane_calcio30_60_2",
+        onEachFeature: pop_calcio30_60_2,
+        style: style_calcio30_60_2_0,
+      });
+      bounds_group.addLayer(layer_calcio30_60_2);
+
+      /* Calcio de 60 a 90 */
+
+      function pop_calcio60_90_1(feature, layer) {
+        var popupContent =
+          '<table>\
+                    <tr>\
+                        <th scope="row">Superficie</th>\
+                        <td colspan="2">' +
+          (feature.properties["SUP HA"] !== null
+            ? autolinker.link(feature.properties["SUP HA"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Tipo</th>\
+                        <td colspan="2">' +
+          (feature.properties["NOMENCLATU"] !== null
+            ? autolinker.link(feature.properties["NOMENCLATU"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Nivel</th>\
+                        <td colspan="2">' +
+          (feature.properties["CALCIO 60"] !== null
+            ? autolinker.link(feature.properties["CALCIO 60"].toLocaleString())
+            : "") +
+          "</td>\
+                    </tr>\
+                </table>";
+        layer.bindPopup(popupContent, { maxHeight: 400 });
+      }
+
+      function style_calcio60_90_1_0(feature) {
+        switch (String(feature.properties["CALCIO 60"])) {
+          case "ALTO":
+            return {
+              pane: "pane_calcio60_90_1",
+              opacity: 1,
+              color: "rgba(35,35,35,1.0)",
+              dashArray: "",
+              lineCap: "butt",
+              lineJoin: "miter",
+              weight: 1.0,
+              fill: true,
+              fillOpacity: 1,
+              fillColor: "rgba(215,25,28,1.0)",
+              interactive: true,
+            };
+            break;
+          case "BAJO":
+            return {
+              pane: "pane_calcio60_90_1",
+              opacity: 1,
+              color: "rgba(35,35,35,1.0)",
+              dashArray: "",
+              lineCap: "butt",
+              lineJoin: "miter",
+              weight: 1.0,
+              fill: true,
+              fillOpacity: 1,
+              fillColor: "rgba(255,255,191,1.0)",
+              interactive: true,
+            };
+            break;
+          case "BOSQUE":
+            return {
+              pane: "pane_calcio60_90_1",
+              opacity: 1,
+              color: "rgba(35,35,35,1.0)",
+              dashArray: "",
+              lineCap: "butt",
+              lineJoin: "miter",
+              weight: 1.0,
+              fill: true,
+              fillOpacity: 1,
+              fillColor: "rgba(29,134,65,1.0)",
+              interactive: true,
+            };
+            break;
+        }
+      }
+      map.createPane("pane_calcio60_90_1");
+      map.getPane("pane_calcio60_90_1").style.zIndex = 418;
+      map.getPane("pane_calcio60_90_1").style["mix-blend-mode"] = "normal";
+      var layer_calcio60_90_1 = new L.geoJson(json_calcio60_90_1, {
+        attribution: "",
+        interactive: true,
+        dataVar: "json_calcio60_90_1",
+        layerName: "layer_calcio60_90_1",
+        pane: "pane_calcio60_90_1",
+        onEachFeature: pop_calcio60_90_1,
+        style: style_calcio60_90_1_0,
+      });
+      bounds_group.addLayer(layer_calcio60_90_1);
+
+      /* Fosforo de 0 a 30 */
+
+      function pop_fosforo0_30_5(feature, layer) {
+        var popupContent =
+          '<table>\
+                    <tr>\
+                    <tr>\
+                        <th scope="row">Superficie</th>\
+                        <td colspan="2">' +
+          (feature.properties["SUP HA"] !== null
+            ? autolinker.link(feature.properties["SUP HA"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Tipo</th>\
+                        <td colspan="2">' +
+          (feature.properties["NOMENCLATU"] !== null
+            ? autolinker.link(feature.properties["NOMENCLATU"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Nivel</th>\
+                        <td colspan="2">' +
+          (feature.properties["F�SFORO"] !== null
+            ? autolinker.link(feature.properties["F�SFORO"].toLocaleString())
+            : "") +
+          "</td>\
+                    </tr>\
+                </table>";
+        layer.bindPopup(popupContent, { maxHeight: 400 });
+      }
+
+      function style_fosforo0_30_5_0(feature) {
+        switch (String(feature.properties["F�SFORO"])) {
+          case "BAJO":
+            return {
+              pane: "pane_fosforo0_30_5",
+              opacity: 1,
+              color: "rgba(35,35,35,1.0)",
+              dashArray: "",
+              lineCap: "butt",
+              lineJoin: "miter",
+              weight: 1.0,
+              fill: true,
+              fillOpacity: 1,
+              fillColor: "rgba(255,255,191,1.0)",
+              interactive: true,
+            };
+            break;
+          case "BOSQUE":
+            return {
+              pane: "pane_fosforo0_30_5",
+              opacity: 1,
+              color: "rgba(35,35,35,1.0)",
+              dashArray: "",
+              lineCap: "butt",
+              lineJoin: "miter",
+              weight: 1.0,
+              fill: true,
+              fillOpacity: 1,
+              fillColor: "rgba(29,134,65,1.0)",
+              interactive: true,
+            };
+            break;
+        }
+      }
+      map.createPane("pane_fosforo0_30_5");
+      map.getPane("pane_fosforo0_30_5").style.zIndex = 415;
+      map.getPane("pane_fosforo0_30_5").style["mix-blend-mode"] = "normal";
+      var layer_fosforo0_30_5 = new L.geoJson(json_fosforo0_30_5, {
+        attribution: "",
+        interactive: true,
+        dataVar: "json_fosforo0_30_5",
+        layerName: "layer_fosforo0_30_5",
+        pane: "pane_fosforo0_30_5",
+        onEachFeature: pop_fosforo0_30_5,
+        style: style_fosforo0_30_5_0,
+      });
+      bounds_group.addLayer(layer_fosforo0_30_5);
+
+      /* Fosforo de 30 a 60 */
+
+      function pop_fosforo30_60_6(feature, layer) {
+        var popupContent =
+          '<table>\
+                    <tr>\
+                        <th scope="row">Superficie</th>\
+                        <td colspan="2">' +
+          (feature.properties["SUP HA"] !== null
+            ? autolinker.link(feature.properties["SUP HA"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Tipo</th>\
+                        <td colspan="2">' +
+          (feature.properties["NOMENCLATU"] !== null
+            ? autolinker.link(feature.properties["NOMENCLATU"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Nivel</th>\
+                        <td colspan="2">' +
+          (feature.properties["F�SFOR_1"] !== null
+            ? autolinker.link(feature.properties["F�SFOR_1"].toLocaleString())
+            : "") +
+          "</td>\
+                    </tr>\
+                </table>";
+        layer.bindPopup(popupContent, { maxHeight: 400 });
+      }
+
+      function style_fosforo30_60_6_0(feature) {
+        switch (String(feature.properties["F�SFOR_1"])) {
+          case "BAJO":
+            return {
+              pane: "pane_fosforo30_60_6",
+              opacity: 1,
+              color: "rgba(35,35,35,1.0)",
+              dashArray: "",
+              lineCap: "butt",
+              lineJoin: "miter",
+              weight: 1.0,
+              fill: true,
+              fillOpacity: 1,
+              fillColor: "rgba(255,255,191,1.0)",
+              interactive: true,
+            };
+            break;
+          case "BOSQUE":
+            return {
+              pane: "pane_fosforo30_60_6",
+              opacity: 1,
+              color: "rgba(35,35,35,1.0)",
+              dashArray: "",
+              lineCap: "butt",
+              lineJoin: "miter",
+              weight: 1.0,
+              fill: true,
+              fillOpacity: 1,
+              fillColor: "rgba(29,134,65,1.0)",
+              interactive: true,
+            };
+            break;
+        }
+      }
+      map.createPane("pane_fosforo30_60_6");
+      map.getPane("pane_fosforo30_60_6").style.zIndex = 414;
+      map.getPane("pane_fosforo30_60_6").style["mix-blend-mode"] = "normal";
+      var layer_fosforo30_60_6 = new L.geoJson(json_fosforo30_60_6, {
+        attribution: "",
+        interactive: true,
+        dataVar: "json_fosforo30_60_6",
+        layerName: "layer_fosforo30_60_6",
+        pane: "pane_fosforo30_60_6",
+        onEachFeature: pop_fosforo30_60_6,
+        style: style_fosforo30_60_6_0,
+      });
+      bounds_group.addLayer(layer_fosforo30_60_6);
+
+      /* Fosforo de 60 a 90 */
+
+      function pop_fosforo60_90_7(feature, layer) {
+        var popupContent =
+          '<table>\
+                    <tr>\
+                        <th scope="row">Superficie</th>\
+                        <td colspan="2">' +
+          (feature.properties["SUP HA"] !== null
+            ? autolinker.link(feature.properties["SUP HA"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Tipo</th>\
+                        <td colspan="2">' +
+          (feature.properties["NOMENCLATU"] !== null
+            ? autolinker.link(feature.properties["NOMENCLATU"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Nivel</th>\
+                        <td colspan="2">' +
+          (feature.properties["F�SFOR_2"] !== null
+            ? autolinker.link(feature.properties["F�SFOR_2"].toLocaleString())
+            : "") +
+          "</td>\
+                    </tr>\
+                </table>";
+        layer.bindPopup(popupContent, { maxHeight: 400 });
+      }
+
+      function style_fosforo60_90_7_0(feature) {
+        switch (String(feature.properties["F�SFOR_2"])) {
+          case "BAJO":
+            return {
+              pane: "pane_fosforo60_90_7",
+              opacity: 1,
+              color: "rgba(35,35,35,1.0)",
+              dashArray: "",
+              lineCap: "butt",
+              lineJoin: "miter",
+              weight: 1.0,
+              fill: true,
+              fillOpacity: 1,
+              fillColor: "rgba(255,255,191,1.0)",
+              interactive: true,
+            };
+            break;
+          case "BOSQUE":
+            return {
+              pane: "pane_fosforo60_90_7",
+              opacity: 1,
+              color: "rgba(35,35,35,1.0)",
+              dashArray: "",
+              lineCap: "butt",
+              lineJoin: "miter",
+              weight: 1.0,
+              fill: true,
+              fillOpacity: 1,
+              fillColor: "rgba(29,134,65,1.0)",
+              interactive: true,
+            };
+            break;
+        }
+      }
+      map.createPane("pane_fosforo60_90_7");
+      map.getPane("pane_fosforo60_90_7").style.zIndex = 413;
+      map.getPane("pane_fosforo60_90_7").style["mix-blend-mode"] = "normal";
+      var layer_fosforo60_90_7 = new L.geoJson(json_fosforo60_90_7, {
+        attribution: "",
+        interactive: true,
+        dataVar: "json_fosforo60_90_7",
+        layerName: "layer_fosforo60_90_7",
+        pane: "pane_fosforo60_90_7",
+        onEachFeature: pop_fosforo60_90_7,
+        style: style_fosforo60_90_7_0,
+      });
+      bounds_group.addLayer(layer_fosforo60_90_7);
+
+      /* Magnesio de 0 a 30 */
+
+      function pop_magnesio0_30_9(feature, layer) {
+        var popupContent =
+          '<table>\
+                    <tr>\
+                        <th scope="row">Superficie</th>\
+                        <td colspan="2">' +
+          (feature.properties["SUP HA"] !== null
+            ? autolinker.link(feature.properties["SUP HA"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Tipo</th>\
+                        <td colspan="2">' +
+          (feature.properties["NOMENCLATU"] !== null
+            ? autolinker.link(feature.properties["NOMENCLATU"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Nivel</th>\
+                        <td colspan="2">' +
+          (feature.properties["MAGNESIO 0"] !== null
+            ? autolinker.link(feature.properties["MAGNESIO 0"].toLocaleString())
+            : "") +
+          "</td>\
+                    </tr>\
+                </table>";
+        layer.bindPopup(popupContent, { maxHeight: 400 });
+      }
+
+      function style_magnesio0_30_9_0(feature) {
+        switch (String(feature.properties["MAGNESIO 0"])) {
+          case "BAJO":
+            return {
+              pane: "pane_magnesio0_30_9",
+              opacity: 1,
+              color: "rgba(35,35,35,1.0)",
+              dashArray: "",
+              lineCap: "butt",
+              lineJoin: "miter",
+              weight: 1.0,
+              fill: true,
+              fillOpacity: 1,
+              fillColor: "rgba(255,255,191,1.0)",
+              interactive: true,
+            };
+            break;
+          case "BOSQUE":
+            return {
+              pane: "pane_magnesio0_30_9",
+              opacity: 1,
+              color: "rgba(35,35,35,1.0)",
+              dashArray: "",
+              lineCap: "butt",
+              lineJoin: "miter",
+              weight: 1.0,
+              fill: true,
+              fillOpacity: 1,
+              fillColor: "rgba(29,134,65,1.0)",
+              interactive: true,
+            };
+            break;
+        }
+      }
+      map.createPane("pane_magnesio0_30_9");
+      map.getPane("pane_magnesio0_30_9").style.zIndex = 412;
+      map.getPane("pane_magnesio0_30_9").style["mix-blend-mode"] = "normal";
+      var layer_magnesio0_30_9 = new L.geoJson(json_magnesio0_30_9, {
+        attribution: "",
+        interactive: true,
+        dataVar: "json_magnesio0_30_9",
+        layerName: "layer_magnesio0_30_9",
+        pane: "pane_magnesio0_30_9",
+        onEachFeature: pop_magnesio0_30_9,
+        style: style_magnesio0_30_9_0,
+      });
+      bounds_group.addLayer(layer_magnesio0_30_9);
+
+      /* Magnesio de 30 a 60 */
+
+      function pop_magnesio30_60_10(feature, layer) {
+        var popupContent =
+          '<table>\
+                    <tr>\
+                        <th scope="row">Superficie</th>\
+                        <td colspan="2">' +
+          (feature.properties["SUP HA"] !== null
+            ? autolinker.link(feature.properties["SUP HA"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Tipo</th>\
+                        <td colspan="2">' +
+          (feature.properties["NOMENCLATU"] !== null
+            ? autolinker.link(feature.properties["NOMENCLATU"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Nivel</th>\
+                        <td colspan="2">' +
+          (feature.properties["MAGNESIO 3"] !== null
+            ? autolinker.link(feature.properties["MAGNESIO 3"].toLocaleString())
+            : "") +
+          "</td>\
+                    </tr>\
+                </table>";
+        layer.bindPopup(popupContent, { maxHeight: 400 });
+      }
+
+      function style_magnesio30_60_10_0(feature) {
+        switch (String(feature.properties["MAGNESIO 3"])) {
+          case "BAJO":
+            return {
+              pane: "pane_magnesio30_60_10",
+              opacity: 1,
+              color: "rgba(35,35,35,1.0)",
+              dashArray: "",
+              lineCap: "butt",
+              lineJoin: "miter",
+              weight: 1.0,
+              fill: true,
+              fillOpacity: 1,
+              fillColor: "rgba(255,255,191,1.0)",
+              interactive: true,
+            };
+            break;
+          case "MEDIO":
+            return {
+              pane: "pane_magnesio30_60_10",
+              opacity: 1,
+              color: "rgba(35,35,35,1.0)",
+              dashArray: "",
+              lineCap: "butt",
+              lineJoin: "miter",
+              weight: 1.0,
+              fill: true,
+              fillOpacity: 1,
+              fillColor: "rgba(254,201,128,1.0)",
+              interactive: true,
+            };
+            break;
+          case "BOSQUE":
+            return {
+              pane: "pane_magnesio30_60_10",
+              opacity: 1,
+              color: "rgba(35,35,35,1.0)",
+              dashArray: "",
+              lineCap: "butt",
+              lineJoin: "miter",
+              weight: 1.0,
+              fill: true,
+              fillOpacity: 1,
+              fillColor: "rgba(29,134,65,1.0)",
+              interactive: true,
+            };
+            break;
+        }
+      }
+      map.createPane("pane_magnesio30_60_10");
+      map.getPane("pane_magnesio30_60_10").style.zIndex = 411;
+      map.getPane("pane_magnesio30_60_10").style["mix-blend-mode"] = "normal";
+      var layer_magnesio30_60_10 = new L.geoJson(json_magnesio30_60_10, {
+        attribution: "",
+        interactive: true,
+        dataVar: "json_magnesio30_60_10",
+        layerName: "layer_magnesio30_60_10",
+        pane: "pane_magnesio30_60_10",
+        onEachFeature: pop_magnesio30_60_10,
+        style: style_magnesio30_60_10_0,
+      });
+      bounds_group.addLayer(layer_magnesio30_60_10);
+
+      /* Magnesio de 60 a 90 */
+
+      function pop_magnesio60_90_11(feature, layer) {
+        var popupContent =
+          '<table>\
+                    <tr>\
+                        <th scope="row">Superficie</th>\
+                        <td colspan="2">' +
+          (feature.properties["SUP HA"] !== null
+            ? autolinker.link(feature.properties["SUP HA"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Tipo</th>\
+                        <td colspan="2">' +
+          (feature.properties["NOMENCLATU"] !== null
+            ? autolinker.link(feature.properties["NOMENCLATU"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Nivel</th>\
+                        <td colspan="2">' +
+          (feature.properties["MAGNESIO 6"] !== null
+            ? autolinker.link(feature.properties["MAGNESIO 6"].toLocaleString())
+            : "") +
+          "</td>\
+                    </tr>\
+                </table>";
+        layer.bindPopup(popupContent, { maxHeight: 400 });
+      }
+
+      function style_magnesio60_90_11_0(feature) {
+        switch (String(feature.properties["MAGNESIO 6"])) {
+          case "BAJO":
+            return {
+              pane: "pane_magnesio60_90_11",
+              opacity: 1,
+              color: "rgba(35,35,35,1.0)",
+              dashArray: "",
+              lineCap: "butt",
+              lineJoin: "miter",
+              weight: 1.0,
+              fill: true,
+              fillOpacity: 1,
+              fillColor: "rgba(255,255,191,1.0)",
+              interactive: true,
+            };
+            break;
+          case "MEDIO":
+            return {
+              pane: "pane_magnesio60_90_11",
+              opacity: 1,
+              color: "rgba(35,35,35,1.0)",
+              dashArray: "",
+              lineCap: "butt",
+              lineJoin: "miter",
+              weight: 1.0,
+              fill: true,
+              fillOpacity: 1,
+              fillColor: "rgba(254,201,128,1.0)",
+              interactive: true,
+            };
+            break;
+          case "BOSQUE":
+            return {
+              pane: "pane_magnesio60_90_11",
+              opacity: 1,
+              color: "rgba(35,35,35,1.0)",
+              dashArray: "",
+              lineCap: "butt",
+              lineJoin: "miter",
+              weight: 1.0,
+              fill: true,
+              fillOpacity: 1,
+              fillColor: "rgba(29,134,65,1.0)",
+              interactive: true,
+            };
+            break;
+        }
+      }
+      map.createPane("pane_magnesio60_90_11");
+      map.getPane("pane_magnesio60_90_11").style.zIndex = 410;
+      map.getPane("pane_magnesio60_90_11").style["mix-blend-mode"] = "normal";
+      var layer_magnesio60_90_11 = new L.geoJson(json_magnesio60_90_11, {
+        attribution: "",
+        interactive: true,
+        dataVar: "json_magnesio60_90_11",
+        layerName: "layer_magnesio60_90_11",
+        pane: "pane_magnesio60_90_11",
+        onEachFeature: pop_magnesio60_90_11,
+        style: style_magnesio60_90_11_0,
+      });
+      bounds_group.addLayer(layer_magnesio60_90_11);
+
+      /* Potasio de 0 a 30 */
+
+      function pop_potasio0_30_13(feature, layer) {
+        var popupContent =
+          '<table>\
+                    <tr>\
+                        <th scope="row">Superficie</th>\
+                        <td colspan="2">' +
+          (feature.properties["SUP HA"] !== null
+            ? autolinker.link(feature.properties["SUP HA"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Tipo</th>\
+                        <td colspan="2">' +
+          (feature.properties["NOMENCLATU"] !== null
+            ? autolinker.link(feature.properties["NOMENCLATU"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Nivel</th>\
+                        <td colspan="2">' +
+          (feature.properties["POTASIO 0"] !== null
+            ? autolinker.link(feature.properties["POTASIO 0"].toLocaleString())
+            : "") +
+          "</td>\
+                    </tr>\
+                </table>";
+        layer.bindPopup(popupContent, { maxHeight: 400 });
+      }
+
+      function style_potasio0_30_13_0(feature) {
+        switch (String(feature.properties["POTASIO 0"])) {
+          case "BAJO":
+            return {
+              pane: "pane_potasio0_30_13",
+              opacity: 1,
+              color: "rgba(35,35,35,1.0)",
+              dashArray: "",
+              lineCap: "butt",
+              lineJoin: "miter",
+              weight: 1.0,
+              fill: true,
+              fillOpacity: 1,
+              fillColor: "rgba(255,255,191,1.0)",
+              interactive: true,
+            };
+            break;
+          case "BOSQUE":
+            return {
+              pane: "pane_potasio0_30_13",
+              opacity: 1,
+              color: "rgba(35,35,35,1.0)",
+              dashArray: "",
+              lineCap: "butt",
+              lineJoin: "miter",
+              weight: 1.0,
+              fill: true,
+              fillOpacity: 1,
+              fillColor: "rgba(29,134,65,1.0)",
+              interactive: true,
+            };
+            break;
+        }
+      }
+      map.createPane("pane_potasio0_30_13");
+      map.getPane("pane_potasio0_30_13").style.zIndex = 409;
+      map.getPane("pane_potasio0_30_13").style["mix-blend-mode"] = "normal";
+      var layer_potasio0_30_13 = new L.geoJson(json_potasio0_30_13, {
+        attribution: "",
+        interactive: true,
+        dataVar: "json_potasio0_30_13",
+        layerName: "layer_potasio0_30_13",
+        pane: "pane_potasio0_30_13",
+        onEachFeature: pop_potasio0_30_13,
+        style: style_potasio0_30_13_0,
+      });
+      bounds_group.addLayer(layer_potasio0_30_13);
+
+      /* Potasio de 30 a 60 */
+
+      function pop_potasio30_60_14(feature, layer) {
+        var popupContent =
+          '<table>\
+                    <tr>\
+                        <th scope="row">Superficie</th>\
+                        <td colspan="2">' +
+          (feature.properties["SUP HA"] !== null
+            ? autolinker.link(feature.properties["SUP HA"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Tipo</th>\
+                        <td colspan="2">' +
+          (feature.properties["NOMENCLATU"] !== null
+            ? autolinker.link(feature.properties["NOMENCLATU"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Nivel</th>\
+                        <td colspan="2">' +
+          (feature.properties["POTASIO 30"] !== null
+            ? autolinker.link(feature.properties["POTASIO 30"].toLocaleString())
+            : "") +
+          "</td>\
+                    </tr>\
+                </table>";
+        layer.bindPopup(popupContent, { maxHeight: 400 });
+      }
+
+      function style_potasio30_60_14_0(feature) {
+        switch (String(feature.properties["POTASIO 30"])) {
+          case "BAJO":
+            return {
+              pane: "pane_potasio30_60_14",
+              opacity: 1,
+              color: "rgba(35,35,35,1.0)",
+              dashArray: "",
+              lineCap: "butt",
+              lineJoin: "miter",
+              weight: 1.0,
+              fill: true,
+              fillOpacity: 1,
+              fillColor: "rgba(255,255,191,1.0)",
+              interactive: true,
+            };
+            break;
+          case "BOSQUE":
+            return {
+              pane: "pane_potasio30_60_14",
+              opacity: 1,
+              color: "rgba(35,35,35,1.0)",
+              dashArray: "",
+              lineCap: "butt",
+              lineJoin: "miter",
+              weight: 1.0,
+              fill: true,
+              fillOpacity: 1,
+              fillColor: "rgba(29,134,65,1.0)",
+              interactive: true,
+            };
+            break;
+        }
+      }
+      map.createPane("pane_potasio30_60_14");
+      map.getPane("pane_potasio30_60_14").style.zIndex = 408;
+      map.getPane("pane_potasio30_60_14").style["mix-blend-mode"] = "normal";
+      var layer_potasio30_60_14 = new L.geoJson(json_potasio30_60_14, {
+        attribution: "",
+        interactive: true,
+        dataVar: "json_potasio30_60_14",
+        layerName: "layer_potasio30_60_14",
+        pane: "pane_potasio30_60_14",
+        onEachFeature: pop_potasio30_60_14,
+        style: style_potasio30_60_14_0,
+      });
+      bounds_group.addLayer(layer_potasio30_60_14);
+
+      /* Potasio de 60 a 90 */
+
+      function pop_potasio60_90_15(feature, layer) {
+        var popupContent =
+          '<table>\
+                    <tr>\
+                        <th scope="row">Superficie</th>\
+                        <td colspan="2">' +
+          (feature.properties["SUP HA"] !== null
+            ? autolinker.link(feature.properties["SUP HA"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Tipo</th>\
+                        <td colspan="2">' +
+          (feature.properties["NOMENCLATU"] !== null
+            ? autolinker.link(feature.properties["NOMENCLATU"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Nivel</th>\
+                        <td colspan="2">' +
+          (feature.properties["POTASIO 60"] !== null
+            ? autolinker.link(feature.properties["POTASIO 60"].toLocaleString())
+            : "") +
+          "</td>\
+                    </tr>\
+                </table>";
+        layer.bindPopup(popupContent, { maxHeight: 400 });
+      }
+
+      function style_potasio60_90_15_0(feature) {
+        switch (String(feature.properties["POTASIO 60"])) {
+          case "BAJO":
+            return {
+              pane: "pane_potasio60_90_15",
+              opacity: 1,
+              color: "rgba(35,35,35,1.0)",
+              dashArray: "",
+              lineCap: "butt",
+              lineJoin: "miter",
+              weight: 1.0,
+              fill: true,
+              fillOpacity: 1,
+              fillColor: "rgba(255,255,191,1.0)",
+              interactive: true,
+            };
+            break;
+          case "BOSQUE":
+            return {
+              pane: "pane_potasio60_90_15",
+              opacity: 1,
+              color: "rgba(35,35,35,1.0)",
+              dashArray: "",
+              lineCap: "butt",
+              lineJoin: "miter",
+              weight: 1.0,
+              fill: true,
+              fillOpacity: 1,
+              fillColor: "rgba(29,134,65,1.0)",
+              interactive: true,
+            };
+            break;
+        }
+      }
+      map.createPane("pane_potasio60_90_15");
+      map.getPane("pane_potasio60_90_15").style.zIndex = 407;
+      map.getPane("pane_potasio60_90_15").style["mix-blend-mode"] = "normal";
+      var layer_potasio60_90_15 = new L.geoJson(json_potasio60_90_15, {
+        attribution: "",
+        interactive: true,
+        dataVar: "json_potasio60_90_15",
+        layerName: "layer_potasio60_90_15",
+        pane: "pane_potasio60_90_15",
+        onEachFeature: pop_potasio60_90_15,
+        style: style_potasio60_90_15_0,
+      });
+      bounds_group.addLayer(layer_potasio60_90_15);
+
+      /* Sodio de 0 a 30 */
+
+      function pop_sodio0_30_16(feature, layer) {
+        var popupContent =
+          '<table>\
+                    <tr>\
+                        <th scope="row">Superficie</th>\
+                        <td colspan="2">' +
+          (feature.properties["SUP HA"] !== null
+            ? autolinker.link(feature.properties["SUP HA"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Tipo</th>\
+                        <td colspan="2">' +
+          (feature.properties["NOMENCLATU"] !== null
+            ? autolinker.link(feature.properties["NOMENCLATU"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Nivel</th>\
+                        <td colspan="2">' +
+          (feature.properties["SODIO 0 30"] !== null
+            ? autolinker.link(feature.properties["SODIO 0 30"].toLocaleString())
+            : "") +
+          "</td>\
+                    </tr>\
+                </table>";
+        layer.bindPopup(popupContent, { maxHeight: 400 });
+      }
+
+      function style_sodio0_30_16_0(feature) {
+        switch (String(feature.properties["SODIO 0 30"])) {
+          case "ALTO":
+            return {
+              pane: "pane_sodio0_30_16",
+              opacity: 1,
+              color: "rgba(35,35,35,1.0)",
+              dashArray: "",
+              lineCap: "butt",
+              lineJoin: "miter",
+              weight: 1.0,
+              fill: true,
+              fillOpacity: 1,
+              fillColor: "rgba(215,25,28,1.0)",
+              interactive: true,
+            };
+            break;
+          case "MEDIO":
+            return {
+              pane: "pane_sodio0_30_16",
+              opacity: 1,
+              color: "rgba(35,35,35,1.0)",
+              dashArray: "",
+              lineCap: "butt",
+              lineJoin: "miter",
+              weight: 1.0,
+              fill: true,
+              fillOpacity: 1,
+              fillColor: "rgba(253,174,97,1.0)",
+              interactive: true,
+            };
+            break;
+          case "BOSQUE":
+            return {
+              pane: "pane_sodio0_30_16",
+              opacity: 1,
+              color: "rgba(35,35,35,1.0)",
+              dashArray: "",
+              lineCap: "butt",
+              lineJoin: "miter",
+              weight: 1.0,
+              fill: true,
+              fillOpacity: 1,
+              fillColor: "rgba(29,134,65,1.0)",
+              interactive: true,
+            };
+            break;
+        }
+      }
+      map.createPane("pane_sodio0_30_16");
+      map.getPane("pane_sodio0_30_16").style.zIndex = 406;
+      map.getPane("pane_sodio0_30_16").style["mix-blend-mode"] = "normal";
+      var layer_sodio0_30_16 = new L.geoJson(json_sodio0_30_16, {
+        attribution: "",
+        interactive: true,
+        dataVar: "json_sodio0_30_16",
+        layerName: "layer_sodio0_30_16",
+        pane: "pane_sodio0_30_16",
+        onEachFeature: pop_sodio0_30_16,
+        style: style_sodio0_30_16_0,
+      });
+      bounds_group.addLayer(layer_sodio0_30_16);
+
+      /* Sodio de 30 a 60 */
+
+      function pop_sodio30_60_17(feature, layer) {
+        var popupContent =
+          '<table>\
+                    <tr>\
+                        <th scope="row">Superficie</th>\
+                        <td colspan="2">' +
+          (feature.properties["SUP HA"] !== null
+            ? autolinker.link(feature.properties["SUP HA"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Tipo</th>\
+                        <td colspan="2">' +
+          (feature.properties["NOMENCLATU"] !== null
+            ? autolinker.link(feature.properties["NOMENCLATU"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Nivel</th>\
+                        <td colspan="2">' +
+          (feature.properties["SODIO 30 6"] !== null
+            ? autolinker.link(feature.properties["SODIO 30 6"].toLocaleString())
+            : "") +
+          "</td>\
+                    </tr>\
+                </table>";
+        layer.bindPopup(popupContent, { maxHeight: 400 });
+      }
+
+      function style_sodio30_60_17_0(feature) {
+        switch (String(feature.properties["SODIO 30 6"])) {
+          case "ALTO":
+            return {
+              pane: "pane_sodio30_60_17",
+              opacity: 1,
+              color: "rgba(35,35,35,1.0)",
+              dashArray: "",
+              lineCap: "butt",
+              lineJoin: "miter",
+              weight: 1.0,
+              fill: true,
+              fillOpacity: 1,
+              fillColor: "rgba(215,25,28,1.0)",
+              interactive: true,
+            };
+            break;
+          case "MEDIO":
+            return {
+              pane: "pane_sodio30_60_17",
+              opacity: 1,
+              color: "rgba(35,35,35,1.0)",
+              dashArray: "",
+              lineCap: "butt",
+              lineJoin: "miter",
+              weight: 1.0,
+              fill: true,
+              fillOpacity: 1,
+              fillColor: "rgba(253,174,97,1.0)",
+              interactive: true,
+            };
+            break;
+          case "BOSQUE":
+            return {
+              pane: "pane_sodio30_60_17",
+              opacity: 1,
+              color: "rgba(35,35,35,1.0)",
+              dashArray: "",
+              lineCap: "butt",
+              lineJoin: "miter",
+              weight: 1.0,
+              fill: true,
+              fillOpacity: 1,
+              fillColor: "rgba(29,134,65,1.0)",
+              interactive: true,
+            };
+            break;
+        }
+      }
+      map.createPane("pane_sodio30_60_17");
+      map.getPane("pane_sodio30_60_17").style.zIndex = 405;
+      map.getPane("pane_sodio30_60_17").style["mix-blend-mode"] = "normal";
+      var layer_sodio30_60_17 = new L.geoJson(json_sodio30_60_17, {
+        attribution: "",
+        interactive: true,
+        dataVar: "json_sodio30_60_17",
+        layerName: "layer_sodio30_60_17",
+        pane: "pane_sodio30_60_17",
+        onEachFeature: pop_sodio30_60_17,
+        style: style_sodio30_60_17_0,
+      });
+      bounds_group.addLayer(layer_sodio30_60_17);
+
+      /* Sodio de 60 a 90 */
+
+      function pop_sodio60_90_18(feature, layer) {
+        var popupContent =
+          '<table>\
+                    <tr>\
+                        <th scope="row">Superficie</th>\
+                        <td colspan="2">' +
+          (feature.properties["SUP HA"] !== null
+            ? autolinker.link(feature.properties["SUP HA"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Tipo</th>\
+                        <td colspan="2">' +
+          (feature.properties["NOMENCLATU"] !== null
+            ? autolinker.link(feature.properties["NOMENCLATU"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Nivel</th>\
+                        <td colspan="2">' +
+          (feature.properties["SODIO 60 9"] !== null
+            ? autolinker.link(feature.properties["SODIO 60 9"].toLocaleString())
+            : "") +
+          "</td>\
+                    </tr>\
+                </table>";
+        layer.bindPopup(popupContent, { maxHeight: 400 });
+      }
+
+      function style_sodio60_90_18_0(feature) {
+        switch (String(feature.properties["SODIO 60 9"])) {
+          case "ALTO":
+            return {
+              pane: "pane_sodio60_90_18",
+              opacity: 1,
+              color: "rgba(35,35,35,1.0)",
+              dashArray: "",
+              lineCap: "butt",
+              lineJoin: "miter",
+              weight: 1.0,
+              fill: true,
+              fillOpacity: 1,
+              fillColor: "rgba(215,25,28,1.0)",
+              interactive: true,
+            };
+            break;
+          case "MEDIO":
+            return {
+              pane: "pane_sodio60_90_18",
+              opacity: 1,
+              color: "rgba(35,35,35,1.0)",
+              dashArray: "",
+              lineCap: "butt",
+              lineJoin: "miter",
+              weight: 1.0,
+              fill: true,
+              fillOpacity: 1,
+              fillColor: "rgba(253,174,97,1.0)",
+              interactive: true,
+            };
+            break;
+          case "BOSQUE":
+            return {
+              pane: "pane_sodio60_90_18",
+              opacity: 1,
+              color: "rgba(35,35,35,1.0)",
+              dashArray: "",
+              lineCap: "butt",
+              lineJoin: "miter",
+              weight: 1.0,
+              fill: true,
+              fillOpacity: 1,
+              fillColor: "rgba(29,134,65,1.0)",
+              interactive: true,
+            };
+            break;
+        }
+      }
+      map.createPane("pane_sodio60_90_18");
+      map.getPane("pane_sodio60_90_18").style.zIndex = 404;
+      map.getPane("pane_sodio60_90_18").style["mix-blend-mode"] = "normal";
+      var layer_sodio60_90_18 = new L.geoJson(json_sodio60_90_18, {
+        attribution: "",
+        interactive: true,
+        dataVar: "json_sodio60_90_18",
+        layerName: "layer_sodio60_90_18",
+        pane: "pane_sodio60_90_18",
+        onEachFeature: pop_sodio60_90_18,
+        style: style_sodio60_90_18_0,
+      });
+      bounds_group.addLayer(layer_sodio60_90_18);
+
+      /* Micronutrientes */
+
+      /*Boro*/
+
+      function pop_boro0_30_0(feature, layer) {
+        var popupContent =
+          '<table>\
+                    <tr>\
+                        <td colspan="2">' +
+          (feature.properties["id"] !== null
+            ? autolinker.link(feature.properties["id"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' +
+          (feature.properties["SUP HA"] !== null
+            ? autolinker.link(feature.properties["SUP HA"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' +
+          (feature.properties["SUP %"] !== null
+            ? autolinker.link(feature.properties["SUP %"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' +
+          (feature.properties["NOMENCLATU"] !== null
+            ? autolinker.link(feature.properties["NOMENCLATU"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' +
+          (feature.properties["BORO 0 30"] !== null
+            ? autolinker.link(feature.properties["BORO 0 30"].toLocaleString())
+            : "") +
+          "</td>\
+                    </tr>\
+                </table>";
+        layer.bindPopup(popupContent, { maxHeight: 400 });
+      }
+
+      function style_boro0_30_0_0(feature) {
+        switch (String(feature.properties["BORO 0 30"])) {
+          case "MEDIO":
+            return {
+              pane: "pane_boro0_30_0",
+              opacity: 1,
+              color: "rgba(35,35,35,1.0)",
+              dashArray: "",
+              lineCap: "butt",
+              lineJoin: "miter",
+              weight: 1.0,
+              fill: true,
+              fillOpacity: 1,
+              fillColor: "rgba(254,201,128,1.0)",
+              interactive: true,
+            };
+            break;
+          case "BAJO":
+            return {
+              pane: "pane_boro0_30_0",
+              opacity: 1,
+              color: "rgba(35,35,35,1.0)",
+              dashArray: "",
+              lineCap: "butt",
+              lineJoin: "miter",
+              weight: 1.0,
+              fill: true,
+              fillOpacity: 1,
+              fillColor: "rgba(255,255,191,1.0)",
+              interactive: true,
+            };
+            break;
+          case "BOSQUE":
+            return {
+              pane: "pane_boro0_30_0",
+              opacity: 1,
+              color: "rgba(35,35,35,1.0)",
+              dashArray: "",
+              lineCap: "butt",
+              lineJoin: "miter",
+              weight: 1.0,
+              fill: true,
+              fillOpacity: 1,
+              fillColor: "rgba(29,134,65,1.0)",
+              interactive: true,
+            };
+            break;
+        }
+      }
+      map.createPane("pane_boro0_30_0");
+      map.getPane("pane_boro0_30_0").style.zIndex = 423;
+      map.getPane("pane_boro0_30_0").style["mix-blend-mode"] = "normal";
+      var layer_boro0_30_0 = new L.geoJson(json_boro0_30_0, {
+        attribution: "",
+        interactive: true,
+        dataVar: "json_boro0_30_0",
+        layerName: "layer_boro0_30_0",
+        pane: "pane_boro0_30_0",
+        onEachFeature: pop_boro0_30_0,
+        style: style_boro0_30_0_0,
+      });
+      bounds_group.addLayer(layer_boro0_30_0);
+
+      /* Cobre */
+
+      function pop_cobre0_30_4(feature, layer) {
+        var popupContent =
+          '<table>\
+                    <tr>\
+                        <td colspan="2">' +
+          (feature.properties["id"] !== null
+            ? autolinker.link(feature.properties["id"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' +
+          (feature.properties["SUP HA"] !== null
+            ? autolinker.link(feature.properties["SUP HA"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' +
+          (feature.properties["SUP %"] !== null
+            ? autolinker.link(feature.properties["SUP %"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' +
+          (feature.properties["NOMENCLATU"] !== null
+            ? autolinker.link(feature.properties["NOMENCLATU"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' +
+          (feature.properties["DESCRIPCI�"] !== null
+            ? autolinker.link(feature.properties["DESCRIPCI�"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' +
+          (feature.properties["COBRE 0 30"] !== null
+            ? autolinker.link(feature.properties["COBRE 0 30"].toLocaleString())
+            : "") +
+          "</td>\
+                    </tr>\
+                </table>";
+        layer.bindPopup(popupContent, { maxHeight: 400 });
+      }
+
+      function style_cobre0_30_4_0(feature) {
+        switch (String(feature.properties["COBRE 0 30"])) {
+          case "ALTO":
+            return {
+              pane: "pane_cobre0_30_4",
+              opacity: 1,
+              color: "rgba(35,35,35,1.0)",
+              dashArray: "",
+              lineCap: "butt",
+              lineJoin: "miter",
+              weight: 1.0,
+              fill: true,
+              fillOpacity: 1,
+              fillColor: "rgba(215,25,28,1.0)",
+              interactive: true,
+            };
+            break;
+          case "MEDIO":
+            return {
+              pane: "pane_cobre0_30_4",
+              opacity: 1,
+              color: "rgba(35,35,35,1.0)",
+              dashArray: "",
+              lineCap: "butt",
+              lineJoin: "miter",
+              weight: 1.0,
+              fill: true,
+              fillOpacity: 1,
+              fillColor: "rgba(253,174,97,1.0)",
+              interactive: true,
+            };
+            break;
+          case "BAJO":
+            return {
+              pane: "pane_cobre0_30_4",
+              opacity: 1,
+              color: "rgba(35,35,35,1.0)",
+              dashArray: "",
+              lineCap: "butt",
+              lineJoin: "miter",
+              weight: 1.0,
+              fill: true,
+              fillOpacity: 1,
+              fillColor: "rgba(255,255,191,1.0)",
+              interactive: true,
+            };
+            break;
+          case "BOSQUE":
+            return {
+              pane: "pane_cobre0_30_4",
+              opacity: 1,
+              color: "rgba(35,35,35,1.0)",
+              dashArray: "",
+              lineCap: "butt",
+              lineJoin: "miter",
+              weight: 1.0,
+              fill: true,
+              fillOpacity: 1,
+              fillColor: "rgba(29,134,65,1.0)",
+              interactive: true,
+            };
+            break;
+        }
+      }
+      map.createPane("pane_cobre0_30_4");
+      map.getPane("pane_cobre0_30_4").style.zIndex = 422;
+      map.getPane("pane_cobre0_30_4").style["mix-blend-mode"] = "normal";
+      var layer_cobre0_30_4 = new L.geoJson(json_cobre0_30_4, {
+        attribution: "",
+        interactive: true,
+        dataVar: "json_cobre0_30_4",
+        layerName: "layer_cobre0_30_4",
+        pane: "pane_cobre0_30_4",
+        onEachFeature: pop_cobre0_30_4,
+        style: style_cobre0_30_4_0,
+      });
+      bounds_group.addLayer(layer_cobre0_30_4);
+
+      /* Hierro */
+
+      function pop_hierro0_30_8(feature, layer) {
+        var popupContent =
+          '<table>\
+                    <tr>\
+                        <td colspan="2">' +
+          (feature.properties["id"] !== null
+            ? autolinker.link(feature.properties["id"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' +
+          (feature.properties["SUP HA"] !== null
+            ? autolinker.link(feature.properties["SUP HA"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' +
+          (feature.properties["SUP %"] !== null
+            ? autolinker.link(feature.properties["SUP %"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' +
+          (feature.properties["NOMENCLATU"] !== null
+            ? autolinker.link(feature.properties["NOMENCLATU"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' +
+          (feature.properties["DESCRIPCI�"] !== null
+            ? autolinker.link(feature.properties["DESCRIPCI�"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' +
+          (feature.properties["HIERRO 0 3"] !== null
+            ? autolinker.link(feature.properties["HIERRO 0 3"].toLocaleString())
+            : "") +
+          "</td>\
+                    </tr>\
+                </table>";
+        layer.bindPopup(popupContent, { maxHeight: 400 });
+      }
+
+      function style_hierro0_30_8_0(feature) {
+        switch (String(feature.properties["HIERRO 0 3"])) {
+          case "ALTO":
+            return {
+              pane: "pane_hierro0_30_8",
+              opacity: 1,
+              color: "rgba(35,35,35,1.0)",
+              dashArray: "",
+              lineCap: "butt",
+              lineJoin: "miter",
+              weight: 1.0,
+              fill: true,
+              fillOpacity: 1,
+              fillColor: "rgba(215,25,28,1.0)",
+              interactive: true,
+            };
+            break;
+          case "BOSQUE":
+            return {
+              pane: "pane_hierro0_30_8",
+              opacity: 1,
+              color: "rgba(35,35,35,1.0)",
+              dashArray: "",
+              lineCap: "butt",
+              lineJoin: "miter",
+              weight: 1.0,
+              fill: true,
+              fillOpacity: 1,
+              fillColor: "rgba(29,134,65,1.0)",
+              interactive: true,
+            };
+            break;
+        }
+      }
+      map.createPane("pane_hierro0_30_8");
+      map.getPane("pane_hierro0_30_8").style.zIndex = 421;
+      map.getPane("pane_hierro0_30_8").style["mix-blend-mode"] = "normal";
+      var layer_hierro0_30_8 = new L.geoJson(json_hierro0_30_8, {
+        attribution: "",
+        interactive: true,
+        dataVar: "json_hierro0_30_8",
+        layerName: "layer_hierro0_30_8",
+        pane: "pane_hierro0_30_8",
+        onEachFeature: pop_hierro0_30_8,
+        style: style_hierro0_30_8_0,
+      });
+      bounds_group.addLayer(layer_hierro0_30_8);
+
+      /* Manganeso */
+
+      function pop_Manganeso0_30_12(feature, layer) {
+        var popupContent =
+          '<table>\
+                    <tr>\
+                        <td colspan="2">' +
+          (feature.properties["id"] !== null
+            ? autolinker.link(feature.properties["id"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' +
+          (feature.properties["SUP HA"] !== null
+            ? autolinker.link(feature.properties["SUP HA"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' +
+          (feature.properties["SUP %"] !== null
+            ? autolinker.link(feature.properties["SUP %"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' +
+          (feature.properties["NOMENCLATU"] !== null
+            ? autolinker.link(feature.properties["NOMENCLATU"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' +
+          (feature.properties["DESCRIPCI�"] !== null
+            ? autolinker.link(feature.properties["DESCRIPCI�"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' +
+          (feature.properties["MANGANESO"] !== null
+            ? autolinker.link(feature.properties["MANGANESO"].toLocaleString())
+            : "") +
+          "</td>\
+                    </tr>\
+                </table>";
+        layer.bindPopup(popupContent, { maxHeight: 400 });
+      }
+
+      function style_Manganeso0_30_12_0(feature) {
+        switch (String(feature.properties["MANGANESO"])) {
+          case "ALTO":
+            return {
+              pane: "pane_Manganeso0_30_12",
+              opacity: 1,
+              color: "rgba(35,35,35,1.0)",
+              dashArray: "",
+              lineCap: "butt",
+              lineJoin: "miter",
+              weight: 1.0,
+              fill: true,
+              fillOpacity: 1,
+              fillColor: "rgba(215,25,28,1.0)",
+              interactive: true,
+            };
+            break;
+          case "MEDIO":
+            return {
+              pane: "pane_Manganeso0_30_12",
+              opacity: 1,
+              color: "rgba(35,35,35,1.0)",
+              dashArray: "",
+              lineCap: "butt",
+              lineJoin: "miter",
+              weight: 1.0,
+              fill: true,
+              fillOpacity: 1,
+              fillColor: "rgba(253,174,97,1.0)",
+              interactive: true,
+            };
+            break;
+          case "BAJO":
+            return {
+              pane: "pane_Manganeso0_30_12",
+              opacity: 1,
+              color: "rgba(35,35,35,1.0)",
+              dashArray: "",
+              lineCap: "butt",
+              lineJoin: "miter",
+              weight: 1.0,
+              fill: true,
+              fillOpacity: 1,
+              fillColor: "rgba(255,255,191,1.0)",
+              interactive: true,
+            };
+            break;
+          case "BOSQUE":
+            return {
+              pane: "pane_Manganeso0_30_12",
+              opacity: 1,
+              color: "rgba(35,35,35,1.0)",
+              dashArray: "",
+              lineCap: "butt",
+              lineJoin: "miter",
+              weight: 1.0,
+              fill: true,
+              fillOpacity: 1,
+              fillColor: "rgba(29,134,65,1.0)",
+              interactive: true,
+            };
+            break;
+        }
+      }
+      map.createPane("pane_Manganeso0_30_12");
+      map.getPane("pane_Manganeso0_30_12").style.zIndex = 420;
+      map.getPane("pane_Manganeso0_30_12").style["mix-blend-mode"] = "normal";
+      var layer_Manganeso0_30_12 = new L.geoJson(json_Manganeso0_30_12, {
+        attribution: "",
+        interactive: true,
+        dataVar: "json_Manganeso0_30_12",
+        layerName: "layer_Manganeso0_30_12",
+        pane: "pane_Manganeso0_30_12",
+        onEachFeature: pop_Manganeso0_30_12,
+        style: style_Manganeso0_30_12_0,
+      });
+      bounds_group.addLayer(layer_Manganeso0_30_12);
+
+      /* Zinc */
+
+      function pop_zinc0_30_19(feature, layer) {
+        var popupContent =
+          '<table>\
+                    <tr>\
+                        <td colspan="2">' +
+          (feature.properties["id"] !== null
+            ? autolinker.link(feature.properties["id"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' +
+          (feature.properties["SUP HA"] !== null
+            ? autolinker.link(feature.properties["SUP HA"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' +
+          (feature.properties["SUP %"] !== null
+            ? autolinker.link(feature.properties["SUP %"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' +
+          (feature.properties["NOMENCLATU"] !== null
+            ? autolinker.link(feature.properties["NOMENCLATU"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' +
+          (feature.properties["DESCRIPCI�"] !== null
+            ? autolinker.link(feature.properties["DESCRIPCI�"].toLocaleString())
+            : "") +
+          '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' +
+          (feature.properties["ZINC 0 30"] !== null
+            ? autolinker.link(feature.properties["ZINC 0 30"].toLocaleString())
+            : "") +
+          "</td>\
+                    </tr>\
+                </table>";
+        layer.bindPopup(popupContent, { maxHeight: 400 });
+      }
+
+      function style_zinc0_30_19_0(feature) {
+        switch (String(feature.properties["ZINC 0 30"])) {
+          case "ALTO":
+            return {
+              pane: "pane_zinc0_30_19",
+              opacity: 1,
+              color: "rgba(35,35,35,1.0)",
+              dashArray: "",
+              lineCap: "butt",
+              lineJoin: "miter",
+              weight: 1.0,
+              fill: true,
+              fillOpacity: 1,
+              fillColor: "rgba(215,25,28,1.0)",
+              interactive: true,
+            };
+            break;
+          case "MEDIO":
+            return {
+              pane: "pane_zinc0_30_19",
+              opacity: 1,
+              color: "rgba(35,35,35,1.0)",
+              dashArray: "",
+              lineCap: "butt",
+              lineJoin: "miter",
+              weight: 1.0,
+              fill: true,
+              fillOpacity: 1,
+              fillColor: "rgba(253,174,97,1.0)",
+              interactive: true,
+            };
+            break;
+          case "BAJO":
+            return {
+              pane: "pane_zinc0_30_19",
+              opacity: 1,
+              color: "rgba(35,35,35,1.0)",
+              dashArray: "",
+              lineCap: "butt",
+              lineJoin: "miter",
+              weight: 1.0,
+              fill: true,
+              fillOpacity: 1,
+              fillColor: "rgba(255,255,191,1.0)",
+              interactive: true,
+            };
+            break;
+          case "BOSQUE":
+            return {
+              pane: "pane_zinc0_30_19",
+              opacity: 1,
+              color: "rgba(35,35,35,1.0)",
+              dashArray: "",
+              lineCap: "butt",
+              lineJoin: "miter",
+              weight: 1.0,
+              fill: true,
+              fillOpacity: 1,
+              fillColor: "rgba(29,134,65,1.0)",
+              interactive: true,
+            };
+            break;
+        }
+      }
+      map.createPane("pane_zinc0_30_19");
+      map.getPane("pane_zinc0_30_19").style.zIndex = 419;
+      map.getPane("pane_zinc0_30_19").style["mix-blend-mode"] = "normal";
+      var layer_zinc0_30_19 = new L.geoJson(json_zinc0_30_19, {
+        attribution: "",
+        interactive: true,
+        dataVar: "json_zinc0_30_19",
+        layerName: "layer_zinc0_30_19",
+        pane: "pane_zinc0_30_19",
+        onEachFeature: pop_zinc0_30_19,
+        style: style_zinc0_30_19_0,
+      });
+      bounds_group.addLayer(layer_zinc0_30_19);
+
+      /* Leyendas */
+
+      var baseMaps = {};
+
+      /* Leyenda para calicatas */
+
+      var calicatasSilvipar = {
+        '<img src="legend/Profundidadde0a30cm_4.png" /> Profundidad de 0 a 30 cm':
+          layer_Profundidadde0a30cm_4,
+        '<img src="legend/Profundidadde30a60cm_3.png" /> Profundidad de 30 a 60 cm':
+          layer_Profundidadde30a60cm_3,
+        '<img src="legend/Profundidadde60a90cm_2.png" /> Profundidad de 60 a 90 cm':
+          layer_Profundidadde60a90cm_2,
+      };
+      var calicataslayerCtrl = L.control
+        .layers(baseMaps, calicatasSilvipar, {
+          collapsed: true,
+          position: "topright",
+        })
+        .addTo(map);
+
+      /* Titulo Calicatas */
+
+      var calicataLegend = L.control({ position: "topleft" });
+
+      calicataLegend.onAdd = function () {
+        var div = L.DomUtil.create("div");
+        // here is Your part:
+        div.innerHTML =
+          '<p class="titulo-leyenda hidden-mobile">Calicatas según profundidad</p>';
+        return div;
+      };
+      calicataLegend.addTo(map);
+
+      var calicataCtrlDiv = calicataslayerCtrl.getContainer();
+      calicataCtrlDiv.insertBefore(
+        calicataLegend.getContainer(),
+        calicataCtrlDiv.firstChild
+      );
+
+      /* Leyenda para CUT */
+
+      var leyndaCUT = {
+        'Capacidad de Uso de la Tierra<br /><table><tr><td style="text-align: center;"><img class="img_CUT" src="legend/CUT_FINAL_1_BOSQUE0.png" /></td><td>Bosque</td></tr><tr><td style="text-align: center;"><img class="img_CUT" src="legend/CUT_FINAL_1_IIISs1.png" /></td><td>IIISs</td></tr><tr><td style="text-align: center;"><img class="img_CUT" src="legend/CUT_FINAL_1_IIISsIISperWd2.png" /></td><td>IIISs/IISper,Wd</td></tr><tr><td style="text-align: center;"><img class="img_CUT" src="legend/CUT_FINAL_1_IVSsperWdIIISprof3.png" /></td><td>IVSs,per,Wd/IIISprof</td></tr><tr><td style="text-align: center;"><img class="img_CUT" src="legend/CUT_FINAL_1_VISsIVSperWdIIISprof4.png" /></td><td>VISs/IVSper,Wd/IIISprof</td></tr><tr><td style="text-align: center;"><img class="img_CUT" src="legend/CUT_FINAL_1_VISsVSprofSperWd5.png" /></td><td>VISs/VSprof,Sper,Wd</td></tr><tr><td style="text-align: center;"><img class="img_CUT" src="legend/CUT_FINAL_1_VSperWdIVSsIIISprof6.png" /></td><td>VSper,Wd/IVSs /IIISprof</td></tr><tr><td style="text-align: center;"><img class="img_CUT" src="legend/CUT_FINAL_1_VSPerWdIVSsSprof7.png" /></td><td>VSPer,Wd/IVSs,Sprof</td></tr><tr><td style="text-align: center;"><img class="img_CUT" src="legend/CUT_FINAL_1_VSsSprofSperWd8.png" /></td><td>VSs,Sprof,Sper,Wd</td></tr><tr><td style="text-align: center;"><img class="img_CUT" src="legend/CUT_FINAL_1_VSsIVSprofSperWd9.png" /></td><td>VSs/IVSprof,Sper,Wd</td></tr></table>':
+          layer_CUT_FINAL_1,
+      };
+      var CUTLayersCtrl = L.control
+        .layers(baseMaps, leyndaCUT, { collapsed: true })
+        .addTo(map);
+      setBounds();
+
+      /* Titulo CUT */
+
+      var CUTLegend = L.control({ position: "topleft" });
+
+      CUTLegend.onAdd = function () {
+        var div = L.DomUtil.create("div");
+        // here is Your part:
+        div.innerHTML =
+          '<p class="titulo-leyenda hidden-mobile">Clasificación según capacidad</p>';
+        return div;
+      };
+      CUTLegend.addTo(map);
+
+      var CUTCtrlDiv = CUTLayersCtrl.getContainer();
+      CUTCtrlDiv.insertBefore(CUTLegend.getContainer(), CUTCtrlDiv.firstChild);
+
+      /* Leyenda para capas de % SODIO */
+      var leyendaNutr = {
+        'Niveles<br /><table><tr><td style="text-align: center;"><img src="legend/cut_connutrientes_0_ExtremadamenteAlto0.png" /></td><td>Extremadamente Alto</td></tr><tr><td style="text-align: center;"><img src="legend/cut_connutrientes_0_MuyAlto1.png" /></td><td>Muy Alto</td></tr><tr><td style="text-align: center;"><img src="legend/cut_connutrientes_0_Alto2.png" /></td><td>Alto</td></tr><tr><td style="text-align: center;"><img src="legend/cut_connutrientes_0_Medio3.png" /></td><td>Medio</td></tr><tr><td style="text-align: center;"><img src="legend/cut_connutrientes_0_BOSQUE4.png" /></td><td>BOSQUE</td></tr></table>':
+          layer_cut_connutrientes_0,
+      };
+      var nutrLayerCtrl = L.control.layers(baseMaps, leyendaNutr).addTo(map);
+      setBounds();
+
+      /* Titulo % SODIO */
+
+      var NutrLegend = L.control({ position: "topleft" });
+
+      NutrLegend.onAdd = function () {
+        var div = L.DomUtil.create("div");
+        // here is Your part:
+        div.innerHTML =
+          '<p class="titulo-leyenda hidden-mobile">Clasificación según % de Sodio</p>';
+        return div;
+      };
+      NutrLegend.addTo(map);
+
+      var NutrCtrlDiv = nutrLayerCtrl.getContainer();
+      NutrCtrlDiv.insertBefore(
+        NutrLegend.getContainer(),
+        NutrCtrlDiv.firstChild
+      );
+
+      /* Leyenda para capas de macronutrientes */
+
+      var macroLayers = {
+        'Sodio de 60 a 90<br /><table><tr><td style="text-align: center;"><img src="legend/sodio60_90_18_ALTO0.png" /></td><td>ALTO</td></tr><tr><td style="text-align: center;"><img src="legend/sodio60_90_18_MEDIO1.png" /></td><td>MEDIO</td></tr><tr><td style="text-align: center;"><img src="legend/sodio60_90_18_BOSQUE2.png" /></td><td>BOSQUE</td></tr></table>':
+          layer_sodio60_90_18,
+        'Sodio de 30 a 60<br /><table><tr><td style="text-align: center;"><img src="legend/sodio30_60_17_ALTO0.png" /></td><td>ALTO</td></tr><tr><td style="text-align: center;"><img src="legend/sodio30_60_17_MEDIO1.png" /></td><td>MEDIO</td></tr><tr><td style="text-align: center;"><img src="legend/sodio30_60_17_BOSQUE2.png" /></td><td>BOSQUE</td></tr></table>':
+          layer_sodio30_60_17,
+        'Sodio de 0 a 30<br /><table><tr><td style="text-align: center;"><img src="legend/sodio0_30_16_ALTO0.png" /></td><td>ALTO</td></tr><tr><td style="text-align: center;"><img src="legend/sodio0_30_16_MEDIO1.png" /></td><td>MEDIO</td></tr><tr><td style="text-align: center;"><img src="legend/sodio0_30_16_BOSQUE2.png" /></td><td>BOSQUE</td></tr></table>':
+          layer_sodio0_30_16,
+        'Potasio de 60 a 90<br /><table><tr><td style="text-align: center;"><img src="legend/potasio60_90_15_BAJO0.png" /></td><td>BAJO</td></tr><tr><td style="text-align: center;"><img src="legend/potasio60_90_15_BOSQUE1.png" /></td><td>BOSQUE</td></tr></table>':
+          layer_potasio60_90_15,
+        'Potasio de 30 a 60<br /><table><tr><td style="text-align: center;"><img src="legend/potasio30_60_14_BAJO0.png" /></td><td>BAJO</td></tr><tr><td style="text-align: center;"><img src="legend/potasio30_60_14_BOSQUE1.png" /></td><td>BOSQUE</td></tr></table>':
+          layer_potasio30_60_14,
+        'Potasio de 0 a 30<br /><table><tr><td style="text-align: center;"><img src="legend/potasio0_30_13_BAJO0.png" /></td><td>BAJO</td></tr><tr><td style="text-align: center;"><img src="legend/potasio0_30_13_BOSQUE1.png" /></td><td>BOSQUE</td></tr></table>':
+          layer_potasio0_30_13,
+        'Magnesio de 60 a 90<br /><table><tr><td style="text-align: center;"><img src="legend/magnesio60_90_11_BAJO0.png" /></td><td>BAJO</td></tr><tr><td style="text-align: center;"><img src="legend/magnesio60_90_11_MEDIO1.png" /></td><td>MEDIO</td></tr><tr><td style="text-align: center;"><img src="legend/magnesio60_90_11_BOSQUE2.png" /></td><td>BOSQUE</td></tr></table>':
+          layer_magnesio60_90_11,
+        'Magnesio de 30 a 60<br /><table><tr><td style="text-align: center;"><img src="legend/magnesio30_60_10_BAJO0.png" /></td><td>BAJO</td></tr><tr><td style="text-align: center;"><img src="legend/magnesio30_60_10_MEDIO1.png" /></td><td>MEDIO</td></tr><tr><td style="text-align: center;"><img src="legend/magnesio30_60_10_BOSQUE2.png" /></td><td>BOSQUE</td></tr></table>':
+          layer_magnesio30_60_10,
+        'Magnesio de 0 a 30<br /><table><tr><td style="text-align: center;"><img src="legend/magnesio0_30_9_BAJO0.png" /></td><td>BAJO</td></tr><tr><td style="text-align: center;"><img src="legend/magnesio0_30_9_BOSQUE1.png" /></td><td>BOSQUE</td></tr></table>':
+          layer_magnesio0_30_9,
+        'Fosforo de 60 a 90<br /><table><tr><td style="text-align: center;"><img src="legend/fosforo60_90_7_BAJO0.png" /></td><td>BAJO</td></tr><tr><td style="text-align: center;"><img src="legend/fosforo60_90_7_BOSQUE1.png" /></td><td>BOSQUE</td></tr></table>':
+          layer_fosforo60_90_7,
+        'Fosforo de 30 a 60<br /><table><tr><td style="text-align: center;"><img src="legend/fosforo30_60_6_BAJO0.png" /></td><td>BAJO</td></tr><tr><td style="text-align: center;"><img src="legend/fosforo30_60_6_BOSQUE1.png" /></td><td>BOSQUE</td></tr></table>':
+          layer_fosforo30_60_6,
+        'Fosforo de 0 a 30<br /><table><tr><td style="text-align: center;"><img src="legend/fosforo0_30_5_BAJO0.png" /></td><td>BAJO</td></tr><tr><td style="text-align: center;"><img src="legend/fosforo0_30_5_BOSQUE1.png" /></td><td>BOSQUE</td></tr></table>':
+          layer_fosforo0_30_5,
+        'Calcio de 0 a 30<br /><table><tr><td style="text-align: center;"><img src="legend/calcio_0_30_3_BOSQUE0.png" /></td><td>BOSQUE</td></tr><tr><td style="text-align: center;"><img src="legend/calcio_0_30_3_BAJO1.png" /></td><td>BAJO</td></tr></table>':
+          layer_calcio_0_30_3,
+        'Calcio de 30 a 60<br /><table><tr><td style="text-align: center;"><img src="legend/calcio30_60_2_BOSQUE0.png" /></td><td>BOSQUE</td></tr><tr><td style="text-align: center;"><img src="legend/calcio30_60_2_MEDIO1.png" /></td><td>MEDIO</td></tr><tr><td style="text-align: center;"><img src="legend/calcio30_60_2_BAJO2.png" /></td><td>BAJO</td></tr></table>':
+          layer_calcio30_60_2,
+        'Calcio de 60 a 90<br /><table><tr><td style="text-align: center;"><img src="legend/calcio60_90_1_ALTO0.png" /></td><td>ALTO</td></tr><tr><td style="text-align: center;"><img src="legend/calcio60_90_1_BAJO1.png" /></td><td>BAJO</td></tr><tr><td style="text-align: center;"><img src="legend/calcio60_90_1_BOSQUE2.png" /></td><td>BOSQUE</td></tr></table>':
+          layer_calcio60_90_1,
+      };
+
+      var macroLayerCtrl = L.control.layers(baseMaps, macroLayers).addTo(map);
+      setBounds();
+
+      var macroLegend = L.control({ position: "topleft" });
+
+      macroLegend.onAdd = function () {
+        var div = L.DomUtil.create("div");
+        // here is Your part:
+        div.innerHTML =
+          '<p class="titulo-leyenda hidden-mobile">Macronutrientes por profundidad</p>';
+        return div;
+      };
+      macroLegend.addTo(map);
+
+      var macroCtrlDiv = macroLayerCtrl.getContainer();
+      macroCtrlDiv.insertBefore(
+        macroLegend.getContainer(),
+        macroCtrlDiv.firstChild
+      );
+
+      /* Leyenda para capas de micronutrientes */
+
+      var microLayers = {
+        'Zinc de 0 a 30<br /><table><tr><td style="text-align: center;"><img src="legend/zinc0_30_19_ALTO0.png" /></td><td>ALTO</td></tr><tr><td style="text-align: center;"><img src="legend/zinc0_30_19_MEDIO1.png" /></td><td>MEDIO</td></tr><tr><td style="text-align: center;"><img src="legend/zinc0_30_19_BAJO2.png" /></td><td>BAJO</td></tr><tr><td style="text-align: center;"><img src="legend/zinc0_30_19_BOSQUE3.png" /></td><td>BOSQUE</td></tr></table>':
+          layer_zinc0_30_19,
+        'Manganeso de 0 a 30<br /><table><tr><td style="text-align: center;"><img src="legend/Manganeso0_30_12_ALTO0.png" /></td><td>ALTO</td></tr><tr><td style="text-align: center;"><img src="legend/Manganeso0_30_12_MEDIO1.png" /></td><td>MEDIO</td></tr><tr><td style="text-align: center;"><img src="legend/Manganeso0_30_12_BAJO2.png" /></td><td>BAJO</td></tr><tr><td style="text-align: center;"><img src="legend/Manganeso0_30_12_BOSQUE3.png" /></td><td>BOSQUE</td></tr></table>':
+          layer_Manganeso0_30_12,
+        'Hierro de 0 a 30<br /><table><tr><td style="text-align: center;"><img src="legend/hierro0_30_8_ALTO0.png" /></td><td>ALTO</td></tr><tr><td style="text-align: center;"><img src="legend/hierro0_30_8_BOSQUE1.png" /></td><td>BOSQUE</td></tr></table>':
+          layer_hierro0_30_8,
+        'Cobre de 0 a 30<br /><table><tr><td style="text-align: center;"><img src="legend/cobre0_30_4_ALTO0.png" /></td><td>ALTO</td></tr><tr><td style="text-align: center;"><img src="legend/cobre0_30_4_MEDIO1.png" /></td><td>MEDIO</td></tr><tr><td style="text-align: center;"><img src="legend/cobre0_30_4_BAJO2.png" /></td><td>BAJO</td></tr><tr><td style="text-align: center;"><img src="legend/cobre0_30_4_BOSQUE3.png" /></td><td>BOSQUE</td></tr></table>':
+          layer_cobre0_30_4,
+        'Boro de 0 a 30<br /><table><tr><td style="text-align: center;"><img src="legend/boro0_30_0_MEDIO0.png" /></td><td>MEDIO</td></tr><tr><td style="text-align: center;"><img src="legend/boro0_30_0_BAJO1.png" /></td><td>BAJO</td></tr><tr><td style="text-align: center;"><img src="legend/boro0_30_0_BOSQUE2.png" /></td><td>BOSQUE</td></tr></table>':
+          layer_boro0_30_0,
+      };
+
+      var microLayerCtrl = L.control.layers(baseMaps, microLayers).addTo(map);
+      setBounds();
+
+      var microLegend = L.control({ position: "topleft" });
+
+      microLegend.onAdd = function () {
+        var div = L.DomUtil.create("div");
+        // here is Your part:
+        div.innerHTML =
+          '<p class="titulo-leyenda hidden-mobile">Micronutrientes por profundidad</p>';
+        return div;
+      };
+      microLegend.addTo(map);
+
+      var microCtrlDiv = microLayerCtrl.getContainer();
+      microCtrlDiv.insertBefore(
+        microLegend.getContainer(),
+        microCtrlDiv.firstChild
+      );
+
+      /* ChartJS graph change on behalf of layer on top */
+
+      /* Charts DOM */
+
+      var graficoCUT = document.getElementById("graficoCUT");
+      var graficoNA = document.getElementById("graficoNA");
+      var graficoS60_90 = document.getElementById("graficoS60-90");
+      var graficoS30_60 = document.getElementById("graficoS30-60");
+      var graficoS0_30 = document.getElementById("graficoS0-30");
+      var graficoK = document.getElementById("graficoK60_90");
+      var graficoMg60_90 = document.getElementById("graficoMg60_90");
+      var graficoMg30_60 = document.getElementById("graficoMg30_60");
+      var graficoMg0_30 = document.getElementById("graficoMg0_60");
+      var graficoP = document.getElementById("graficoP");
+      var graficoCa0_30 = document.getElementById("graficoCa0_30");
+      var graficoCa30_60 = document.getElementById("graficoCa30_60");
+      var graficoCa60_90 = document.getElementById("graficoCa60_90");
+      var graficoZ = document.getElementById("graficoZ");
+      var graficoMn = document.getElementById("graficoMn");
+      var graficoF = document.getElementById("graficoF");
+      var graficoCu = document.getElementById("graficoCu");
+      var graficoBo = document.getElementById("graficoBo");
+
+      /* Layer names */
+
+      var cutName =
+        'Capacidad de Uso de la Tierra<br /><table><tr><td style="text-align: center;"><img class="img_CUT" src="legend/CUT_FINAL_1_BOSQUE0.png" /></td><td>Bosque</td></tr><tr><td style="text-align: center;"><img class="img_CUT" src="legend/CUT_FINAL_1_IIISs1.png" /></td><td>IIISs</td></tr><tr><td style="text-align: center;"><img class="img_CUT" src="legend/CUT_FINAL_1_IIISsIISperWd2.png" /></td><td>IIISs/IISper,Wd</td></tr><tr><td style="text-align: center;"><img class="img_CUT" src="legend/CUT_FINAL_1_IVSsperWdIIISprof3.png" /></td><td>IVSs,per,Wd/IIISprof</td></tr><tr><td style="text-align: center;"><img class="img_CUT" src="legend/CUT_FINAL_1_VISsIVSperWdIIISprof4.png" /></td><td>VISs/IVSper,Wd/IIISprof</td></tr><tr><td style="text-align: center;"><img class="img_CUT" src="legend/CUT_FINAL_1_VISsVSprofSperWd5.png" /></td><td>VISs/VSprof,Sper,Wd</td></tr><tr><td style="text-align: center;"><img class="img_CUT" src="legend/CUT_FINAL_1_VSperWdIVSsIIISprof6.png" /></td><td>VSper,Wd/IVSs /IIISprof</td></tr><tr><td style="text-align: center;"><img class="img_CUT" src="legend/CUT_FINAL_1_VSPerWdIVSsSprof7.png" /></td><td>VSPer,Wd/IVSs,Sprof</td></tr><tr><td style="text-align: center;"><img class="img_CUT" src="legend/CUT_FINAL_1_VSsSprofSperWd8.png" /></td><td>VSs,Sprof,Sper,Wd</td></tr><tr><td style="text-align: center;"><img class="img_CUT" src="legend/CUT_FINAL_1_VSsIVSprofSperWd9.png" /></td><td>VSs/IVSprof,Sper,Wd</td></tr></table>';
+      var naName =
+        'Niveles<br /><table><tr><td style="text-align: center;"><img src="legend/cut_connutrientes_0_ExtremadamenteAlto0.png" /></td><td>Extremadamente Alto</td></tr><tr><td style="text-align: center;"><img src="legend/cut_connutrientes_0_MuyAlto1.png" /></td><td>Muy Alto</td></tr><tr><td style="text-align: center;"><img src="legend/cut_connutrientes_0_Alto2.png" /></td><td>Alto</td></tr><tr><td style="text-align: center;"><img src="legend/cut_connutrientes_0_Medio3.png" /></td><td>Medio</td></tr><tr><td style="text-align: center;"><img src="legend/cut_connutrientes_0_BOSQUE4.png" /></td><td>BOSQUE</td></tr></table>';
+      var na60_90 =
+        'Sodio de 60 a 90<br /><table><tr><td style="text-align: center;"><img src="legend/sodio60_90_18_ALTO0.png" /></td><td>ALTO</td></tr><tr><td style="text-align: center;"><img src="legend/sodio60_90_18_MEDIO1.png" /></td><td>MEDIO</td></tr><tr><td style="text-align: center;"><img src="legend/sodio60_90_18_BOSQUE2.png" /></td><td>BOSQUE</td></tr></table>';
+      var na30_60 =
+        'Sodio de 30 a 60<br /><table><tr><td style="text-align: center;"><img src="legend/sodio30_60_17_ALTO0.png" /></td><td>ALTO</td></tr><tr><td style="text-align: center;"><img src="legend/sodio30_60_17_MEDIO1.png" /></td><td>MEDIO</td></tr><tr><td style="text-align: center;"><img src="legend/sodio30_60_17_BOSQUE2.png" /></td><td>BOSQUE</td></tr></table>';
+      var na0_30 =
+        'Sodio de 0 a 30<br /><table><tr><td style="text-align: center;"><img src="legend/sodio0_30_16_ALTO0.png" /></td><td>ALTO</td></tr><tr><td style="text-align: center;"><img src="legend/sodio0_30_16_MEDIO1.png" /></td><td>MEDIO</td></tr><tr><td style="text-align: center;"><img src="legend/sodio0_30_16_BOSQUE2.png" /></td><td>BOSQUE</td></tr></table>';
+      var k60_90 =
+        'Potasio de 60 a 90<br /><table><tr><td style="text-align: center;"><img src="legend/potasio60_90_15_BAJO0.png" /></td><td>BAJO</td></tr><tr><td style="text-align: center;"><img src="legend/potasio60_90_15_BOSQUE1.png" /></td><td>BOSQUE</td></tr></table>';
+      var k30_60 =
+        'Potasio de 30 a 60<br /><table><tr><td style="text-align: center;"><img src="legend/potasio30_60_14_BAJO0.png" /></td><td>BAJO</td></tr><tr><td style="text-align: center;"><img src="legend/potasio30_60_14_BOSQUE1.png" /></td><td>BOSQUE</td></tr></table>';
+      var k0_30 =
+        'Potasio de 0 a 30<br /><table><tr><td style="text-align: center;"><img src="legend/potasio0_30_13_BAJO0.png" /></td><td>BAJO</td></tr><tr><td style="text-align: center;"><img src="legend/potasio0_30_13_BOSQUE1.png" /></td><td>BOSQUE</td></tr></table>';
+      var mg60_90 =
+        'Magnesio de 60 a 90<br /><table><tr><td style="text-align: center;"><img src="legend/magnesio60_90_11_BAJO0.png" /></td><td>BAJO</td></tr><tr><td style="text-align: center;"><img src="legend/magnesio60_90_11_MEDIO1.png" /></td><td>MEDIO</td></tr><tr><td style="text-align: center;"><img src="legend/magnesio60_90_11_BOSQUE2.png" /></td><td>BOSQUE</td></tr></table>';
+      var mg30_60 =
+        'Magnesio de 30 a 60<br /><table><tr><td style="text-align: center;"><img src="legend/magnesio30_60_10_BAJO0.png" /></td><td>BAJO</td></tr><tr><td style="text-align: center;"><img src="legend/magnesio30_60_10_MEDIO1.png" /></td><td>MEDIO</td></tr><tr><td style="text-align: center;"><img src="legend/magnesio30_60_10_BOSQUE2.png" /></td><td>BOSQUE</td></tr></table>';
+      var mg0_30 =
+        'Magnesio de 0 a 30<br /><table><tr><td style="text-align: center;"><img src="legend/magnesio0_30_9_BAJO0.png" /></td><td>BAJO</td></tr><tr><td style="text-align: center;"><img src="legend/magnesio0_30_9_BOSQUE1.png" /></td><td>BOSQUE</td></tr></table>';
+      var p60_90 =
+        'Fosforo de 60 a 90<br /><table><tr><td style="text-align: center;"><img src="legend/fosforo60_90_7_BAJO0.png" /></td><td>BAJO</td></tr><tr><td style="text-align: center;"><img src="legend/fosforo60_90_7_BOSQUE1.png" /></td><td>BOSQUE</td></tr></table>';
+      var p30_60 =
+        'Fosforo de 30 a 60<br /><table><tr><td style="text-align: center;"><img src="legend/fosforo30_60_6_BAJO0.png" /></td><td>BAJO</td></tr><tr><td style="text-align: center;"><img src="legend/fosforo30_60_6_BOSQUE1.png" /></td><td>BOSQUE</td></tr></table>';
+      var p0_30 =
+        'Fosforo de 0 a 30<br /><table><tr><td style="text-align: center;"><img src="legend/fosforo0_30_5_BAJO0.png" /></td><td>BAJO</td></tr><tr><td style="text-align: center;"><img src="legend/fosforo0_30_5_BOSQUE1.png" /></td><td>BOSQUE</td></tr></table>';
+      var ca_60_90 =
+        'Calcio de 60 a 90<br /><table><tr><td style="text-align: center;"><img src="legend/calcio60_90_1_ALTO0.png" /></td><td>ALTO</td></tr><tr><td style="text-align: center;"><img src="legend/calcio60_90_1_BAJO1.png" /></td><td>BAJO</td></tr><tr><td style="text-align: center;"><img src="legend/calcio60_90_1_BOSQUE2.png" /></td><td>BOSQUE</td></tr></table>';
+      var ca_30_60 =
+        'Calcio de 30 a 60<br /><table><tr><td style="text-align: center;"><img src="legend/calcio30_60_2_BOSQUE0.png" /></td><td>BOSQUE</td></tr><tr><td style="text-align: center;"><img src="legend/calcio30_60_2_MEDIO1.png" /></td><td>MEDIO</td></tr><tr><td style="text-align: center;"><img src="legend/calcio30_60_2_BAJO2.png" /></td><td>BAJO</td></tr></table>';
+      var ca_0_30 =
+        'Calcio de 0 a 30<br /><table><tr><td style="text-align: center;"><img src="legend/calcio_0_30_3_BOSQUE0.png" /></td><td>BOSQUE</td></tr><tr><td style="text-align: center;"><img src="legend/calcio_0_30_3_BAJO1.png" /></td><td>BAJO</td></tr></table>';
+      var z_0_30 =
+        'Zinc de 0 a 30<br /><table><tr><td style="text-align: center;"><img src="legend/zinc0_30_19_ALTO0.png" /></td><td>ALTO</td></tr><tr><td style="text-align: center;"><img src="legend/zinc0_30_19_MEDIO1.png" /></td><td>MEDIO</td></tr><tr><td style="text-align: center;"><img src="legend/zinc0_30_19_BAJO2.png" /></td><td>BAJO</td></tr><tr><td style="text-align: center;"><img src="legend/zinc0_30_19_BOSQUE3.png" /></td><td>BOSQUE</td></tr></table>';
+      var mn_0_30 =
+        'Manganeso de 0 a 30<br /><table><tr><td style="text-align: center;"><img src="legend/Manganeso0_30_12_ALTO0.png" /></td><td>ALTO</td></tr><tr><td style="text-align: center;"><img src="legend/Manganeso0_30_12_MEDIO1.png" /></td><td>MEDIO</td></tr><tr><td style="text-align: center;"><img src="legend/Manganeso0_30_12_BAJO2.png" /></td><td>BAJO</td></tr><tr><td style="text-align: center;"><img src="legend/Manganeso0_30_12_BOSQUE3.png" /></td><td>BOSQUE</td></tr></table>';
+      var f_0_30 =
+        'Hierro de 0 a 30<br /><table><tr><td style="text-align: center;"><img src="legend/hierro0_30_8_ALTO0.png" /></td><td>ALTO</td></tr><tr><td style="text-align: center;"><img src="legend/hierro0_30_8_BOSQUE1.png" /></td><td>BOSQUE</td></tr></table>';
+      var cu_0_30 =
+        'Cobre de 0 a 30<br /><table><tr><td style="text-align: center;"><img src="legend/cobre0_30_4_ALTO0.png" /></td><td>ALTO</td></tr><tr><td style="text-align: center;"><img src="legend/cobre0_30_4_MEDIO1.png" /></td><td>MEDIO</td></tr><tr><td style="text-align: center;"><img src="legend/cobre0_30_4_BAJO2.png" /></td><td>BAJO</td></tr><tr><td style="text-align: center;"><img src="legend/cobre0_30_4_BOSQUE3.png" /></td><td>BOSQUE</td></tr></table>';
+      var bo_0_30 =
+        'Boro de 0 a 30<br /><table><tr><td style="text-align: center;"><img src="legend/boro0_30_0_MEDIO0.png" /></td><td>MEDIO</td></tr><tr><td style="text-align: center;"><img src="legend/boro0_30_0_BAJO1.png" /></td><td>BAJO</td></tr><tr><td style="text-align: center;"><img src="legend/boro0_30_0_BOSQUE2.png" /></td><td>BOSQUE</td></tr></table>';
+      /* Conditions */
+
+      map.on("overlayadd", function (e0) {
+        if (e0.name === cutName) {
+          graficoCUT.style.display = "block";
+        } else if (e0.name === naName) {
+          graficoNA.style.display = "block";
+        } else if (e0.name === na60_90) {
+          graficoS60_90.style.display = "block";
+        } else if (e0.name === na30_60) {
+          graficoS30_60.style.display = "block";
+        } else if (e0.name === na0_30) {
+          graficoS0_30.style.display = "block";
+        } else if (
+          e0.name === k0_30 ||
+          e0.name === k30_60 ||
+          e0.name === k60_90
+        ) {
+          graficoK.style.display = "block";
+        } else if (e0.name === mg60_90) {
+          graficoMg60_90.style.display = "block";
+        } else if (e0.name === mg30_60) {
+          graficoMg30_60.style.display = "block";
+        } else if (e0.name === mg0_30) {
+          graficoMg0_30.style.display = "block";
+        } else if (
+          e0.name === p0_30 ||
+          e0.name === p30_60 ||
+          e0.name === p60_90
+        ) {
+          graficoP.style.display = "block";
+        } else if (e0.name === ca_0_30) {
+          graficoCa0_30.style.display = "block";
+        } else if (e0.name === ca_30_60) {
+          graficoCa30_60.style.display = "block";
+        } else if (e0.name === ca_60_90) {
+          graficoCa60_90.style.display = "block";
+        } else if (e0.name === z_0_30) {
+          graficoZ.style.display = "block";
+        } else if (e0.name === mn_0_30) {
+          graficoMn.style.display = "block";
+        } else if (e0.name === f_0_30) {
+          graficoF.style.display = "block";
+        } else if (e0.name === cu_0_30) {
+          graficoCu.style.display = "block";
+        } else if (e0.name === bo_0_30) {
+          graficoBo.style.display = "block";
+        }
+      });
+
+      map.on("overlayremove", function (e1) {
+        if (e1.name === cutName) {
+          graficoCUT.style.display = "none";
+        } else if (e1.name === naName) {
+          graficoNA.style.display = "none";
+        } else if (e1.name === na60_90) {
+          graficoS60_90.style.display = "none";
+        } else if (e1.name === na30_60) {
+          graficoS30_60.style.display = "none";
+        } else if (e1.name === na0_30) {
+          graficoS0_30.style.display = "none";
+        } else if (
+          e1.name === k0_30 ||
+          e1.name === k30_60 ||
+          e1.name === k60_90
+        ) {
+          graficoK.style.display = "none";
+        } else if (e1.name === mg60_90) {
+          graficoMg60_90.style.display = "none";
+        } else if (e1.name === mg30_60) {
+          graficoMg30_60.style.display = "none";
+        } else if (e1.name === mg0_30) {
+          graficoMg0_30.style.display = "none";
+        } else if (
+          e1.name === p0_30 ||
+          e1.name === p30_60 ||
+          e1.name === p60_90
+        ) {
+          graficoP.style.display = "none";
+        } else if (e1.name === ca_0_30) {
+          graficoCa0_30.style.display = "none";
+        } else if (e1.name === ca_30_60) {
+          graficoCa30_60.style.display = "none";
+        } else if (e1.name === ca_60_90) {
+          graficoCa60_90.style.display = "none";
+        } else if (e1.name === z_0_30) {
+          graficoZ.style.display = "none";
+        } else if (e1.name === mn_0_30) {
+          graficoMn.style.display = "none";
+        } else if (e1.name === f_0_30) {
+          graficoF.style.display = "none";
+        } else if (e1.name === cu_0_30) {
+          graficoCu.style.display = "none";
+        } else if (e1.name === bo_0_30) {
+          graficoBo.style.display = "none";
+        }
+      });
+    </script>
+  </body>
+</html>

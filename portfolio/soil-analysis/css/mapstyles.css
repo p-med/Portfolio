@@ -1,0 +1,19 @@
+img {
+    border-radius: 8px;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .Cantidades {
+    text-align: center;
+  }
+
+  .popupTitle {
+    text-align: center;
+    font-weight: bold;
+  }
+
+  table {
+    margin-left: auto;
+    margin-right: auto;
+  }

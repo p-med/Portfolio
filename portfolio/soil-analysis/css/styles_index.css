@@ -1,0 +1,250 @@
+body {
+  position: relative;
+  background-image: url('https://images.pexels.com/photos/15188097/pexels-photo-15188097/free-photo-of-aerial-view-of-a-truck-on-a-road-between-croplands.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.overlay {
+  position: absolute;
+  top: 20px; /* Adjust the top padding as needed */
+  left: 20px;  /*Adjust the left padding as needed */
+  right: 20px; /* Adjust the right padding as needed */
+  bottom: 70px; /* Adjust the bottom padding as needed */
+  width: 100%;
+  background-color: rgba(255, 252, 252, 0.3);
+  z-index: 1;
+  pointer-events: none;
+  border-radius: 30px;
+  backdrop-filter: blur(2px);
+}
+
+li {
+  list-style: none;
+}
+
+/*Nav-bar*/
+
+.navbar {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  width: 85%;
+  margin: auto;
+  box-sizing: border-box;
+  align-items: center;
+  height: 50px;
+  padding: 5rem;
+  z-index: 2;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #126d21;
+}
+
+a:hover {
+  color: #59260b !important;
+}
+
+.navbar img {
+  width: 60px;
+  height: 60px;
+}
+
+.navbar .nav-links ul {
+  display: flex;
+}
+
+.navbar .nav-links li {
+  margin: 30px;
+}
+
+.navbar .nav-links ul li.active a {
+  color: #59260b;
+  font-weight: bold;
+}
+
+.bi-list {
+  display: none;
+}
+
+.card-body i {
+  font-size: 45px;
+  text-align: center;
+  padding: 20px;
+}
+
+.navbar .current a {
+  color: #59260b;
+  font-weight: bold;
+}
+
+/*NAV BAR GPT SUGGESTIONS*/
+
+/* New CSS for responsive navigation */
+
+#menu-toggle {
+  font-size: 24px;
+  cursor: pointer;
+}
+
+#nav-links {
+  display: none;
+}
+
+/*HEADER*/
+
+.header {
+  height: 80vh;
+  width: 100%;
+}
+
+/*HEADER SECTION*/
+
+.content {
+  padding: 6rem 5rem 2rem 5rem;
+  text-align: center;
+}
+
+.content a {
+  text-decoration: none;
+  color: white;
+}
+
+/*Cards*/
+
+.card {
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  background-color: #f1f1f1;
+  transition: background-color 0.3s;
+  cursor: pointer;
+}
+
+.card:hover {
+  background-color: #d4d4d4;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.card-title {
+  text-align: center;
+  font-weight: bold;
+  color: #126d21;
+}
+
+.card p {
+  text-align: center;
+}
+
+
+.col-6 {
+  padding-top: 10rem;
+}
+
+.row {
+  padding-top: 3rem;
+}
+
+/*Footer*/
+
+.footer {
+  padding: 10px 0;
+  background-color: #eee;
+  width: 100%;
+}
+
+.footer img {
+  width: 100px;
+  margin: auto;
+}
+
+.footer a {
+  text-decoration: none;
+  color: #126d21;
+}
+
+.bi {
+  font-size: 26px;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: center;
+}
+
+.fo-elem {
+  text-align: center;
+  margin-top: auto;
+  margin-bottom: auto;
+  padding-left: 10px;
+}
+
+/*Detalles de ingreso*/
+
+.col {
+  text-align: center;
+  font-weight: bold;
+}
+
+@media (max-width: 767px) {
+  .card {
+    width: 100%;
+    overflow-x: auto; /* Add this line to enable horizontal scrolling */
+  }
+  .navbar {
+    text-align: center;
+    z-index: 3;
+  }
+  .logo {
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+  }
+  .content {
+    background-color: rgba(255, 252, 252, 0.5);
+    border-radius: 10%;
+    height: 60vh;
+    margin-bottom: 100px;
+  }
+  .footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+  }
+  .footer ul {
+    padding-left: 20%;
+    padding-top: 2%;
+  }
+  .overlay {
+    display: none;
+  }
+  .nav-links {
+    display: none;
+  }
+  .nav-links ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav-links ul li {
+    margin: 10px 0;
+  }
+
+  #nav-links.show {
+    overflow: hidden;
+  }
+}
+
+
+.content,
+.footer {
+  position: relative;
+  z-index: 2;
+}
+
