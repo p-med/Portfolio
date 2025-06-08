@@ -1334,10 +1334,7 @@
         zoomControl: true,
         maxZoom: 28,
         minZoom: 1,
-      }).fitBounds([
-        [-27.020473863091677, -56.67195485962017],
-        [-26.839393432721106, -56.307808778491925],
-      ]);
+      }).setView([-26.9290,-56.56],12);
       var hash = new L.Hash(map);
       map.attributionControl.setPrefix(
         '<text>Desarrollado por  </text><a href="https://www.linkedin.com/in/paulo-medina/" target="_blank">Paulo Medina</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot'
@@ -1362,22 +1359,39 @@
 
       /* ESRI WMS Layer */
 
-      map.createPane("pane_ESRISatelliteArcGISWorld_Imagery_0");
-      map.getPane("pane_ESRISatelliteArcGISWorld_Imagery_0").style.zIndex = 400;
-      var layer_ESRISatelliteArcGISWorld_Imagery_0 = L.tileLayer(
-        "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
-        {
-          pane: "pane_ESRISatelliteArcGISWorld_Imagery_0",
-          opacity: 1.0,
-          attribution: "",
-          minZoom: 1,
-          maxZoom: 28,
-          minNativeZoom: 0,
-          maxNativeZoom: 19,
-        }
-      );
-      layer_ESRISatelliteArcGISWorld_Imagery_0;
-      map.addLayer(layer_ESRISatelliteArcGISWorld_Imagery_0);
+// Define Basemaps
+var esriSatellite = L.tileLayer(
+  "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+  {
+    // Removed custom pane: Leaflet will use the default 'tilePane' which is correct for basemaps.
+    opacity: 1.0,
+    attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community', // Crucial attribution
+    minZoom: 1,
+    maxZoom: 19, // Set maxZoom equal to maxNativeZoom to avoid requesting non-existent tiles
+    minNativeZoom: 0,
+    maxNativeZoom: 19,
+  }
+);
+
+// You can add other basemaps here if you want a layer switcher
+var osm = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+  maxZoom: 19 // Standard OSM max zoom
+});
+osm.addTo(map);
+// Create a Layer Control for basemaps and overlays
+var baseMaps = {
+  "ESRI Satellite": esriSatellite,
+  "OpenStreetMap": osm,
+  // Add more basemaps as desired
+};
+
+var overlayMaps = {
+  // Your other data layers would go here
+};
+
+L.control.layers(baseMaps, overlayMaps).addTo(map);
+
 
       /* Capa % Sodio */
 

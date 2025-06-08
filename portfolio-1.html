@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/layout.css">
-    <title>Soil Analysis</title>
+    <title>Soil Analysis Visualization</title>
 </head>
+
 <body>
     <header></header>
     <nav>
@@ -14,11 +16,55 @@
         <a href="#portfolio">Portfolio</a>
         <a href="#contact">Contact</a>
     </nav>
-    <div id="content" style="text-align: center;">
-        <h3>Soil Analysis</h3>
-        <p>As part of a consultancy work I extracted, transformed and loaded soil analysis results to a geodatabase for better management.</p>
-        <p>After preparing the data, I prepared an interactive map for better visaluzation.</p>
+    <div id="content" style="margin: 1% 15%; text-align: center;">
+        <h3 style="text-align: center;">Soil Analysis</h3>
+        <p style="text-align: justify;">This project involved providing a comprehensive solution for a consulting client
+            to better manage and visualize their soil analysis results.
+            The initial phase focused on data management, where I performed Extract, Transform, Load (ETL) operations to
+            process raw soil analysis data
+            and integrate it into a robust geodatabase.</p>
+        <p style="text-align: justify;">Following data preparation, I moved on to data visualization. I developed an
+            interactive web map using Leaflet JS.
+            This map allowed the client to dynamically explore their soil analysis data,
+            providing a clear and intuitive understanding of spatial patterns and trends.</p>
         <iframe src="portfolio/soil-analysis/soil-analysis.html" frameborder="0" height="600" width="1000"></iframe>
+        <p style="text-align: justify;">A key enhancement to the interactive map is the integration of Chart.js graphs.
+            These charts are dynamically linked to the map layers,
+            providing additional analytical depth. Specifically, the graphs visualize:
+        </p>
+        <ul style="list-style: disc; text-align: left;">
+            <li>The share of land for each type of soil, offering a quick overview of soil composition across the
+                surveyed area.</li>
+            <li>The distribution of nutrients and micronutrients, providing insights into soil fertility.</li>
+            <li>The suitability of the land for agriculture based on the soil analysis, directly supporting agricultural
+                planning and decision-making.</li>
+        </ul>
+        <p style="text-align: justify;">A key benefit of this solution was its accessibility. Since the client lacked a
+            dedicated enterprise GIS (Geographic Information System),
+            the web-based interactive map provided a powerful alternative. It empowered them to visualize and analyze
+            their data independently,
+            driving business decisions with greater ease and efficiency without the need for expensive software licenses
+            or specialized training.
+        </p>
+    </div>
+    <div id="contact">
+        <div class="row">
+            <div class="column" style="text-align: left; padding-left: 200px;">
+                <p style="color: aliceblue;">Paulo Medina</p>
+            </div>
+            <div class="column" style="text-align: right; padding-right: 200px;">
+                <a style="padding-right: 20px;" href="mailto:pcmedina.avalos@gmail.com"><img
+                        style="height: 30px; padding-top: 20px;"
+                        src="https://img.icons8.com/?size=100&id=Y2GfpkgYNp42&format=png&color=ffffff" alt=""
+                        srcset=""></a>
+                <a style="padding-right: 20px;" href="https://www.linkedin.com/in/paulo-medina/"><img
+                        style="height: 30px; padding-top: 20px;"
+                        src="https://img.icons8.com/?size=100&id=60444&format=png&color=ffffff" alt=""></a>
+                <a href="https://github.com/p-med"><img style="height: 30px; padding-top: 20px;"
+                        src="https://img.icons8.com/?size=100&id=12599&format=png&color=ffffff" alt=""></a>
+            </div>
+        </div>
     </div>
 </body>
+
 </html>

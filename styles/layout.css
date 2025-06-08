@@ -4,7 +4,7 @@ body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
   padding: 0;
-    overflow-x: hidden;
+  overflow-x: hidden;
 }
 
 h1 {
@@ -149,28 +149,29 @@ ul.portfolio-list li {
   backface-visibility: hidden;
 }
 .desc {
-  transition: 0.5s ease;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
   opacity: 0;
+  transition: 0.5s ease;
+  background-color: #273946;
+}
+
+.container:hover .desc {
+  opacity: 0.85;
+}
+
+.text {
+  color: white;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
-  text-align: center; /* Center the text inside the description */
-}
-.container:hover .portfolio-image {
-  opacity: 0.3;
-}
-
-.container:hover .desc {
-  opacity: 1;
-}
-
-.text {
-  background-color: #22577a;
-  color: white;
-  font-size: 11px;
-  padding: 5px 5px;
 }
 /*Contact*/
 #contact {
