@@ -144,7 +144,7 @@ ul.portfolio-list li {
   opacity: 1;
   display: block; /* Important for images inside flex items */
   width: auto;
-  height: 350px;
+  height: 20vw;
   transition: 0.5s ease;
   backface-visibility: hidden;
 }
@@ -170,6 +170,7 @@ ul.portfolio-list li {
   position: absolute;
   top: 50%;
   left: 50%;
+  width: 90%;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
 }
