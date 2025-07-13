@@ -35,16 +35,23 @@ tr {
   vertical-align: top;
   line-height: 1.7em;
 }
+#contact {
+  position: static;
+  bottom: 0;
+  width: 100%;
+}
 /*nav*/
 nav {
   width: 100%;
   text-align: center;
-  height: 20px;
+  position: sticky;
+  height: 60px;
 }
 
 nav a {
-  margin-top: 10px;
-  padding: 0 2%;
+  position: sticky;
+  padding: 0 3%;
+  top: 2%;
   text-align: center;
   text-decoration: none;
   font-size: larger;
@@ -54,13 +61,14 @@ nav a {
   font-weight: normal;
 }
 
-nav a:hover {
+nav .active, a:hover {
   color: #036666;
-  border-bottom: 3px solid #22577a;
+  font-weight: 500;
+  border-bottom: 5px solid #22577a;
   transition: 0.5s;
 }
 
-nav a.active {
+nav a:active {
   color: #036666;
   border-bottom: 3px solid #22577a;
   transition: 0.5s;
@@ -183,4 +191,8 @@ ul.portfolio-list li {
 }
 .column {
   flex: 50%;
+}
+/*Work Experience*/
+.work-experience h1 {
+  text-align: center;
 }
