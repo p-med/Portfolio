@@ -2,10 +2,7 @@
 * {
   margin: 0;
   box-sizing: border-box;
-}
-/*---IMAGE---*/
-.profile-picture img {
-    height: 35vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 /*---GRID LAYOUT STYLES---*/
 .grid-container {
@@ -30,11 +27,9 @@
 }
 .profile-picture {
     grid-area: profile-picture;
-    background-color: #22577a;
 }
 .bio {
     grid-area: bio;
-    background-color: #22577a;
 }
 .experience-title {
     grid-area: experience-title;
@@ -46,4 +41,38 @@
 
 .right-job {
     grid-column: 2/2;
+}
+
+.footer {
+    grid-column: 1 / span 2;
+}
+/*---IMAGE & COLORS---*/
+.profile-picture img {
+    height: 35vh;
+}
+
+.hero {
+    background-color: #22577a;
+    color: aliceblue;
+}
+
+/*-footer-*/
+
+.footer {
+    background-color: #22577a;
+}
+.footer p {
+    color: aliceblue;
+    margin: 0 auto;
+}
+.footer img {
+    height: 30px;
+    margin-left: 30px;
+}
+
+/*-nav-*/
+
+.nav {
+    text-align: center;
+    
 }
