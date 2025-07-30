@@ -1,0 +1,49 @@
+/*---GENERAL---*/
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+/*---IMAGE---*/
+.profile-picture img {
+    height: 35vh;
+}
+/*---GRID LAYOUT STYLES---*/
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    "nav nav"
+    "profile-picture bio"
+    "experience-title experience-title"
+    "left right"
+    "footer footer";
+  grid-template-columns: auto;
+}
+
+.grid-container > div {
+  padding: 10px;
+  font-size: 16px;
+}
+
+.nav-container {
+    grid-area: nav;
+    width: 100%;
+}
+.profile-picture {
+    grid-area: profile-picture;
+    background-color: #22577a;
+}
+.bio {
+    grid-area: bio;
+    background-color: #22577a;
+}
+.experience-title {
+    grid-area: experience-title;
+}
+
+.left-job {
+    grid-column: 1/1;
+}
+
+.right-job {
+    grid-column: 2/2;
+}
