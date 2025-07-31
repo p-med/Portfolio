@@ -1,10 +1,13 @@
 /*---GENERAL---*/
+
 * {
   margin: 0;
   box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
+
 /*---GRID LAYOUT STYLES---*/
+
 .grid-container {
   display: grid;
   grid-template-areas:
@@ -12,7 +15,7 @@
     "profile-picture bio"
     "experience-title experience-title"
     "left right"
-    "footer footer";
+    "footer-name footer-links";
   grid-template-columns: auto;
 }
 
@@ -22,57 +25,67 @@
 }
 
 .nav-container {
-    grid-area: nav;
-    width: 100%;
+  grid-area: nav;
+  width: 100%;
 }
+
 .profile-picture {
-    grid-area: profile-picture;
+  grid-area: profile-picture;
 }
+
 .bio {
-    grid-area: bio;
+  grid-area: bio;
 }
+
 .experience-title {
-    grid-area: experience-title;
+  grid-area: experience-title;
 }
 
 .left-job {
-    grid-column: 1/1;
+  grid-column: 1/1;
 }
 
 .right-job {
-    grid-column: 2/2;
+  grid-column: 2/2;
 }
 
-.footer {
-    grid-column: 1 / span 2;
+.footer-name {
+  grid-column: 1/1;
+}
+
+.footer-link {
+  grid-column: 2/2;
 }
 /*---IMAGE & COLORS---*/
 .profile-picture img {
-    height: 35vh;
+  height: 35vh;
 }
 
 .hero {
-    background-color: #22577a;
-    color: aliceblue;
+  background-color: #22577a;
+  color: aliceblue;
 }
 
-/*-footer-*/
+/*---FOOTER---*/
 
-.footer {
-    background-color: #22577a;
-}
-.footer p {
-    color: aliceblue;
-    margin: 0 auto;
-}
-.footer img {
-    height: 30px;
-    margin-left: 30px;
+.footer-name,
+.footer-link {
+  background-color: #22577a;
+  color: aliceblue;
+  text-align: center;
 }
 
-/*-nav-*/
+.footer-name > p {
+  padding: 5px;
+}
+
+.footer-link img {
+  height: 30px;
+  padding-right: 30px;
+}
+
+/*---NAV---*/
 
 .nav {
-    text-align: center;
-    
+  text-align: center;
 }
