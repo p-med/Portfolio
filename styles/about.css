@@ -1,0 +1,179 @@
+/*---GENERAL---*/
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/*---GRID LAYOUT STYLES---*/
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    "nav nav nav nav nav nav"
+    "profile-picture bio bio bio bio bio"
+    "experience-title experience-title experience-title experience-title experience-title experience-title"
+    "left left left right right right"
+    "footer-name footer-name footer-name footer-links footer-links footer-links";
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+.grid-container > div {
+  padding: 10px;
+  font-size: 16px;
+}
+
+.nav-container {
+  grid-area: nav;
+  grid-column: 1/ span 6;
+  width: 100%;
+}
+
+.profile-picture {
+  grid-area: profile-picture;
+  grid-column: 1/ span 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bio {
+  grid-area: bio;
+  grid-column: 3/ span 6;
+  height: 500px;
+    display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.experience-title {
+  grid-area: experience-title;
+  grid-column: 1/ span 6;
+}
+
+.left-job {
+  grid-column: 1 / span 3;
+}
+
+.right-job {
+  grid-column: 4 / span 6;
+}
+
+.footer-name {
+  grid-column: 1/ span 3;
+}
+
+.footer-link {
+  grid-column: 4/ span 6;
+}
+
+/*---HERO---*/
+
+.bio, .profile-picture {
+    background-color: #22577a;
+}
+
+.profile-picture img {
+  height: 300px;
+  padding-left: 30%;
+}
+
+.bio > p {
+  color: aliceblue;
+  padding-right: 15%;
+}
+
+.bio a {
+  color: #fff;
+  font-weight: bold;
+}
+
+/*---JOB DESCRIPTIONS---*/
+
+.right-job {
+    margin: 1% 20% 5px 5px;
+}
+
+.left-job {
+    margin: 1% 5px 5px 20%;
+}
+
+.left-job, .right-job {
+  margin-bottom: 15px;
+}
+
+.right-job > p, 
+.left-job > p {
+    text-align: left;
+    font-style: italic;
+}
+
+.right-job > ul, 
+.left-job > ul {
+  line-height: 200%;   
+}
+
+.left-job ul {
+padding-left: 50px;
+}
+
+.right-job ul{
+padding-right: 50px;
+}
+
+/*---FOOTER---*/
+
+.footer-name,
+.footer-link {
+  background-color: #22577a;
+  color: aliceblue;
+  text-align: center;
+}
+
+.footer-name > p {
+  padding: 5px;
+}
+
+.footer-link img {
+  height: 30px;
+  padding-right: 30px;
+}
+
+/*---NAV---*/
+
+.nav-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+}
+
+.nav {
+
+  padding-left: 2%;
+  padding-right: 2%;
+  padding-bottom: 1%;
+  font-size: larger;
+  color: #22577a;
+  font-weight: 600;
+}
+
+.nav-container a {
+  text-decoration: none;
+  border-bottom: 5px solid #ffffff;
+  font-weight: 600;
+  font-size: larger;
+}
+
+.nav-container a:hover {
+  color: #036666;
+  font-weight: 600;
+  font-size: larger;
+  border-bottom: 5px solid #22577a;
+  transition: 0.5s;
+}
+
+.active a {
+    border-bottom: 5px solid #22577a;
+}
