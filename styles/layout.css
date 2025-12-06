@@ -136,6 +136,17 @@ td {
 .footer-link {
   background-color: #22577a;
   color: aliceblue;
+  height: 50px;
+  width: 100%;
+  bottom: 0;
+  position: fixed;
+}
+
+.footer-link {
+  left: 65%;
+}
+.footer-name {
+  right: 25%;
 }
 
 .footer-name > p {
