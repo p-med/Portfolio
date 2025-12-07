@@ -32,8 +32,96 @@
             <div class="map">
                 <img src="images/fire_comparison_map.png" alt="Fire prediction output">
             </div>
+            <br>
             <div class="text">
-
+                <h2>Data</h2>
+                <hr>
+                <h3>Fire Event Data</h3>
+                <p>
+                    MODIS FIRMS fire detection data (2015-2024) were obtained
+                    and spatially clipped to the Paraguayan Chaco region, resulting
+                    in 544,034 fire observations. Each fire event was assigned a
+                    unique identifier and retained essential attributes: date,
+                    coordinates, and fire status ("yes").
+                </p>
+                <h3>Fire Absence Generation</h3>
+                <p>
+                    Non-fire observations were generated using stratified random
+                    sampling. For each year in the study period (2015-2024), 4,000
+                    spatially random points were created within the Chaco boundary
+                    using GeoPandas' sample_points() method. Random dates
+                    were assigned to each point using a custom function accounting
+                    for month length and leap years, ensuring temporal distribution
+                    matched the fire event dataset. This process generated 40,000
+                    non-fire observations, resulting in a final dataset of 584,034
+                    observations.
+                </p>
+                <h3>Explanatory variables extraction</h3>
+                <p>
+                    Predictor variables were extracted at each observation point
+                    location using Python's Earth Engine API and batch processing
+                    workflows to manage computational constraints.
+                </p>
+                <h3>Climate Variables (6-day temporal aggregation):</h3>
+                <ul>
+                    <li>Precipitation (CHIRPS Daily): Mean of preceding 6 days</li>
+                    <li>Wind speed (NOAA CFSV2): Calculated from U and V
+                        components using √(U² + V²), averaged over 6 days</li>
+                    <li>Maximum and minimum air temperature (NOAA CFSV2): 6-day
+                        averages</li>
+                    <li>Land surface temperature (MODIS MOD11A1): Most recent 8-
+                        day composite</li>
+                    <li>Potential evaporation (NOAA CFSV2): Most recent 8-day value
+                        Vegetation and Land Cover</li>
+                    <li>NDVI (Landsat 32-day composite): Most recent monthly
+                        composite</li>
+                    <li>Land use classification (MODIS MCD12Q1): Annual UMD
+                        classification</li>
+                    <li>Degree of urbanization (JRC GHSL): Settlement density
+                        classification</li>
+                </ul>
+                <h3>Proximity Variables</h3>
+                <p>Distance rasters were generated in ArcGIS Pro using Euclidean
+                    distance calculations from:</p>
+                <ul>
+                    <li>Road networks (Paraguayan National Statistics Institute)</li>
+                    <li>Water bodies (Paraguayan National Statistics Institute)</li>
+                </ul>
+                <br>
+                <h2>Model Training</h2>
+                <hr>
+                <p>
+                    The consolidated dataset was split into training (80%, n=467,227)
+                    and validation (20%, n=116,807) sets using stratified sampling to
+                    maintain class distribution. The binary target variable was encoded
+                    as 1 (fire) and 0 (no fire).
+                    The model was trained using Scikit-learn with the following
+                    optimized hyperparameters:
+                </p>
+                <ul>
+                    <li>Number of trees: 100</li>
+                    <li>Maximum tree depth: 20</li>
+                    <li>Minimum samples per split: 10</li>
+                    <li>Class weighting: Balanced</li>
+                    <li>Random state: 42</li>
+                </ul>
+                <p>
+                    Hyperparameters were initially explored through 3-fold grid search
+                    cross-validation across 96 parameter combinations, with manual
+                    refinement to prioritize balanced performance between fire and
+                    non-fire detection.
+                </p>
+                <pre>
+                    <code>
+                    clf = ensemble.RandomForestClassifier(
+                        n_estimators=100,
+                        max_depth=20,
+                        min_samples_split=10,
+                        class_weight='balanced',
+                        random_state=42,
+                        oob_score=True)
+                    </code>
+                </pre>
             </div>
             <div class="code">
             </div>

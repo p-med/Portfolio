@@ -96,6 +96,10 @@ h4 {
     text-align: center;
 }
 
+#content li {
+    font-size: large;
+}
+
 /*---NAV---*/
 
 .nav-container {
@@ -169,28 +173,28 @@ h4 {
 
 /*CODE*/
 /* Styling for inline code */
-code {
-  font-family: monospace; /* Use a monospace font for readability */
-  background-color: #8a8888; /* Light gray background */
-  padding: 2px 4px; /* Small padding around the text */
-  border-radius: 3px; /* Slightly rounded corners */
-}
-
-/* Styling for code blocks */
 pre {
-  font-family: monospace;
-  background-color: #979899; /* Dark background for contrast */
-  color: #ffffff; /* Light text color for readability on dark background */
-  padding: 1em; /* Ample padding inside the block */
-  border-radius: 5px;
-  overflow-x: auto; /* Enable horizontal scrolling for long lines */
-  white-space: pre-wrap; /* Wrap long lines within the block */
+    background-color: #282c34; /* Dark background for the code block */
+    color: #abb2bf; /* Light text color for readability */
+    padding: 0px;
+    border-radius: 8px; /* Rounded corners */
+    overflow-x: auto; /* Horizontal scroll if code is too wide */
+    font-size: 0.9em;
+    line-height: 1.4;
+    margin-bottom: 0px;
 }
 
 pre code {
-  /* Reset background and padding for code within pre,
-     as pre already provides these */
-  background-color: transparent;
-  padding: 0;
-  border-radius: 0;
+    font-family: 'Monaco', 'Consolas', monospace; /* Monospace font */
+    display: block; /* Ensures code takes up full width within pre */
+}
+
+/* Styling for inline code */
+code {
+    background-color: #282c34; /* Light background for inline code */
+    color: #ffffff; /* Distinct color for inline code */
+    padding: 2px 5px;
+    border-radius: 4px;
+    font-family: 'Monaco', 'Consolas', monospace;
+    font-size: 0.85em;
 }
