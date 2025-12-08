@@ -19,6 +19,7 @@ html {
     "nav nav"
     "title title"
     "content content"
+    "pdf pdf"
     "footer-name footer-links";
   grid-template-columns: 4fr 2fr;
 }
@@ -40,6 +41,11 @@ html {
 
 .grid-container > div#content {
   grid-area: content;
+  width: 100%;
+}
+
+.grid-container > div#pdf {
+  grid-area: pdf;
   width: 100%;
 }
 
@@ -77,27 +83,42 @@ h4 {
   font-size: larger;
 }
 
-#title > h3, p {
+#title > h3,
+p {
   font-size: large;
 }
+
+#title a {
+  color: aliceblue;
+  font-weight: bold;
+}
+
+/*PDF*/
+
 
 /*---CONTENTS---*/
 
 #content {
-    padding-left: 15%;
-    padding-right: 15%;
-    padding-top: 1%;
-    padding-bottom: 5%;
+  padding-left: 15%;
+  padding-right: 15%;
+  padding-top: 1%;
+  padding-bottom: 5%;
 }
 
 #content .map img {
-    width: 100%;
-    margin: auto;
-    text-align: center;
+  width: 100%;
+  margin: auto;
+  text-align: center;
+}
+
+#content .text .graph img {
+  width: 50%;
+  margin: auto;
+  text-align: center;
 }
 
 #content li {
-    font-size: large;
+  font-size: large;
 }
 
 /*---NAV---*/
@@ -131,10 +152,6 @@ h4 {
   font-size: larger;
   border-bottom: 5px solid #22577a;
   transition: 0.5s;
-}
-
-.active a {
-  border-bottom: 5px solid #22577a;
 }
 
 /*---FOOTER---*/
@@ -171,30 +188,8 @@ h4 {
   align-items: center; /* Centers content vertically */
 }
 
-/*CODE*/
-/* Styling for inline code */
-pre {
-    background-color: #282c34; /* Dark background for the code block */
-    color: #abb2bf; /* Light text color for readability */
-    padding: 0px;
-    border-radius: 8px; /* Rounded corners */
-    overflow-x: auto; /* Horizontal scroll if code is too wide */
-    font-size: 0.9em;
-    line-height: 1.4;
-    margin-bottom: 0px;
-}
-
-pre code {
-    font-family: 'Monaco', 'Consolas', monospace; /* Monospace font */
-    display: block; /* Ensures code takes up full width within pre */
-}
-
-/* Styling for inline code */
-code {
-    background-color: #282c34; /* Light background for inline code */
-    color: #ffffff; /* Distinct color for inline code */
-    padding: 2px 5px;
-    border-radius: 4px;
-    font-family: 'Monaco', 'Consolas', monospace;
-    font-size: 0.85em;
+/*PDF*/
+.pdf {
+  width: 100%;
+  aspect-ratio: 4 / 3;
 }

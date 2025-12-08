@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="portfolio-styles.css">
     <script type="module" src="https://unpkg.com/md-block"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="scripts/script.js"></script>
     <title>Paulo Medina</title>
 </head>
 
@@ -15,7 +14,7 @@
     <div class="grid-container">
         <nav class="nav-container">
             <a class="nav" href="../index.html">Home</a>
-            <a class="nav active" href="../about.html">About</a>
+            <a class="nav" href="../about.html">About</a>
             <a class="nav" href="../portfolio.html">Portfolio</a>
         </nav>
         <div id="title" class="title">
@@ -26,6 +25,13 @@
                 objective of this project was to develop an empiric model that predicts the likelihood of a wildfire
                 occurrence within the Paraguayan Chaco region. This can help shape responses and preparedness of
                 response teams ahead of big fire events.</p>
+            <br>
+                <p>
+                Read more <a
+                    href="https://github.com/p-med/Wildfire-Early-Prediction/blob/main/Modeling%20Notebook.ipynb"
+                    target="_blank">here</a>.
+                | Look at the Poster <a href="pdf/wildfire-poster.html">here</a>.
+            </p>
 
         </div>
         <div id="content">
@@ -36,6 +42,7 @@
             <div class="text">
                 <h2>Data</h2>
                 <hr>
+                <br>
                 <h3>Fire Event Data</h3>
                 <p>
                     MODIS FIRMS fire detection data (2015-2024) were obtained
@@ -90,6 +97,7 @@
                 <br>
                 <h2>Model Training</h2>
                 <hr>
+                <br>
                 <p>
                     The consolidated dataset was split into training (80%, n=467,227)
                     and validation (20%, n=116,807) sets using stratified sampling to
@@ -111,19 +119,31 @@
                     refinement to prioritize balanced performance between fire and
                     non-fire detection.
                 </p>
-                <pre>
-                    <code>
-                    clf = ensemble.RandomForestClassifier(
-                        n_estimators=100,
-                        max_depth=20,
-                        min_samples_split=10,
-                        class_weight='balanced',
-                        random_state=42,
-                        oob_score=True)
-                    </code>
-                </pre>
-            </div>
-            <div class="code">
+                <br>
+                <h2>Model Validation</h2>
+                <hr>
+                <br>
+                <p>
+                    The Random Forest model demonstrated strong predictive
+                    performance on the validation dataset:
+                </p>
+                <ul>
+                    <li>Accuracy: 89.1%</li>
+                    <li>ROC-AUC: 0.885</li>
+                </ul>
+                <p>The model
+                    captures 95.3% of
+                    actual fire events</p>
+                <div class="graph">
+                    <img src="images/roc_curve.png" alt="ROC Curve">
+                </div>
+                <p>
+                    Only 4.7% of fires are
+                    missed 1,387 out of 47,253
+                </p>
+                <div class="graph">
+                    <img src="images/cfm.png" alt="">
+                </div>
             </div>
         </div>
         <div class="footer-name">
@@ -139,6 +159,7 @@
                     src="https://img.icons8.com/?size=100&id=12599&format=png&color=ffffff" alt="" /></a>
         </div>
     </div>
+    <script src="script.js"></script>
 </body>
 
 </html>
