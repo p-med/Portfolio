@@ -93,7 +93,19 @@ p {
   font-weight: bold;
 }
 
-/*PDF*/
+/*Table*/
+
+div.text-table > table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.text-table > table, .text-table th,
+.text-table td {
+  border-bottom: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
 
 
 /*---CONTENTS---*/

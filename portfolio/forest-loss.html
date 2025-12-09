@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="portfolio-styles.css">
+    <script type="module" src="https://unpkg.com/md-block"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Forest Loss Assessment</title>
+</head>
+
+<body>
+    <div class="grid-container">
+        <nav class="nav-container">
+            <a class="nav" href="../index.html">Home</a>
+            <a class="nav" href="../about.html">About</a>
+            <a class="nav" href="../portfolio.html">Portfolio</a>
+        </nav>
+        <div id="title" class="title">
+            <h2>Forest Loss assessment</h2>
+            <h3>On the Mbaracayu Reserve due to illegal logging, Amambay, Paraguay</h3>
+            <p>The aim of this project is to quantify the forest surface lost within 2018 to 2025
+                perdiod. To do this, Sentinel 2B images were classified using IsoData
+                Unsupervised Classification. To aid in classification, NIR, NDVI, and RGB bands
+                were used for analysis.</p>
+            <br>
+            <p>
+                Read more <a href="notebooks/forest-loss-assessment.html" target="_blank">here</a>.
+            </p>
+
+        </div>
+        <div id="content">
+            <div class="map">
+                <img src="images/Change_18_24.png" alt="Fire prediction output">
+            </div>
+            <br>
+            <div class="text">
+                <h2>Data</h2>
+                <hr>
+                <br>
+                <h3>Sentinel 2B</h3>
+                <p>
+                    The two periods to consider were 2018 and 2024. The images were classified using IsoData
+                    Unsupervised Classification. This method helped with the difficulty of differentiating between bare
+                    soil and burned areas, which difficulted a supervised classification approach.
+
+                    To aid in classification, <strong>NIR, NDVI, and RGB bands </strong>were used for analysis. Both
+                    images were obtained
+                    from Google Earth Engine and are provided by the Sentinel S2A sensor:
+                </p>
+                <table>
+                    <thead>
+                        <th>2018</th>
+                        <th>2024</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><img style="width: 100%;" src="images/Sentinel_2018.png" alt=""></td>
+                            <td><img style="width: 100%;" src="images/Sentinel_2024.png" alt=""></td>
+                        </tr>
+                        <tr>
+                            <td><img style="width: 100%;" src="images/Sentinel_2018_NBR.png" alt=""></td>
+                            <td><img style="width: 100%;" src="images/Sentinel_2024_NBR.png" alt=""></td>
+                        </tr>
+                        <tr>
+                            <td><img style="width: 100%;" src="images/Sentinel_2018_NDVI.png" alt=""></td>
+                            <td><img style="width: 100%;" src="images/Sentinel_2024_NDVI.png" alt=""></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h2>Classification results</h2>
+                <hr>
+                <br>
+                <p>A total of N = 50 ground truth points were used
+                    for 2018 and 2024, and N = 56 points for 2025.
+                </p>
+                <div class="text-table">
+                    <table>
+                        <thead>
+                            <th>Year</th>
+                            <th>Overall Accuracy</th>
+                            <th>Kappa Coefficient</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2018</td>
+                                <td>84 %</td>
+                                <td>0.752</td>
+                            </tr>
+                            <tr>
+                                <td>2024</td>
+                                <td>82%</td>
+                                <td>0.660</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <br>
+                <table>
+                    <thead>
+                        <th>2018 Classification</th>
+                        <th>2024 Classification</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><img style="width: 100%;" src="images/Class_2018.png" alt=""></td>
+                            <td><img style="width: 100%;" src="images/Class_2024.png" alt=""></td>
+
+                        </tr>
+                    </tbody>
+                </table>
+                <br>
+                <p>Total change detected below:</p>
+                <div class="text-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Change type</th>
+                                <th>Area in hectares</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Herbaceus-&gt;Forest</td>
+                                <td>8209.07</td>
+                            </tr>
+                            <tr>
+                                <td>Herbaceus-&gt;Bare Soil</td>
+                                <td>2440.67</td>
+                            </tr>
+                            <tr>
+                                <td>Forest-&gt;Herbaceus</td>
+                                <td>1912.03</td>
+                            </tr>
+                            <tr>
+                                <td>Forest-&gt;Bare Soil</td>
+                                <td>17183.76</td>
+                            </tr>
+                            <tr>
+                                <td>Bare Soil-&gt;Herbaceus</td>
+                                <td>219.75</td>
+                            </tr>
+                            <tr>
+                                <td>Bare Soil-&gt;Forest</td>
+                                <td>1010.59</td>
+                            </tr>
+                            <tr>
+                                <td>Other</td>
+                                <td>2710.58</td>
+                            </tr>
+                            <tr>
+                                <td>No Change</td>
+                                <td>38016.86</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="footer-name">
+            <p>Paulo Medina</p>
+        </div>
+        <div class="footer-link">
+            <a href="mailto:pcmedina.avalos@gmail.com" target="_blank"><img
+                    src="https://img.icons8.com/?size=100&id=Y2GfpkgYNp42&format=png&color=ffffff" alt=""
+                    srcset="" /></a>
+            <a href="https://www.linkedin.com/in/paulo-medina/" target="_blank"><img
+                    src="https://img.icons8.com/?size=100&id=60444&format=png&color=ffffff" alt="" /></a>
+            <a href="https://github.com/p-med" target="_blank"><img
+                    src="https://img.icons8.com/?size=100&id=12599&format=png&color=ffffff" alt="" /></a>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
