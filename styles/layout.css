@@ -14,7 +14,7 @@ html {
 /*---GRID LAYOUT STYLES---*/
 
 .grid-container {
-  min-height: 100vh;
+  
   display: grid;
   grid-template-areas:
     "nav nav"
