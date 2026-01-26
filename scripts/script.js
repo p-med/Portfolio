@@ -1,4 +1,3 @@
-<script>
   const form = document.getElementById('contact-form');
   const submitBtn = document.querySelector('.btn-submit');
   
@@ -36,4 +35,3 @@
       alert('Oops! Something went wrong. Please try emailing me directly at pcmedina.avalos@gmail.com');
     }
   });
-</script>
