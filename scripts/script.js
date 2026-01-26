@@ -1,14 +1,39 @@
-// Get the container element for nav links
-const nav_container = document.getElementById("nav-items");
-
-// Get all nav itmes inside the container
-const nav_item = nav_container.getElementsByClassName("nav")
-
-// Loop through the buttons and add the active class to the current/clicked button
-for (var i = 0; i < nav_item.length; i++) {
-    nav_item[i].addEventListener("click", function() {
-        const current = document.getElementsByClassName("active");
-        current[0].className = current[0].className.replace(" active", "");
-        this.className += " active"
-    });
-}
+<script>
+  const form = document.getElementById('contact-form');
+  const submitBtn = document.querySelector('.btn-submit');
+  
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = 'Sending...';
+    submitBtn.disabled = true;
+    
+    const formData = new FormData(form);
+    
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+      
+      if (response.ok) {
+        form.innerHTML = `
+          <div style="text-align: center; padding: 40px; color: #354f52;">
+            <h3 style="margin-bottom: 10px;">✓ Message Sent!</h3>
+            <p style="color: #52796f;">Thanks for reaching out. I'll get back to you soon.</p>
+          </div>
+        `;
+      } else {
+        throw new Error('Form submission failed');
+      }
+    } catch (error) {
+      submitBtn.textContent = originalText;
+      submitBtn.disabled = false;
+      alert('Oops! Something went wrong. Please try emailing me directly at pcmedina.avalos@gmail.com');
+    }
+  });
+</script>

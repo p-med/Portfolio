@@ -339,17 +339,25 @@ nav {
   margin-bottom: 50px;
 }
 
+/* Contact Form Styles */
 .footer-container {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   flex-wrap: wrap;
-  gap: 30px;
+  gap: 50px;
+  margin-bottom: 40px;
+}
+
+.footer-msg {
+  flex: 1;
+  min-width: 300px;
 }
 
 .footer-msg h2 {
   font-size: 1.8rem;
   margin-bottom: 10px;
+  color: #354f52;
 }
 
 .footer-msg p {
@@ -357,9 +365,70 @@ nav {
   color: #52796f;
 }
 
+.contact-form {
+  flex: 1;
+  min-width: 300px;
+  max-width: 500px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid #dee2e6;
+  border-radius: 4px;
+  font-family: 'Fira Sans', sans-serif;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+  background-color: #ffffff;
+  color: #354f52;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #008cba;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 12px 25px;
+  background-color: #354f52;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: 'Fira Sans', sans-serif;
+}
+
+.btn-submit:hover {
+  background-color: #52796f;
+}
+
+.btn-submit:disabled {
+  background-color: #8ba8a5;
+  cursor: not-allowed;
+}
+
 .footer-links {
   display: flex;
+  justify-content: center;
   gap: 25px;
+  margin-top: 40px;
+  padding-top: 30px;
+  border-top: 1px solid #dee2e6;
 }
 
 .footer-links a {
@@ -381,6 +450,27 @@ nav {
   text-align: center;
   font-size: 0.8rem;
   opacity: 0.7;
+}
+
+/* Mobile responsive footer */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .contact-form {
+    max-width: 100%;
+  }
+  
+  .footer-msg {
+    min-width: 100%;
+  }
+  
+  .footer-links {
+    flex-direction: column;
+    gap: 15px;
+  }
 }
 
 /* Mobile responsive footer */

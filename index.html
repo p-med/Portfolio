@@ -267,35 +267,52 @@
     </div>
   </section>
   <!-- FOOTER -->
-  <footer id="contact">
+<!-- FOOTER -->
+<footer id="contact">
 
-    <hr class="footer-divider">
+  <hr class="footer-divider">
 
-    <div class="footer-container">
-      <div class="footer-msg">
-        <h2>Let's build something spatial.</h2>
-        <p>Currently open to new opportunities in Geospatial Data Engineering and Remote Sensing.</p>
-      </div>
-
-      <div class="footer-links">
-        <a href="mailto:pcmedina.avalos@gmail.com" title="Email">
-          <i class="fas fa-envelope"></i> Email
-        </a>
-        <a href="https://linkedin.com/in/paulo-medina" target="_blank" title="LinkedIn">
-          <i class="fab fa-linkedin"></i> LinkedIn
-        </a>
-        <a href="https://github.com/p-med" target="_blank" title="GitHub">
-          <i class="fab fa-github"></i> GitHub
-        </a>
-      </div>
-
+  <div class="footer-container">
+    
+    <div class="footer-msg">
+      <h2>Let's build something spatial.</h2>
+      <p>Currently open to new opportunities in Geospatial Data Engineering and Remote Sensing.</p>
     </div>
 
-    <div class="footer-bottom">
-      <p>&copy; 2026 Paulo Medina | Built with HTML and CSS</p>
+    <div class="contact-form">
+      <form action="https://formspree.io/f/mjgwrezg" method="POST" id="contact-form">
+        <div class="form-group">
+          <input type="text" name="name" placeholder="Your Name" required>
+        </div>
+        <div class="form-group">
+          <input type="email" name="email" placeholder="Your Email" required>
+        </div>
+        <div class="form-group">
+          <textarea name="message" placeholder="Tell me about your project or opportunity" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="btn-submit">Send Message</button>
+      </form>
     </div>
 
-  </footer>
+  </div>
+
+  <div class="footer-links">
+    <a href="mailto:pcmedina.avalos@gmail.com" title="Email" aria-label="Email Paulo">
+      <i class="fas fa-envelope"></i> Email
+    </a>
+    <a href="https://linkedin.com/in/paulo-medina" target="_blank" title="LinkedIn" aria-label="Paulo's LinkedIn">
+      <i class="fab fa-linkedin"></i> LinkedIn
+    </a>
+    <a href="https://github.com/p-med" target="_blank" title="GitHub" aria-label="Paulo's GitHub">
+      <i class="fab fa-github"></i> GitHub
+    </a>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; 2026 Paulo Medina | Built with Code & Geography</p>
+  </div>
+
+</footer>
 </body>
 <!-- END -->
 
