@@ -98,6 +98,17 @@ nav {
 }
 .profile-picture img {
   width: 300px;
+  border-radius: 8px; /* Matches your other images */
+  box-shadow: 8px 8px 0px #e8f0f0; /* Consistent with featured cards */
+}
+.bio p {
+  margin-bottom: 1rem; /* Add space between paragraphs */
+  line-height: 1.6; /* Improves readability */
+}
+
+.bio h1 {
+  margin-bottom: 1.5rem;
+  color: #354f52;
 }
 /*Featured*/
 #featured-projects {
@@ -129,14 +140,15 @@ nav {
 }
 
 .featured-image img {
+  width: 100%; /* Makes all images consistent size */
   max-width: 500px;
-  border-radius: 8px;
-  box-shadow: 15px 15px 0px #e8f0f0; /* The signature offset shadow */
-  transition: transform 0.3s ease;
+  height: 400px; /* Fixed height */
+  object-fit: cover; /* Crops nicely if aspect ratio varies */
 }
 
 .featured-image img:hover {
   transform: scale(1.02);
+  transition: all 0.5s ease;
 }
 
 .featured-content {
@@ -228,6 +240,7 @@ nav {
 .container {
   position: relative;
   width: 100%;
+  min-height: 300px; /* Ensures consistent card heights */
 }
 
 .image {
@@ -246,7 +259,10 @@ nav {
   width: 100%;
   opacity: 0;
   transition: 0.5s ease;
-  background-color: #354f52b9;
+  background-color: #354f52d7;
+  display: flex;
+  align-items: center; /* Centers content vertically */
+  justify-content: center;
 }
 
 .container:hover .overlay {
@@ -258,9 +274,14 @@ nav {
   padding: 20px; /* Keeps text away from the edges */
   width: 90%; /* Forces the text to use most of the box width */
   text-align: center;
-  font-size: 14px; /* Adjusted for long descriptions */
+  font-size: 16px; /* Adjusted for long descriptions */
   line-height: 1.4;
   /* Removed absolute positioning and transforms—Flexbox above handles this now */
+}
+
+.text ul {
+  text-align: left; /* Left-align bullet points for readability */
+  max-width: 90%;
 }
 
 /*---Button---*/

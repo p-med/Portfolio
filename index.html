@@ -10,12 +10,21 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
     rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+   <!-- Open Graph for social media -->
+  <meta property="og:title" content="Paulo Medina | Geospatial Data Engineer">
+  <meta property="og:description" content="Portfolio showcasing geospatial projects in machine learning, remote sensing, and data visualization.">
+  <meta property="og:image" content="https://p-med.github.io/Portfolio/assets/images/pp.jpg">
+  <meta property="og:url" content="https://p-med.github.io/Portfolio/">
   <title>Paulo Medina</title>
 </head>
 
 <body>
+  <!-- HEADER -->
   <header>
+
     <nav>
+
       <div class="nav-child">
         <a href="#home">Home</a>
         <a href="#about">About</a>
@@ -23,24 +32,32 @@
         <a href="#contact">Get in touch</a>
         <a href="assets/resume/Paulo_Medina_Resume.pdf" target="_blank">Resume</a>
       </div>
+
     </nav>
+
   </header>
+  <!-- HERO CONTAINER -->
   <div id="home" class="hero-container">
+
     <div class="hero-text">
       <h1>Paulo Medina</h1>
       <h4>Geospatial Data Engineer</h4>
     </div>
+
     <div class="intro">
       <p>I am an experienced Geospatial Professional with vast experience processing geographic data,
         developing geospatial models, managing geospatial databases, and creating
         interactive maps and data visualizations to support global development, environmental initiatives, and
         business endeavors.</p>
     </div>
+
   </div>
+  <!-- ABOUT SECTION -->
   <section id="about">
     <div class="profile-picture">
       <img src="assets/images/pp.jpg" alt="">
     </div>
+
     <div class="bio">
       <h1>ABOUT ME</h1>
       <p>I'm a Forestry Engineer completing my M.S. in GIS at the University of Maryland this spring. My career has
@@ -56,7 +73,9 @@
         create measurable impact—where the mission is as important as the method.
       </p>
     </div>
+
   </section>
+  <!-- FEATURED PROJECTS -->
   <section id="featured-projects">
     <h1 class="section-title">Featured Work</h1>
 
@@ -109,52 +128,77 @@
         <div class="tech-stack">
           <span>Python (ArcPy)</span> <span>Spatial Statistics</span> <span>HTML Reporting</span>
         </div>
-        <a href="https://github.com/p-med/Road-Accident-Hotspot" class="btn-primary">GitHub Repository</a>
+        <a href="https://github.com/p-med/Road-Accident-Hotspot" target="_blank" class="btn-primary">GitHub
+          Repository</a>
       </div>
     </div>
   </section>
+  <!-- ALL OTHER PROJECTS -->
   <section id="projects">
     <h1>Projects</h1>
+
     <div class="row">
       <div class="column">
-        <div class="container"><img src="assets/images/02_portfolio.png">
+        <div class="container">
+          <img src="assets/images/02_portfolio.png" alt="Residential Tree Planting Dashboard">
           <div class="overlay">
             <div class="text">
-              <h2></h2>
-              <p></p>
-              <ul></ul>
+              <h2>Tree Planting & Carbon Tracking</h2>
+              <p>An ArcGIS Dashboard monitoring urban reforestation with automated carbon capture estimation.</p>
+              <ul>
+                <li>Python-driven environmental impact metrics.</li>
+                <li>Real-time spatial tracking of municipal planting.</li>
+              </ul>
+              <a class="button" href="https://www.arcgis.com/apps/dashboards/2132bcac259e4353907933908500f757"
+                target="_blank"><span>Explore Dashboard</span></a>
             </div>
           </div>
         </div>
-        <div class="container"><img src="assets/images/06_portfolio.png">
-          <div class="overlay">
-            <div class="text">
-              <h2></h2>
-              <p></p>
-              <ul></ul>
-            </div>
-          </div>
-        </div>
+
         <div class="container"><img src="assets/images/12_portfolio.png">
           <div class="overlay">
             <div class="text">
-              <h2></h2>
-              <p></p>
-              <ul></ul>
+              <h2>North Carolina Infant Mortality: Autocorrelation Study</h2>
+              <p>A rigorous statistical analysis of infant mortality patterns across North Carolina. This project moves
+                beyond simple heatmaps to prove statistical significance using global and local spatial autocorrelation
+                metrics.</p>
+              <ul>
+                <li>Methodology: Comparative analysis using Global Moran’s I and Getis-Ord G* to identify validated
+                  high-rate clusters (Hotspots) in the NE and SE regions.</li>
+                <li>Spatial Insights: Differentiated between "count" vs. "rate" patterns to identify socioeconomic
+                  outliers and statistically significant "Low-High" coastal anomalies.</li>
+                <li>Validation: Rejecting null hypotheses via Z-scores and P-value assessment to ensure data-driven
+                  public health conclusions.</li>
+              </ul>
+              <!-- <button class="button"><span>Read More</span></button> -->
             </div>
           </div>
         </div>
+
         <div class="container"><img src="assets/images/13_portfolio.png">
           <div class="overlay">
             <div class="text">
-              <h2></h2>
-              <p></p>
-              <ul></ul>
+              <h2>Lincoln City: Spatio-Temporal Crime Pattern Analysis</h2>
+              <p>
+                A multi-methodological study of auto-theft patterns in Lincoln City, Oregon. This project utilizes
+                hierarchical clustering and moving averages to provide actionable intelligence for law enforcement
+                resource allocation.
+              </p>
+              <ul>
+                <li>Clustering: Applied Nearest Neighbor Hierarchical (NNH) spatial clustering across multiple radii to
+                  identify 1st and 2nd order crime hotspots.</li>
+                <li>Temporal Modeling: Developed a Spatio-Temporal Moving Average (STMA) to track the geographic "drift"
+                  of incidents over time.</li>
+                <li>Comparison: Evaluated NNA vs. NNH to prove why hierarchical structures provide superior operational
+                  insights over simple distribution measures.</li>
+              </ul>
             </div>
           </div>
         </div>
+
       </div>
       <div class="column">
+
         <div class="container"><img src="assets/images/05_portfolio.png">
           <div class="overlay">
             <div class="text">
@@ -168,52 +212,91 @@
                 <li>Platform: ArcGIS Experience Builder / ArcGIS Online. Impact: Streamlined public access to city
                   amenities and improved digital engagement for the Parks & Recreation department.</li>
               </ul>
-              <button class="button"><span>Read more</span></button>
+              <a class="button" href="https://github.com/p-med/CP_Parks_data_prep" target="_blank"><span>Read
+                  more</span></a>
             </div>
           </div>
         </div>
+
         <div class="container"><img src="assets/images/04_portfolio.png">
           <div class="overlay">
-            <h2></h2>
-            <p></p>
-            <ul></ul>
-            <button class="button"></button>
+            <div class="text">
+              <h2>Paraguayan National budget 2024</h2>
+              <p>A comprehensive visualization of the 2024 Paraguayan national budget. This dashboard deconstructs
+                complex
+                governmental fiscal data into digestible hierarchies, allowing for transparency in public spending and
+                departmental allocations.</p>
+              <ul>
+                <li>Visualizations: Treemaps of institutional spending, year-over-year allocation shifts, and
+                  categorical
+                  breakdowns.</li>
+
+                <li>Data Engineering: Cleaned and structured raw public accounting datasets for interactive exploration.
+                </li>
+
+                <li>Value: Demonstrates the ability to apply data engineering principles to non-spatial financial
+                  sectors,
+                  emphasizing transparency and civic tech.</li>
+              </ul>
+              <a class="button"
+                href="https://public.tableau.com/app/profile/paulo.medina/viz/Paraguay2024NationalBudget/FuentesdeFinanciamiento"
+                target="_blank"><span>View Dashboard</span></a>
+
+            </div>
           </div>
         </div>
-        <div class="container"><img src="assets/images/01_portfolio.png">
+
+        <div class="container">
+          <img src="assets/images/01_portfolio.png" alt="Health Professionals Distribution">
           <div class="overlay">
-            <h2></h2>
-            <p></p>
-            <ul></ul>
-            <button class="button"></button>
+            <div class="text">
+              <h2>Health Workforce Logistics</h2>
+              <p>Visualizing healthcare coverage across Paraguay to identify regional disparities in medical
+                professional density.</p>
+              <ul>
+                <li>Interactive Tableau dashboard for policy planning.</li>
+                <li>Analyzed urban vs. rural specialist distribution.</li>
+              </ul>
+              <a href="https://public.tableau.com/app/profile/paulo.medina/viz/DistribuciondeProfesionalesdelaSalud/General"
+                target="_blank" class="button"><span>View Dashboard</span></a>
+            </div>
           </div>
         </div>
+
       </div>
     </div>
   </section>
+  <!-- FOOTER -->
   <footer id="contact">
-  <hr class="footer-divider">
-  <div class="footer-container">
-    <div class="footer-msg">
-      <h2>Let's build something spatial.</h2>
-      <p>Currently open to new opportunities in Geospatial Data Engineering and Remote Sensing.</p>
+
+    <hr class="footer-divider">
+
+    <div class="footer-container">
+      <div class="footer-msg">
+        <h2>Let's build something spatial.</h2>
+        <p>Currently open to new opportunities in Geospatial Data Engineering and Remote Sensing.</p>
+      </div>
+
+      <div class="footer-links">
+        <a href="mailto:pcmedina.avalos@gmail.com" title="Email">
+          <i class="fas fa-envelope"></i> Email
+        </a>
+        <a href="https://linkedin.com/in/paulo-medina" target="_blank" title="LinkedIn">
+          <i class="fab fa-linkedin"></i> LinkedIn
+        </a>
+        <a href="https://github.com/p-med" target="_blank" title="GitHub">
+          <i class="fab fa-github"></i> GitHub
+        </a>
+      </div>
+
     </div>
-    <div class="footer-links">
-      <a href="mailto:pcmedina.avalos@gmail.com" title="Email">
-        <i class="fas fa-envelope"></i> Email
-      </a>
-      <a href="https://linkedin.com/in/paulo-medina" target="_blank" title="LinkedIn">
-        <i class="fab fa-linkedin"></i> LinkedIn
-      </a>
-      <a href="https://github.com/p-med" target="_blank" title="GitHub">
-        <i class="fab fa-github"></i> GitHub
-      </a>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 Paulo Medina | Built with Code & Geography</p>
     </div>
-  </div>
-  <div class="footer-bottom">
-    <p>&copy; 2026 Paulo Medina | Built with Code & Geography</p>
-  </div>
-</footer>
+
+  </footer>
 </body>
+<!-- END -->
 
 </html>
