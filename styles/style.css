@@ -49,8 +49,9 @@ nav {
 }
 
 .nav-child a:hover {
-  border-bottom-color: #354f52;
-  transition: 0.9ms;
+  color: #008cba;
+  border-bottom-color: #008cba;
+  transition: all 0.3s ease;
 }
 
 /*Hero*/
@@ -143,7 +144,7 @@ nav {
 }
 
 .tag {
-  color: #008CBA;
+  color: #008cba;
   text-transform: uppercase;
   font-weight: 700;
   font-size: 0.8rem;
@@ -187,7 +188,8 @@ nav {
 
 /* Mobile Responsiveness */
 @media (max-width: 810px) {
-  .featured-card, .featured-card:nth-child(even) {
+  .featured-card,
+  .featured-card:nth-child(even) {
     flex-direction: column;
     gap: 30px;
   }
@@ -296,6 +298,80 @@ nav {
 .button:hover span:after {
   opacity: 1;
   right: 0;
+}
+/* Footer Styles */
+#contact {
+  padding: 60px 10% 20px 10%;
+  background-color: #f8f9fa;
+  color: #354f52;
+}
+
+.footer-divider {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(
+    to right,
+    transparent,
+    #354f52,
+    transparent
+  );
+  margin-bottom: 50px;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.footer-msg h2 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.footer-msg p {
+  font-weight: 300;
+  color: #52796f;
+}
+
+.footer-links {
+  display: flex;
+  gap: 25px;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: #354f52;
+  font-weight: 600;
+  font-size: 1.1rem;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #008cba;
+  border-bottom-color: #008cba;
+}
+
+.footer-bottom {
+  margin-top: 60px;
+  text-align: center;
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+/* Mobile responsive footer */
+@media (max-width: 600px) {
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+  }
+  .footer-links {
+    flex-direction: column;
+    gap: 15px;
+  }
 }
 /*Responsive controls*/
 /*--- Tablets (Up to 810px) ---*/
