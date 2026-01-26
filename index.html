@@ -17,8 +17,8 @@
   <header>
     <nav>
       <div class="nav-child">
-        <a href="#">About</a>
-        <a href="#">Projects</a>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
         <a href="#">Get in touch</a>
         <a href="#">Resume</a>
       </div>
@@ -36,8 +36,152 @@
         business endeavors.</p>
     </div>
   </div>
-  <section id="About"></section>
-  <section id="Projects"></section>
+  <section id="about">
+    <div class="profile-picture">
+      <img src="assets/images/pp.jpg" alt="">
+    </div>
+    <div class="bio">
+      <h1>ABOUT ME</h1>
+      <p>I'm a Forestry Engineer completing my M.S. in GIS at the University of Maryland this spring. My career has
+        taken me from forest inventory work to modeling public health indicators across Sub-Saharan Africa—always with
+        one constant: using spatial data to solve problems that matter. </p>
+      <p>
+        I've worked with multidisciplinary teams across continents, turning messy GPS datasets and survey data into
+        clear insights that inform real decisions. Whether it's mapping health outcomes for local governments or
+        managing geospatial databases for development programs, I'm drawn to work where precision meets purpose. </p>
+      <p>
+        Currently expanding into cloud infrastructure (training for AWS Solutions Architect certification) to build more
+        scalable geospatial solutions. I'm looking for my next role with organizations that use data and technology to
+        create measurable impact—where the mission is as important as the method.
+      </p>
+    </div>
+  </section>
+  <section id="featured-projects">
+    <h1 class="section-title">Featured Work</h1>
+
+    <div class="featured-card">
+      <div class="featured-image">
+        <img src="assets/images/fire_comparison_map.png" alt="Wildfire Risk Prediction">
+      </div>
+      <div class="featured-content">
+        <span class="tag">Machine Learning / GEE</span>
+        <h2>Wildfire Risk Prediction: Paraguayan Chaco</h2>
+        <p>A predictive modeling project utilizing <strong>Random Forest</strong> to estimate daily wildfire likelihood.
+          By integrating 24 years of FIRMS data with climate and topographic variables, this tool provides a robust
+          framework for early-warning systems.</p>
+        <div class="tech-stack">
+          <span>Python</span> <span>Scikit-Learn</span> <span>Google Earth Engine</span>
+        </div>
+        <a href="https://github.com/p-med/Wildfire-Early-Prediction" target="_blank" class="btn-primary">View Full Case Study</a>
+      </div>
+    </div>
+
+    <div class="featured-card">
+      <div class="featured-image">
+        <img src="assets/images/Change_18_24.png" alt="Forest Loss Analysis">
+      </div>
+      <div class="featured-content">
+        <span class="tag">Remote Sensing / Conservation</span>
+        <h2>Mbaracayú Reserve Forest Loss Assessment</h2>
+        <p>An analysis of illegal logging and wildfire impacts using <strong>Sentinel-2A multispectral data</strong>.
+          This study quantified over 19,000 hectares of forest disturbance using NDVI and NBR indices to identify
+          land-cover transitions.</p>
+        <div class="tech-stack">
+          <span>ArcGIS Pro</span> <span>Remote Sensing</span> <span>Change Detection</span>
+        </div>
+        <a href="portfolio/notebooks/forest-loss-assessment.html" target="_blank" class="btn-primary">Explore Methodology</a>
+      </div>
+    </div>
+
+    <div class="featured-card">
+      <div class="featured-image">
+        <img src="assets/images/07_portfolio.PNG" alt="Road Safety Tool">
+      </div>
+      <div class="featured-content">
+        <span class="tag">Automation / Spatial Stats</span>
+        <h2>Road Accident Hotspot Analysis Tool</h2>
+        <p>An automated <strong>ArcPy toolbox</strong> designed for urban safety engineering. It streamlines the
+          identification of statistically significant (Getis-Ord Gi*) crash clusters, reducing data preparation time by
+          80%.</p>
+        <div class="tech-stack">
+          <span>Python (ArcPy)</span> <span>Spatial Statistics</span> <span>HTML Reporting</span>
+        </div>
+        <a href="https://github.com/p-med/Road-Accident-Hotspot" class="btn-primary">GitHub Repository</a>
+      </div>
+    </div>
+  </section>
+  <section id="projects">
+    <h1>Projects</h1>
+    <div class="row">
+      <div class="column">
+        <div class="container"><img src="assets/images/02_portfolio.PNG">
+        <div class="overlay">
+          <div class="text">
+            <h2></h2>
+            <p></p>
+            <ul></ul>
+          </div>
+        </div>
+        </div>
+        <div class="container"><img src="assets/images/06_portfolio.png">
+        <div class="overlay">
+          <div class="text">
+            <h2></h2>
+            <p></p>
+            <ul></ul>
+          </div>
+        </div>
+        </div>
+        <div class="container"><img src="assets/images/12_portfolio.png">
+        <div class="overlay">
+          <div class="text">
+            <h2></h2>
+            <p></p>
+            <ul></ul>
+          </div>
+        </div>
+        </div>
+        <div class="container"><img src="assets/images/13_portfolio.png">
+        <div class="overlay">
+          <div class="text">
+            <h2></h2>
+            <p></p>
+            <ul></ul>
+          </div>
+        </div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="container"><img src="assets/images/05_portfolio.png">
+        <div class="overlay">
+          <h2>Web GIS / ArcGIS Experience Builder</h2>
+          <p>A resident-facing web application designed for the City of College Park to promote outdoor engagement. This portal aggregates municipal spatial data into a user-friendly interface, allowing residents to discover parks, trails, and recreational facilities in real-time.</p>
+          <ul>
+            <li>Key Features: Interactive filtering by activity type, mobile-responsive design, and integrated routing.</li>
+            <li>Platform: ArcGIS Experience Builder / ArcGIS Online. Impact: Streamlined public access to city amenities and improved digital engagement for the Parks & Recreation department.</li>
+          </ul>
+          <button class="button"></button>
+        </div>
+        </div>
+        <div class="container"><img src="assets/images/04_portfolio.png">
+        <div class="overlay">
+          <h2></h2>
+          <p></p>
+          <ul></ul>
+          <button class="button"></button>
+        </div>
+        </div>
+        <div class="container"><img src="assets/images/01_portfolio.png">
+        <div class="overlay">
+          <h2></h2>
+          <p></p>
+          <ul></ul>
+          <button class="button"></button>
+        </div>
+        </div>
+      </div>
+    </div>
+  </section>
   <section id="Get-in-touch"></section>
 </body>
 
