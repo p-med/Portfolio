@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Paulo Medina" />
+  <title>Project Proposal - Digital Image Analsysis</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <style>
+
+  /* ---
+   * fixDefault.css - A fix to default Pandoc's CSS to be 
+   *    correctly displayed on a VS Code preview window,
+   *    and nicely printed on [digital] paper
+   *
+   * Ramon Solano <ramon.solano@gmail.com>
+   *
+   * usage: 
+   *    pandoc ... -H fixDefault.css ...
+   *
+   * V 1.0, Jul/2021
+   * --- 
+   */
+
+  body {
+  	font-family: inherit;
+  	font-size: inherit;
+  	color: inherit;
+  }
+
+  @media print {
+  	html,body {
+  		font-size: 10pt;
+  	}
+  	@page  {  
+  		size: auto;
+  	} 
+  }
+
+  </style>
+  <style>
+
+  /* ---
+   * article.css - A beautiful css to complement Pandoc's own
+   *
+   * Provides:
+   *    - Article-style title and headers
+   *    - Images and tables centered
+   *    - New `<aside>` env (right side)
+   *
+   * Ramon Solano <ramon.solano@gmail.com>
+   *
+   * usage: 
+   *    pandoc ... -H article.css ...
+   * 
+   * V1.0, Jul/2021
+   * ---
+   */
+
+  body {
+  	max-width: 40em;
+     word-wrap: break-word; 
+  }
+
+  header p {
+  	text-align: center;
+  }
+  header p.subtitle {
+  	font-size: 1.2em;
+  	line-height: 1.1em;
+  	margin: 0.5em 2em 2em;
+  /* 
+  	 margin-top: 0.5em;
+  	 margin-bottom: 2em;
+   */
+  }
+  header p.author {
+  	font-size: 1.1em;
+  	line-height: 0.5em;
+  	font-variant-caps: small-caps;
+  }
+  header p.date {
+  	font-size: 0.95em;
+  	margin: 3em;
+  }
+
+  header h1 {
+  	 line-height: 1em;
+  	 margin-bottom: 0em;
+  }
+  /* abstract header */
+  h3:first-child, #abstract {
+  	font-size: 1.2em;
+  	text-align: center;
+  	margin: 0.5em ;
+  }
+
+  /* abstract paragraph */
+  h3:first-child + p, #abstract + p {
+  	font-size: 0.9em;
+  	margin: 0em 4em;
+  	margin-bottom: 3em;
+  }
+
+  h1 {
+    font-size: 1.6em;
+  }
+  h2 {
+    font-size: 1.3em;
+  }
+  h3 {
+    font-size: 1.1em;
+    font-style: italic;
+  }
+  h1, h2, h3, h4 {
+    margin-top: 0.95em;
+    margin-bottom: 0.80em;
+  }
+
+  /* Justify and hyphenate all paragraphs */
+  p {
+    text-align: justify;
+  }
+      
+  /* center tables */
+  table {
+  	display: table;
+  	width: auto;
+  	margin-left: auto;
+  	margin-right: auto;
+  }
+  table caption {
+  	font-size: 0.95em;
+  }
+
+  /* centered figures  */
+  figure {
+    text-align: center;
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+  }
+  figcaption {
+    font-size: 0.95em;
+  }
+
+  /* lists: increase left margins */
+  ul, ol {
+    padding: 0 0 0 3em;
+  }    
+
+  /* new style: objects (figures, text) right side */
+  aside {
+    font-size: 0.9em;
+    width: 33%;
+    padding: 0 0 0 .8em;
+    margin: 1em 0 1em 1em;
+    float: right;
+  }
+  aside > *:first-child {
+    margin-top: 0;
+  }
+  aside > *:last-child {
+    margin-bottom: 0;
+  }
+
+  pre {
+    font-size: 0.87em;
+    line-height: 1.2em;
+    border: 1px solid #cccccc;
+    background: #f5f2f0;
+    padding: .7em;   
+  }
+
+  :not(pre) > code[class*="sourceCode"],
+  pre[class*="sourceCode"] {
+    background: #f5f2f0;
+  }
+
+  code {
+    color: #92000c;
+    font-size: .9em;
+  }
+
+  pre code {
+    color: unset;
+  }
+
+  a {
+    color: #0050a0;
+  }
+
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Project Proposal - Digital Image Analsysis</h1>
+<p class="author">Paulo Medina</p>
+</header>
+<h1
+id="forest-loss-assessment-on-the-mbaracayu-reserve-due-to-illegal-logging-amambay-paraguay">Forest
+Loss assessment on the Mbaracayu Reserve due to illegal logging,
+Amambay, Paraguay</h1>
+<h2 id="overview">Overview</h2>
+<p>Forest loss is a worldwide issue, with estimates of loss of 489
+million hectares since 1990 (FAO 2025). In this context, Paraguay is
+around the countries with larger net loss in this period, with dramatic
+loss numbers in recent years (FAO, 2025, Huang et al. 2007). The
+Paraguayan forest is composed by the Atlantic Forest ecoregion, the
+Cerrado ecoregion, and the Gran Chaco ecoregion. Amongst these, the
+Atlantic Forest is the most affected by deforestation, with its
+territory reduced by 75%. Because of this, maintenance and monitoring of
+existing protected areas is key to support the remaining biodiversity of
+the region and the ecosystemic services in the area. The Mbaracayu
+reserve is the largest and best preserved reserve in the region, with
+over 90% of its territory representing the Atlantic Forest ecoregion.
+Among the greatest threats of this reserve is illegal logging, which has
+only increased in recent times, fostered by illicit marihuana
+plantations that are planted in the edges of the reserve (Mongabay,
+2020).</p>
+<h2 id="objectives">Objectives</h2>
+<p>The objectives of this project are:</p>
+<ul>
+<li>Classify forest lost through 2018 to 2024</li>
+<li>Map spatial patterns of forest loss between time periods</li>
+<li>Quantify total forest loss in hectares and percentage of reserve
+area</li>
+</ul>
+<h2 id="image-preprocessing">Image Preprocessing</h2>
+<p>The two periods to consider were 2018 and 2024. The images were
+classified using IsoData Unsupervised Classification. This method helped
+with the difficulty of differentiating between bare soil and burned
+areas, which difficulted a supervised classification approach.</p>
+<p>To aid in classification, NIR, NDVI, and RGB bands were used for
+analysis. Both images were obtained from Google Earth Engine and are
+provided by the Sentinel S2A sensor:</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>September 06, 2018</th>
+<th>November 13, 2024</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="../images/Sentinel_2018.png" alt="Sentinel 2024|350" /></td>
+<td><img src="../images/Sentinel_2024.png" alt="Sentinel 2024|350" /></td>
+</tr>
+<tr>
+<td><img src="../images/Sentinel_2018_NDVI.png"
+alt="Sentinel 2024|350" /></td>
+<td><img src="../images/Sentinel_2024_NDVI.png"
+alt="Sentinel 2024|350" /></td>
+</tr>
+<tr>
+<td><img src="../images/Sentinel_2018_NBR.png"
+alt="Sentinel 2024|350" /></td>
+<td><img src="../images/Sentinel_2024_NBR.png"
+alt="Sentinel 2024|350" /></td>
+</tr>
+</tbody>
+</table>
+<p>The NDVI and NBR bands helped to determine ground truth, given the
+lack of high quality imagery to contrast with the obtained Sentinel
+data.</p>
+<p>The two indexes were calculated with the following formulas:</p>
+<p><strong>NDVI</strong> = (NIR - Red) / (NIR + Red) = (Band 8 - Band 4)
+/ (Band 8 + Band 4)</p>
+<p><strong>NBR</strong> = (NIR - SWIR) / (NIR + SWIR) = (Band 8 - Band
+12) / (Band 8 + Band 12)</p>
+<h2 id="classification-results">Classification results</h2>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>2018 Classification</th>
+<th>2024 Classification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="../images/Class_2018.png"
+alt="2018 Classification|350" /></td>
+<td><img src="../images/Class_2024.png"
+alt="2024 Classification|350" /></td>
+</tr>
+</tbody>
+</table>
+<h2
+id="classification-accuracy-comparison-2018-2024-2025">Classification
+Accuracy Comparison (2018, 2024, 2025)</h2>
+<p>This section summarizes the statistical assessment of classification
+accuracy for the 2018 and 2024 rasters, using the standard metrics of
+Overall Accuracy (OA) and the Kappa Coefficient (<span
+class="math inline"><em>κ̂</em></span>). A total of <span
+class="math inline"><em>N</em> = 50</span> ground truth points were used
+for 2018 and 2024, and <span class="math inline"><em>N</em> = 56</span>
+points for 2025.</p>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Overall Accuracy (OA)</th>
+<th>Kappa Coefficient (κ^)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2018</td>
+<td><span class="math inline">84.0%</span></td>
+<td><span class="math inline">0.752</span></td>
+</tr>
+<tr>
+<td>2024</td>
+<td><span class="math inline">82.0%</span></td>
+<td><span class="math inline">0.660</span></td>
+</tr>
+</tbody>
+</table>
+<p>In 2024, due to the disturbance introduced by the burned areas, the
+accuracy of the classification decreased.</p>
+<h2 id="land-cover-change-assessment">Land Cover Change assessment</h2>
+<p>Land cover change was calculated using the Change Detection tool in
+ArcGIS Pro. The analysis focused in category change, particularly in
+forest change to other cover type.</p>
+<figure>
+<img src="../images/Change_18_24.png" alt="2018 Classification|500" />
+<figcaption aria-hidden="true">2018 Classification|500</figcaption>
+</figure>
+<p>Considering the resolution of the image, the forest loss and gain was
+estimated.</p>
+<table>
+<thead>
+<tr>
+<th>Change type</th>
+<th>Area in hectares</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Herbaceus-&gt;Forest</td>
+<td>8209.07</td>
+</tr>
+<tr>
+<td>Herbaceus-&gt;Bare Soil</td>
+<td>2440.67</td>
+</tr>
+<tr>
+<td>Forest-&gt;Herbaceus</td>
+<td>1912.03</td>
+</tr>
+<tr>
+<td>Forest-&gt;Bare Soil</td>
+<td>17183.76</td>
+</tr>
+<tr>
+<td>Bare Soil-&gt;Herbaceus</td>
+<td>219.75</td>
+</tr>
+<tr>
+<td>Bare Soil-&gt;Forest</td>
+<td>1010.59</td>
+</tr>
+<tr>
+<td>Other</td>
+<td>2710.58</td>
+</tr>
+<tr>
+<td>No Change</td>
+<td>38016.86</td>
+</tr>
+</tbody>
+</table>
+<p>The total forest loss then is <strong>19,075.79</strong> hectares.
+Most of the forest changed to bare soil, this is in part due to the
+forest fires of 2024 and also by illegal logging in the reserve. On the
+other hand, <strong>9219.66</strong> hectares of forest was gained in
+this period.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>The degree of disturbance in the Mbaracayu Reserve is confirmed
+through the analysis. Although the main driver of the disturbance is not
+illegal logging but rather a wildfire event, the pattern of
+deforestation along the edges of the reserve is visible. The analysis
+helped estimate the amount of disturbance, but further analysis is
+necessary to ensure the results are correct.</p>
+</body>
+</html>

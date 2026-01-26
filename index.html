@@ -2,100 +2,218 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="styles/layout.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <script src="scripts/script.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
   <title>Paulo Medina</title>
 </head>
 
 <body>
-  <div class="grid-container">
-    <nav class="nav-container">
-      <a class="nav" href="index.html">Home</a>
-      <a class="nav active" href="about.html">About</a>
-      <a class="nav" href="portfolio.html">Portfolio</a>
+  <header>
+    <nav>
+      <div class="nav-child">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#featured-projects">Projects</a>
+        <a href="#contact">Get in touch</a>
+        <a href="assets/resume/Paulo_Medina_Resume.pdf" target="_blank">Resume</a>
+      </div>
     </nav>
-    <div id="title">
+  </header>
+  <div id="home" class="hero-container">
+    <div class="hero-text">
       <h1>Paulo Medina</h1>
-      <h3>Geospatial Data Scientist</h3>
-      <h4>
-        Experienced in processing geographic data, developing geospatial
-        models, manage databases, and creating interactive maps and data
-        visualizations to support global development and environmental
-        initiatives.
-      </h4>
+      <h4>Geospatial Data Engineer</h4>
     </div>
-    <div id="cards">
-      <table id="cards-table">
-        <tbody>
-          <tr>
-            <th>
-              <img src="https://img.icons8.com/?size=100&id=KGsh6rip2wuo&format=png&color=000000" alt="" srcset="" />
-            </th>
-            <th>
-              <img src="https://img.icons8.com/?size=100&id=BwDxr50Y-Aim&format=png&color=000000" alt="" />
-            </th>
-            <th>
-              <img src="https://img.icons8.com/?size=100&id=aKt9Ns1ExNve&format=png&color=000000" alt="" />
-            </th>
-          </tr>
-          <tr>
-            <td>
-              <h3>Clean</h3>
-            </td>
-            <td>
-              <h3>Process</h3>
-            </td>
-            <td>
-              <h3>Visualize</h3>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              As a <b>Forestry Engineer</b>, I have worked in collection and
-              cleaning of forestry inventory data, combining form data and
-              raster data. More recently, as a
-              <b>Geospatial Data Scientist</b>, I have cleaned and process
-              GPS datasets from
-              <a href="https://dhsprogram.com/">The Demographic and Health Surveys program</a>, working with data
-              from
-              Mali, Angola, DRC, among others.
-            </td>
-            <td>
-              As a <b>Geospatial Data Scientist</b> I have processed data to
-              create actionable outputs. Specifically, I have worked
-              modeling health indicator data to increase the spatial
-              resolution of insights and inform local governments. I have
-              worked with different tools like
-              <b>R, Python, and ArcGIS Pro</b>.
-            </td>
-            <td>
-              Throughout my career I have worked with different
-              visualization tools. I am proficient with
-              <b>ArcGIS Pro</b> and <b>AGOL</b> for geographic data
-              visualizations, and have experience working with open source
-              options like <b>QGIS</b> and <b>Leaflet</b>. For
-              non-geographic data, I worked with <b>R Studio</b>,
-              <b>Python</b> and <b>Tableau</b>.
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="footer-name">
-      <p>Paulo Medina</p>
-    </div>
-    <div class="footer-link">
-      <a href="mailto:pcmedina.avalos@gmail.com" target="_blank"><img
-          src="https://img.icons8.com/?size=100&id=Y2GfpkgYNp42&format=png&color=ffffff" alt="" srcset="" /></a>
-      <a href="https://www.linkedin.com/in/paulo-medina/" target="_blank"><img
-          src="https://img.icons8.com/?size=100&id=60444&format=png&color=ffffff" alt="" /></a>
-      <a href="https://github.com/p-med" target="_blank"><img
-          src="https://img.icons8.com/?size=100&id=12599&format=png&color=ffffff" alt="" /></a>
+    <div class="intro">
+      <p>I am an experienced Geospatial Professional with vast experience processing geographic data,
+        developing geospatial models, managing geospatial databases, and creating
+        interactive maps and data visualizations to support global development, environmental initiatives, and
+        business endeavors.</p>
     </div>
   </div>
+  <section id="about">
+    <div class="profile-picture">
+      <img src="assets/images/pp.jpg" alt="">
+    </div>
+    <div class="bio">
+      <h1>ABOUT ME</h1>
+      <p>I'm a Forestry Engineer completing my M.S. in GIS at the University of Maryland this spring. My career has
+        taken me from forest inventory work to modeling public health indicators across Sub-Saharan Africa—always with
+        one constant: using spatial data to solve problems that matter. </p>
+      <p>
+        I've worked with multidisciplinary teams across continents, turning messy GPS datasets and survey data into
+        clear insights that inform real decisions. Whether it's mapping health outcomes for local governments or
+        managing geospatial databases for development programs, I'm drawn to work where precision meets purpose. </p>
+      <p>
+        Currently expanding into cloud infrastructure (training for AWS Solutions Architect certification) to build more
+        scalable geospatial solutions. I'm looking for my next role with organizations that use data and technology to
+        create measurable impact—where the mission is as important as the method.
+      </p>
+    </div>
+  </section>
+  <section id="featured-projects">
+    <h1 class="section-title">Featured Work</h1>
+
+    <div class="featured-card">
+      <div class="featured-image">
+        <img src="assets/images/fire_comparison_map.png" alt="Wildfire Risk Prediction">
+      </div>
+      <div class="featured-content">
+        <span class="tag">Machine Learning / GEE</span>
+        <h2>Wildfire Risk Prediction: Paraguayan Chaco</h2>
+        <p>A predictive modeling project utilizing <strong>Random Forest</strong> to estimate daily wildfire likelihood.
+          By integrating 24 years of FIRMS data with climate and topographic variables, this tool provides a robust
+          framework for early-warning systems.</p>
+        <div class="tech-stack">
+          <span>Python</span> <span>Scikit-Learn</span> <span>Google Earth Engine</span>
+        </div>
+        <a href="https://github.com/p-med/Wildfire-Early-Prediction" target="_blank" class="btn-primary">View Full Case
+          Study</a>
+      </div>
+    </div>
+
+    <div class="featured-card">
+      <div class="featured-image">
+        <img src="assets/images/Change_18_24.png" alt="Forest Loss Analysis">
+      </div>
+      <div class="featured-content">
+        <span class="tag">Remote Sensing / Conservation</span>
+        <h2>Mbaracayú Reserve Forest Loss Assessment</h2>
+        <p>An analysis of illegal logging and wildfire impacts using <strong>Sentinel-2A multispectral data</strong>.
+          This study quantified over 19,000 hectares of forest disturbance using NDVI and NBR indices to identify
+          land-cover transitions.</p>
+        <div class="tech-stack">
+          <span>ArcGIS Pro</span> <span>Remote Sensing</span> <span>Change Detection</span>
+        </div>
+        <a href="portfolio/notebooks/forest-loss-assessment.html" target="_blank" class="btn-primary">Explore
+          Methodology</a>
+      </div>
+    </div>
+
+    <div class="featured-card">
+      <div class="featured-image">
+        <img src="assets/images/07_portfolio.PNG" alt="Road Safety Tool">
+      </div>
+      <div class="featured-content">
+        <span class="tag">Automation / Spatial Stats</span>
+        <h2>Road Accident Hotspot Analysis Tool</h2>
+        <p>An automated <strong>ArcPy toolbox</strong> designed for urban safety engineering. It streamlines the
+          identification of statistically significant (Getis-Ord Gi*) crash clusters, reducing data preparation time by
+          80%.</p>
+        <div class="tech-stack">
+          <span>Python (ArcPy)</span> <span>Spatial Statistics</span> <span>HTML Reporting</span>
+        </div>
+        <a href="https://github.com/p-med/Road-Accident-Hotspot" class="btn-primary">GitHub Repository</a>
+      </div>
+    </div>
+  </section>
+  <section id="projects">
+    <h1>Projects</h1>
+    <div class="row">
+      <div class="column">
+        <div class="container"><img src="assets/images/02_portfolio.PNG">
+          <div class="overlay">
+            <div class="text">
+              <h2></h2>
+              <p></p>
+              <ul></ul>
+            </div>
+          </div>
+        </div>
+        <div class="container"><img src="assets/images/06_portfolio.png">
+          <div class="overlay">
+            <div class="text">
+              <h2></h2>
+              <p></p>
+              <ul></ul>
+            </div>
+          </div>
+        </div>
+        <div class="container"><img src="assets/images/12_portfolio.png">
+          <div class="overlay">
+            <div class="text">
+              <h2></h2>
+              <p></p>
+              <ul></ul>
+            </div>
+          </div>
+        </div>
+        <div class="container"><img src="assets/images/13_portfolio.png">
+          <div class="overlay">
+            <div class="text">
+              <h2></h2>
+              <p></p>
+              <ul></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="container"><img src="assets/images/05_portfolio.png">
+          <div class="overlay">
+            <div class="text">
+              <h2>Web GIS / ArcGIS Experience Builder</h2>
+              <p>A resident-facing web application designed for the City of College Park to promote outdoor engagement.
+                This portal aggregates municipal spatial data into a user-friendly interface, allowing residents to
+                discover parks, trails, and recreational facilities in real-time.</p>
+              <ul>
+                <li>Key Features: Interactive filtering by activity type, mobile-responsive design, and integrated
+                  routing.</li>
+                <li>Platform: ArcGIS Experience Builder / ArcGIS Online. Impact: Streamlined public access to city
+                  amenities and improved digital engagement for the Parks & Recreation department.</li>
+              </ul>
+              <button class="button"><span>Read more</span></button>
+            </div>
+          </div>
+        </div>
+        <div class="container"><img src="assets/images/04_portfolio.png">
+          <div class="overlay">
+            <h2></h2>
+            <p></p>
+            <ul></ul>
+            <button class="button"></button>
+          </div>
+        </div>
+        <div class="container"><img src="assets/images/01_portfolio.png">
+          <div class="overlay">
+            <h2></h2>
+            <p></p>
+            <ul></ul>
+            <button class="button"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer id="contact">
+  <hr class="footer-divider">
+  <div class="footer-container">
+    <div class="footer-msg">
+      <h2>Let's build something spatial.</h2>
+      <p>Currently open to new opportunities in Geospatial Data Engineering and Remote Sensing.</p>
+    </div>
+    <div class="footer-links">
+      <a href="mailto:pcmedina.avalos@gmail.com" title="Email">
+        <i class="fas fa-envelope"></i> Email
+      </a>
+      <a href="https://linkedin.com/in/paulo-medina" target="_blank" title="LinkedIn">
+        <i class="fab fa-linkedin"></i> LinkedIn
+      </a>
+      <a href="https://github.com/p-med" target="_blank" title="GitHub">
+        <i class="fab fa-github"></i> GitHub
+      </a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Paulo Medina | Built with Code & Geography</p>
+  </div>
+</footer>
 </body>
 
 </html>

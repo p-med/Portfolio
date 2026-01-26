@@ -1,0 +1,207 @@
+/*---GENERAL---*/
+
+html {
+  /* min-height on body doesn't work unless it's parent (html) has an explicit height */
+  height: 100%;
+}
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/*---GRID LAYOUT STYLES---*/
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    "nav nav"
+    "title title"
+    "content content"
+    "pdf pdf"
+    "footer-name footer-links";
+  grid-template-columns: 4fr 2fr;
+}
+
+.grid-container > div {
+  padding: 10px;
+  font-size: 16px;
+}
+
+.grid-container > nav.nav-container {
+  grid-area: nav;
+  width: 100%;
+}
+
+.grid-container > div#title {
+  grid-area: title;
+  width: 100%;
+}
+
+.grid-container > div#content {
+  grid-area: content;
+  width: 100%;
+}
+
+.grid-container > div#pdf {
+  grid-area: pdf;
+  width: 100%;
+}
+
+.grid-container > div.footer-name {
+  grid-area: footer-name;
+  grid-column: 1/2;
+}
+
+.grid-container > div.footer-link {
+  grid-area: footer-links;
+  grid-column: 2/6;
+}
+
+/*---TITLE---*/
+
+#title {
+  text-align: center;
+  padding-left: 15%;
+  padding-right: 15%;
+  padding-bottom: 15px;
+  background-color: #22577a;
+  color: aliceblue;
+}
+
+#title > h1,
+h3,
+h4 {
+  padding-top: 2.5px;
+  padding-bottom: 10px;
+  font-weight: bold;
+}
+
+#title > h4 {
+  font-weight: 100;
+  font-size: larger;
+}
+
+#title > h3,
+p {
+  font-size: large;
+}
+
+#title a {
+  color: aliceblue;
+  font-weight: bold;
+}
+
+/*Table*/
+
+div.text-table > table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.text-table > table, .text-table th,
+.text-table td {
+  border-bottom: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+
+/*---CONTENTS---*/
+
+#content {
+  padding-left: 15%;
+  padding-right: 15%;
+  padding-top: 1%;
+  padding-bottom: 5%;
+}
+
+#content .map img {
+  width: 100%;
+  margin: auto;
+  text-align: center;
+}
+
+#content .text .graph img {
+  width: 50%;
+  margin: auto;
+  text-align: center;
+}
+
+#content li {
+  font-size: large;
+}
+
+/*---NAV---*/
+
+.nav-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+}
+
+.nav {
+  padding-left: 2%;
+  padding-right: 2%;
+  padding-bottom: 1%;
+  font-size: larger;
+  color: #22577a;
+  font-weight: 600;
+}
+
+.nav-container a {
+  text-decoration: none;
+  border-bottom: 5px solid #ffffff;
+  font-weight: 600;
+  font-size: larger;
+}
+
+.nav-container a:hover {
+  color: #036666;
+  font-weight: 600;
+  font-size: larger;
+  border-bottom: 5px solid #22577a;
+  transition: 0.5s;
+}
+
+/*---FOOTER---*/
+
+.footer-name,
+.footer-link {
+  background-color: #22577a;
+  color: aliceblue;
+  height: 50px;
+  width: 100%;
+  bottom: 0;
+  position: fixed;
+}
+
+.footer-link {
+  left: 65%;
+}
+.footer-name {
+  right: 25%;
+}
+
+.footer-name > p {
+  padding: 5px;
+  text-align: center;
+  justify-items: center;
+  align-items: center; /* Centers content vertically */
+}
+
+.footer-link img {
+  height: 30px;
+  padding-right: 30px;
+  text-align: center;
+  justify-items: center;
+  align-items: center; /* Centers content vertically */
+}
+
+/*PDF*/
+.pdf {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+}
