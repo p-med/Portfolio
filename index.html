@@ -11,9 +11,10 @@
     href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-   <!-- Open Graph for social media -->
+  <!-- Open Graph for social media -->
   <meta property="og:title" content="Paulo Medina | Geospatial Data Engineer">
-  <meta property="og:description" content="Portfolio showcasing geospatial projects in machine learning, remote sensing, and data visualization.">
+  <meta property="og:description"
+    content="Portfolio showcasing geospatial projects in machine learning, remote sensing, and data visualization.">
   <meta property="og:image" content="https://p-med.github.io/Portfolio/assets/images/pp.jpg">
   <meta property="og:url" content="https://p-med.github.io/Portfolio/">
   <title>Paulo Medina</title>
@@ -84,7 +85,7 @@
         <img src="assets/images/fire_comparison_map.png" alt="Wildfire Risk Prediction">
       </div>
       <div class="featured-content">
-        <span class="tag">Machine Learning / GEE</span>
+        <span class="tag">Machine Learning / GEE / Wildfires</span>
         <h2>Wildfire Risk Prediction: Paraguayan Chaco</h2>
         <p>A predictive modeling project utilizing <strong>Random Forest</strong> to estimate daily wildfire likelihood.
           By integrating 24 years of FIRMS data with climate and topographic variables, this tool provides a robust
@@ -112,6 +113,22 @@
         </div>
         <a href="portfolio/notebooks/forest-loss-assessment.html" target="_blank" class="btn-primary">Explore
           Methodology</a>
+      </div>
+    </div>
+
+    <div class="featured-card">
+      <div class="featured-image">
+        <img src="assets/images/14_portfolio.png" alt="Road Safety Tool">
+      </div>
+      <div class="featured-content">
+        <span class="tag">Wildfires / Spatial Stats</span>
+        <h2>Spatial and temporal analysis of wildfires in the Paraguayan Chaco</h2>
+        <p>An overview of <strong>spatio-temporal patterns of wildfires</strong> in the Paraguayan Chaco. The analysis took
+          historical fire data from MODIS and analyzed clustering, covariance, and emerging hotspots.</p>
+        <div class="tech-stack">
+          <span>Python (Geopandas)</span> <span>Spatial Statistics</span> <span>ArcGIS Pro</span>
+        </div>
+        <a href="https://storymaps.arcgis.com/stories/62c89ebacf844b34be7aa7cddf0197c2" target="_blank" class="btn-primary">Story Map</a>
       </div>
     </div>
 
@@ -267,52 +284,53 @@
     </div>
   </section>
   <!-- FOOTER -->
-<!-- FOOTER -->
-<footer id="contact">
+  <!-- FOOTER -->
+  <footer id="contact">
 
-  <hr class="footer-divider">
+    <hr class="footer-divider">
 
-  <div class="footer-container">
-    
-    <div class="footer-msg">
-      <h2>Let's build something spatial.</h2>
-      <p>Currently open to new opportunities in Geospatial Data Engineering and Remote Sensing.</p>
+    <div class="footer-container">
+
+      <div class="footer-msg">
+        <h2>Let's build something spatial.</h2>
+        <p>Currently open to new opportunities in Geospatial Data Engineering and Remote Sensing.</p>
+      </div>
+
+      <div class="contact-form">
+        <form action="https://formspree.io/f/mjgwrezg" method="POST" id="contact-form">
+          <div class="form-group">
+            <input type="text" name="name" placeholder="Your Name" required>
+          </div>
+          <div class="form-group">
+            <input type="email" name="email" placeholder="Your Email" required>
+          </div>
+          <div class="form-group">
+            <textarea name="message" placeholder="Tell me about your project or opportunity" rows="4"
+              required></textarea>
+          </div>
+          <button type="submit" class="btn-submit">Send Message</button>
+        </form>
+      </div>
+
     </div>
 
-    <div class="contact-form">
-      <form action="https://formspree.io/f/mjgwrezg" method="POST" id="contact-form">
-        <div class="form-group">
-          <input type="text" name="name" placeholder="Your Name" required>
-        </div>
-        <div class="form-group">
-          <input type="email" name="email" placeholder="Your Email" required>
-        </div>
-        <div class="form-group">
-          <textarea name="message" placeholder="Tell me about your project or opportunity" rows="4" required></textarea>
-        </div>
-        <button type="submit" class="btn-submit">Send Message</button>
-      </form>
+    <div class="footer-links">
+      <a href="mailto:pcmedina.avalos@gmail.com" title="Email" aria-label="Email Paulo">
+        <i class="fas fa-envelope"></i> Email
+      </a>
+      <a href="https://linkedin.com/in/paulo-medina" target="_blank" title="LinkedIn" aria-label="Paulo's LinkedIn">
+        <i class="fab fa-linkedin"></i> LinkedIn
+      </a>
+      <a href="https://github.com/p-med" target="_blank" title="GitHub" aria-label="Paulo's GitHub">
+        <i class="fab fa-github"></i> GitHub
+      </a>
     </div>
 
-  </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Paulo Medina | Built with Code & Geography</p>
+    </div>
 
-  <div class="footer-links">
-    <a href="mailto:pcmedina.avalos@gmail.com" title="Email" aria-label="Email Paulo">
-      <i class="fas fa-envelope"></i> Email
-    </a>
-    <a href="https://linkedin.com/in/paulo-medina" target="_blank" title="LinkedIn" aria-label="Paulo's LinkedIn">
-      <i class="fab fa-linkedin"></i> LinkedIn
-    </a>
-    <a href="https://github.com/p-med" target="_blank" title="GitHub" aria-label="Paulo's GitHub">
-      <i class="fab fa-github"></i> GitHub
-    </a>
-  </div>
-
-  <div class="footer-bottom">
-    <p>&copy; 2026 Paulo Medina | Built with Code & Geography</p>
-  </div>
-
-</footer>
+  </footer>
 </body>
 <!-- END -->
 
